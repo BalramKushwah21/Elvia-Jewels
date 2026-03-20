@@ -12,19 +12,19 @@ const navbar = () => {
           <Link href="#" className="px-3 py-2 text-black font-bold hover:bg-pink-300 rounded">
             Home
           </Link>
-          <Link href="#" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
-            Shop
+          <Link href="/store/products" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
+            Products
           </Link>
-          <Link href="#" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
+          <Link href="/store/aboutus" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
             About
           </Link>
-          <Link href="#" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
+          <Link href="/store/contactus" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
             Contact
           </Link>
-          <Link href="#" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
+          <Link href="/store/cart" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
             Cart
           </Link>
-          <Link href="#" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
+          <Link href="/auth/login" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
             Login
           </Link>
         </div>
