@@ -19,38 +19,38 @@ const navbar = () => {
 
       <div>
         <Link
-          href="#"
-          className="px-3 py-2 text-white font-bold hover:bg-pink-300 rounded"
+          href="/"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300 rounded hover:text-black"
         >
           Home
         </Link>
         <Link
           href="/store/products"
-          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded hover:text-black"
         >
           Products
         </Link>
         <Link
           href="/store/aboutus"
-          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded hover:text-black"
         >
           About
         </Link>
         <Link
           href="/store/contactus"
-          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded hover:text-black"
         >
           Contact
         </Link>
         <Link
           href="/store/cart"
-          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded hover:text-black"
         >
           Cart
         </Link>
         <Link
           href="/auth/login"
-          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded hover:text-black"
         >
           Login
         </Link>

@@ -1,37 +1,162 @@
 "use client";
-
+import React from "react";
 import Image from "next/image";
 
-
-
-function changeText() { 
-  const ele = document.getElementById("para");
-  ele.innerText = "Balram is the best";
-
-
-}
-
-
-export default function Home() {
+const Home = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className=" text-black text-4xl font-bold mb-4">
-        Welcome to Elvia Jewels
-      </h1>
-      <p id="para" className="text-lg text-gray-600 mb-8">
-        Discover our exquisite collection of jewelry.
-      </p>
-      <button onClick={changeText} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-        Shop Now
-      </button>
-      
-      <Image
-        src="/jewelry-collection.jpg"
-        alt="Jewelry Collection"
-        width={600}
-        height={400}
-        className="rounded-lg shadow-lg"
-      />
+    <div>
+      <div
+        className="w- h-[40vh] bg-pink-300 bg-center m-2"
+          ></div>
+
+      <div
+        id="track"
+        className="flex gap-4 my-10 justify-around overflow-hidden"
+      >
+        <div className="  flex-col text-center">
+          <Image
+            className="rounded-4xl"
+            src="/category/bracelet.png"
+            alt="Description"
+            width={450}
+            height={100}
+          />
+          <span className="font-bold font-sans text-xl text-black">
+            Bracelet
+          </span>
+        </div>
+        <div className="  flex-col text-center">
+          <Image
+            className=" rounded-4xl "
+            src="/category/pendant.png"
+            alt="Description"
+            width={450}
+            height={100}
+          />
+          <span className="font-bold font-sans text-xl text-black">
+            Pandent
+          </span>
+        </div>
+        <div className="  flex-col text-center">
+          <Image
+            className="rounded-4xl"
+            src="/category/earring.png"
+            alt="Description"
+            width={450}
+            height={100}
+          />
+          <span className="font-bold font-sans text-xl text-black">
+            Earring
+          </span>
+        </div>
+        <div className="  flex-col text-center">
+          <Image
+            className="rounded-4xl"
+            src="/category/ring.png"
+            alt="Description"
+            width={450}
+            height={100}
+          />
+          <span className="font-bold font-sans text-xl text-black">Ring</span>
+        </div>
+        <div className="  flex-col text-center">
+          <Image
+            className="rounded-4xl"
+            src="/category/anklet.png"
+            alt="Description"
+            width={450}
+            height={100}
+          />
+          <span className="font-bold font-sans text-xl text-black">
+            Anklets
+          </span>
+        </div>
+        <div className="  flex-col text-center">
+          <Image
+            className="rounded-4xl"
+            src="/category/bangle.png"
+            alt="Description"
+            width={450}
+            height={100}
+          />
+          <span className="font-bold font-sans text-xl text-black">Bangle</span>
+        </div>
+        <div className="  flex-col text-center">
+          <Image
+            className="rounded-4xl "
+            src="/category/sets.png"
+            alt="Description"
+            width={450}
+            height={100}
+          />
+          <span className="font-bold font-sans text-xl text-black">Sets</span>
+        </div>
+        <div className="  flex-col text-center">
+          <Image
+            className="rounded-4xl "
+            src="/category/meninsilver.png"
+            alt="Description"
+            width={450}
+            height={100}
+          />
+          <span className="font-bold font-sans text-xl text-black">
+            Men in Silver
+          </span>
+        </div>
+      </div>
+
+      <div id="image-container" className="flex-col gap-8">
+        <div id="showimage" className="m-5">
+          <Image
+            src="/features/demo1.jpeg"
+            alt="Description"
+            width={1500}
+            height={0}
+          />
+        </div>
+        <div id="showimage" className="m-5">
+          <Image
+            src="/features/demo1.jpeg"
+            alt="Description"
+            width={1500}
+            height={0}
+          />
+        </div>
+        <div id="showimage" className="m-5">
+          <Image
+            src="/features/demo1.jpeg"
+            alt="Description"
+            width={1500}
+            height={0}
+          />
+        </div>
+        <div id="showimage" className="m-5">
+          <Image
+            src="/features/demo1.jpeg"
+            alt="Description"
+            width={1500}
+            height={400}
+          />
+        </div>
+        <div id="showimage" className="m-5">
+          <Image
+            src="/features/demo1.jpeg"
+            alt="Description"
+            width={1500}
+            height={400}
+          />
+        </div>
+        <div id="showimage" className="m-5">
+          <Image
+            src="/features/demo1.jpeg"
+            alt="Description"
+            width={1500}
+            height={400}
+          />
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default Home;
