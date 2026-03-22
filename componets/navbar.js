@@ -1,33 +1,60 @@
 import React from "react";
 import Link from "next/link";
 
+
+
 const navbar = () => {
   return (
-    <nav className="bg-pink-400 text-white p-4 flex justify-between items-center w-full [background:radial-gradient(100%_125%_at_90%_100%,#fff_30%,#63e_100%)]">
-   
-        <div className="text-lg font-bold flex items-center gap-2 text-black hover: cursor-pointer">
-          <img src="/logo.jpeg" alt="Elvia Jewels" className="h-10 w-10 rounded-full" />Elvia Jewels
-        </div>
-        <div>
-          <Link href="#" className="px-3 py-2 text-black font-bold hover:bg-pink-300 rounded">
-            Home
-          </Link>
-          <Link href="/store/products" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
-            Products
-          </Link>
-          <Link href="/store/aboutus" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
-            About
-          </Link>
-          <Link href="/store/contactus" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
-            Contact
-          </Link>
-          <Link href="/store/cart" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
-            Cart
-          </Link>
-          <Link href="/auth/login" className="px-3 py-2 text-black font-bold hover:bg-pink-300  rounded">
-            Login
-          </Link>
-        </div>
+    <nav className="bg-gray-800 text-white p-4 flex justify-between items-center w-full ">
+      <div className="text-lg font-bold flex items-center gap-2 text-white hover: cursor-pointer">
+        <img
+          src="/logo.jpeg"
+          alt="Elvia Jewels"
+          className="h-10 w-10 rounded-full"
+        />
+        Elvia Jewels
+      </div>
+      
+
+
+      <div>
+        <Link
+          href="#"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300 rounded"
+        >
+          Home
+        </Link>
+        <Link
+          href="/store/products"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded"
+        >
+          Products
+        </Link>
+        <Link
+          href="/store/aboutus"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded"
+        >
+          About
+        </Link>
+        <Link
+          href="/store/contactus"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded"
+        >
+          Contact
+        </Link>
+        <Link
+          href="/store/cart"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded"
+        >
+          Cart
+        </Link>
+        <Link
+          href="/auth/login"
+          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded"
+        >
+          Login
+        </Link>
+      </div>
     </nav>
   );
 };

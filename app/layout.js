@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
 
       <body className="min-h-full flex flex-col">
         <Navbar />
-        <div className="min-h-[83vh] bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]">{children}</div>
+        <div className="min-h-screen bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]">{children}</div>
         <Footer />
       </body>
     </html>
