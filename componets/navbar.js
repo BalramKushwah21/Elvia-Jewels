@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const navbar = () => {
   return (
-    <nav className="bg-gray-800 text-white p-4 flex justify-between items-center w-full ">
+    <nav className="bg-gray-800 text-white p-4 flex justify-between items-center w-full rounded-2xl ">
       <div className="text-lg font-bold flex items-center gap-2 text-white hover: cursor-pointer">
         <img
           src="/logo.jpeg"
