@@ -1,8 +1,6 @@
 import React from "react";
 import Link from "next/link";
 
-
-
 const navbar = () => {
   return (
     <nav className="bg-gray-800 text-white p-4 flex justify-between items-center w-full rounded-2xl ">
@@ -14,8 +12,6 @@ const navbar = () => {
         />
         Elvia Jewels
       </div>
-      
-
 
       <div>
         <Link
@@ -30,12 +26,7 @@ const navbar = () => {
         >
           Products
         </Link>
-        <Link
-          href="/store/aboutus"
-          className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded hover:text-black"
-        >
-          About
-        </Link>
+
         <Link
           href="/store/contactus"
           className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded hover:text-black"
