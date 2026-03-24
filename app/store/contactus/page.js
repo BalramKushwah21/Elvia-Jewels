@@ -13,7 +13,6 @@ const ContactPage = () => {
     <div className='body'>
       
       <div className='container'>
-''
         {/* LEFT SIDE */}
         <div className='left'>
           <div className='overlay'></div>
