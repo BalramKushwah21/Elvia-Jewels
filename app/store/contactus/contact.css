@@ -21,7 +21,7 @@
 
 .left {
   width: 50%;
-  background-image: url("https://cdn.clippingpath.in/wp-content/uploads/2024/10/5.-Soft-Fabrics-Silk-or-Satin-683x1024.webp");
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/075/626/177/small/floral-arrangement-on-a-textured-background-with-branches-photo.jpeg");
   background-size: cover;
   background-position: center;
   padding: 50px;
@@ -29,8 +29,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-bottom
-  ;
+  justify-content: center;
 }
 .overlay {
   position: absolute;
@@ -83,7 +82,7 @@
   min-height: 180px;
   padding: 18px 20px;
   border-radius: 14px;
-  border: 1px solid #e6e2dc;
+  border: 1px solid #f3ebde;
   background: #ffffff;
   margin-bottom: 22px;
   font-size: 15px;
