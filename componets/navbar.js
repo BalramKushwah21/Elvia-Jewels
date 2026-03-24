@@ -21,20 +21,20 @@ const navbar = () => {
           Home
         </Link>
         <Link
-          href="/store/products"
+          href="/home/store"
           className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded hover:text-black"
         >
-          Products
+         Store
         </Link>
 
         <Link
-          href="/store/contactus"
+          href="/home/contactus"
           className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded hover:text-black"
         >
           Contact
         </Link>
         <Link
-          href="/store/cart"
+          href="/home/cart"
           className="px-3 py-2 text-white font-bold hover:bg-pink-300  rounded hover:text-black"
         >
           Cart
