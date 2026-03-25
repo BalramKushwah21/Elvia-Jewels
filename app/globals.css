@@ -1,96 +1,26 @@
-.container {
-    display: flex;
-    justify-content: center;
-    padding: 40px;
-    background: #f2f2f2;
-    min-height: 100vh;
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
-.cart {
-    display: flex;
-    background: white;
-    width: 900px;
-    border-radius: 12px;
-    padding: 20px;
-    gap: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
-/* LEFT */
-.cartItems {
-    flex: 2;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
-.cartItems h2 {
-    margin-bottom: 20px;
-}
-
-.item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.box {
-    width: 60px;
-    height: 60px;
-    background: #eee;
-    border-radius: 8px;
-    margin-right: 15px;
-}
-
-.details {
-    flex: 1;
-}
-
-.details p {
-    margin: 0;
-    font-weight: 600;
-}
-
-.details span {
-    color: gray;
-}
-
-.item input {
-    width: 50px;
-    padding: 5px;
-}
-
-/* RIGHT */
-.summary {
-    flex: 1;
-    background: #0d3b66;
-    color: white;
-    padding: 20px;
-    border-radius: 12px;
-}
-
-.summary h3 {
-    margin-bottom: 20px;
-}
-
-.summary p,
-.summary h4 {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
-}
-
-.summary input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    border: none;
-    margin: 10px 0;
-}
-
-.summary button {
-    width: 100%;
-    padding: 12px;
-    background: gold;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }
