@@ -1,24 +1,61 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
+import { useState } from "react";
 import "./page.css";
 
-const left = document.querySelector("#left");
-const right = document.querySelector("#right");
-const slider = document.querySelector(".slider");
+export default function Home() {
+useEffect(() => {
+    const left = document.querySelector("#left");
+    const right = document.querySelector("#right");
+    const slider = document.querySelector(".slider");
+    const image = document.querySelectorAll(".image");
+    let length = image.length;
+    let counter = 1;
 
-let counter = 1;
-const rightbtn = () => {
-  // alert("right");
-  counter++;
-  slider.style.transform = `translateX(-${counter * 100}%)`;
-}
+    const nextSlide = () =>{
+      slider.style.transform = `translateX(-${counter * 100}%)`;
+      counter++;
 
-const leftbtn = () => {
-  // alert("left");
-  counter--;
-  slider.style.transform = `translateX(${counter * 100}%)`;
-}
+    }
+    const prevSlide = () =>{
+      slider.style.transform = `translateX(-${(counter-2) * 100}%)`;
+      counter--;
+
+    }
+    const getFirstSlide = () =>{
+      slider.style.transform = `translateX(0%)`;
+      counter = 0;
+
+    }
+
+    const getLastSlide = () =>{
+      slider.style.transform = `translateX(-${(length-1)*100}%)`;
+      counter = length;
+
+    }
+
+
+    right.addEventListener("click", () => {
+      if(counter < length){
+        nextSlide();
+      }
+      else{
+        getFirstSlide();
+      }
+    });
+    
+    left.addEventListener("click", () => {
+      if(counter>1){
+        prevSlide();
+      }
+      else{
+        getLastSlide();
+      }
+    });
+
+    
+  }, []);
 
 
 
@@ -26,13 +63,13 @@ const leftbtn = () => {
 
 
 
-const Home = () => {
+
   return (
     <div className="main">
       {/* this image slider */}
     
         <div className="container">
-            <button id="left" onClick={leftbtn}>
+            <button id="left" >
             <svg className="left"
               xmlns="http://www.w3.org/2000/svg"
               height="48px"
@@ -47,13 +84,13 @@ const Home = () => {
         <div className="frame">
           <div className="slider">
             <img src="slider/image1.png" className="image" />
-            <img src="slider/image2.png" className="image" />
-            <img src="slider/image3.png" className="image" />
-            <img src="slider/image4.png" className="image" />
+            <img src="slider/image1.png" className="image" />
+            <img src="slider/image1.png" className="image" />
+            <img src="slider/image1.png" className="image" />
           </div>
         </div>
 
-          <button id="right" onClick={rightbtn}>
+          <button id="right">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="48px"
@@ -226,4 +263,3 @@ const Home = () => {
   );
 };
 
-export default Home;
