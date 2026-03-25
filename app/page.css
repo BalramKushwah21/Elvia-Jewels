@@ -3,15 +3,15 @@
 
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  /* background-color: pink; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  background-color: pink;
     margin: auto;
     margin-top: 2%;
-    width: 100vw;
+  
 }
 .frame {
-    width: 100%;
+    /* width: 90%; */
  overflow: hidden;
  box-shadow:5px 5px 5px 5px rgb(226, 83, 214);
 }
@@ -24,6 +24,7 @@ transition:all 1s ease;
 }
 
 .image{
-  height: 300px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
 }
