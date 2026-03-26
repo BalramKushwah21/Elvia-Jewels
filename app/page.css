@@ -45,7 +45,7 @@
 width: 15px;
 height: 15px;
 /* background-color:pink; */
-border: 1px solid black;
+border: 2px solid blue;
 border-radius: 50%;
 cursor: pointer;
 }
@@ -53,24 +53,27 @@ cursor: pointer;
 #left, #right{
 cursor: pointer;
 }
-.categoryLeft, .categoryRigth{
-cursor: pointer;}
 
 /* styles for category slider */
 
+.categoryLeft, .categoryRigth{
+cursor: pointer;}
+
+
 .categoryContainer{
-  justify-content: center;
+  margin-top: 3%;
+justify-content: center;
 display: flex;
 /* overflow: hidden; */
 width: 100%;
-background: #000;
+/* background: #000; */
 }
 
 .categorySlider{
   display: flex;
   /* align-items: center; */
   /* justify-content:center; */
-  background: #241499;
+  /* background: #241499; */
   gap: 20px ;
   overflow: hidden;
   
@@ -87,3 +90,6 @@ background: #000;
   object-fit: cover;
   
 }
+.categoryText{
+  margin-top: 4%;
+color: black;}

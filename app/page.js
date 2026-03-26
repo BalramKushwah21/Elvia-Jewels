@@ -1,9 +1,20 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
+
+import { useEffect } from "react";
 import { useState } from "react";
 import "./page.css";
 
+
 export default function Home() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   useEffect(() => {
     const left = document.querySelector("#left");
     const right = document.querySelector("#right");
@@ -148,8 +159,7 @@ export default function Home() {
           <button className="slidedot"></button> */}
         </div>
         {/* end botom */}
-      </div>
-      {/* Container end */}
+      </div> {/* Container end */}
 
       {/* category slider */}
       <div className="categoryContainer">
@@ -166,6 +176,7 @@ export default function Home() {
 
         
           <div className="categorySlider">
+            
             <div className="categorySlide">
               <img
                 alt="bracelet"
@@ -232,6 +243,7 @@ export default function Home() {
               <span className="categoryText">Men in Silver</span>
             </div>
         
+    
         </div>
         <button className="categoryRigth">
           <svg
