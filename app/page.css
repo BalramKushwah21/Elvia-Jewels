@@ -1,28 +1,89 @@
 
 .container {
-  display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
-  background-color: pink;
+  /* display: flex; */
+  /* background-color: pink; */
     margin: auto;
     margin-top: 2%;
+    width: 100%;
   
+}
+.top{
+   display: flex;
+  /* background-color: pink; */
+    margin: auto;
+    margin-top: 2%;
 }
 .frame {
     /* width: 90%; */
  overflow: hidden;
- box-shadow:5px 5px 5px 5px rgb(226, 83, 214);
+ /* box-shadow:2px 2px 2px 2px rgb(54, 215, 210); */
 }
 
 
 .slider{
+  cursor: pointer;
   width: 100%;
-display: flex;
-transition:all 1s ease;
+  display: flex;
+  transition:all 1s ease;
 }
 
 .image{
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+.bottom{
+  margin-top: 1%;
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.slidebtn{
+width: 15px;
+height: 15px;
+/* background-color:pink; */
+border: 1px solid black;
+border-radius: 50%;
+cursor: pointer;
+}
+
+#left, #right{
+cursor: pointer;
+}
+.categoryLeft, .categoryRigth{
+cursor: pointer;}
+
+/* styles for category slider */
+
+.categoryContainer{
+  justify-content: center;
+display: flex;
+/* overflow: hidden; */
+width: 100%;
+background: #000;
+}
+
+.categorySlider{
+  display: flex;
+  /* align-items: center; */
+  /* justify-content:center; */
+  background: #241499;
+  gap: 20px ;
+  overflow: hidden;
+  
+}
+.categorySlide{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+
+}
+.categoryImage{
+  border-radius: 10px;
+  object-fit: cover;
+  
 }

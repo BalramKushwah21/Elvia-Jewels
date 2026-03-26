@@ -1,21 +1,23 @@
 "use client";
-import styles from "./login.module.css";
+import Link from "next/link";
+
+import "./login.css"
 
 export default function Login(){
 return(
 
-<div className={styles.wrapper}>
+<div className="wrapper">
 
-<div className={styles.card}>
+<div className="card">
 
 {/* LEFT DESIGN */}
-<div className={styles.left}>
+<div className="left">
 
-<div className={styles.triangle1}></div>
-<div className={styles.triangle2}></div>
-<div className={styles.triangle3}></div>
+<div className="triangle1"></div>
+<div className="triangle2"></div>
+<div className="triangle3"></div>
 
-<div className={styles.leftText}>
+<div className="leftText">
 <h2>LOGIN</h2>
 <p>SIGN IN</p>
 </div>
@@ -23,30 +25,35 @@ return(
 </div>
 
 {/* RIGHT */}
-<div className={styles.right}>
+<div className="right">
 
-<div className={styles.avatar}>👤</div>
+<div className="avatar">👤</div>
 
 <h3>LOGIN</h3>
 
-<div className={styles.inputGroup}>
+<div className="inputGroup">
 <span>👤</span>
 <input placeholder="Email"/>
 </div>
 
-<div className={styles.inputGroup}>
+<div className="inputGroup">
 <span>🔒</span>
 <input placeholder="Password"/>
 </div>
 
-<div className={styles.forgot}>Forgot Password?</div>
+<div className="forgot">Forgot Password?</div>
 
-<button className={styles.btn}>LOGIN</button>
+<button className="btn">LOGIN</button>
 
-<div className={styles.social}>
+<div className="social text-black font-bold">
 Or Login With
 <span>Google</span>
 <span>Facebook</span>
+<div className="notMenber">
+    <span>Not a membet</span> <Link href="./register">Register</Link>
+    
+</div>
+
 </div>
 
 </div>
