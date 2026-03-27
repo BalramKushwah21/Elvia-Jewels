@@ -14,23 +14,26 @@
     margin-top: 2%;
 }
 .frame {
+  display: flex;
     /* width: 90%; */
  overflow: hidden;
  /* box-shadow:2px 2px 2px 2px rgb(54, 215, 210); */
 }
 
 
-.slider{
+.slider {
   cursor: pointer;
   width: 100%;
   display: flex;
-  transition:all 1s ease;
+  transition: all 1s ease;
 }
 
-.image{
+.slider .img {
   width: 100%;
+  min-width: 100%;
   height: auto;
   object-fit: cover;
+  
 }
 
 .bottom{
@@ -50,46 +53,28 @@ border-radius: 50%;
 cursor: pointer;
 }
 
-#left, #right{
+.left, .right{
 cursor: pointer;
 }
 
-/* styles for category slider */
-
-.categoryLeft, .categoryRigth{
-cursor: pointer;}
 
 
-.categoryContainer{
-  margin-top: 3%;
-justify-content: center;
-display: flex;
-/* overflow: hidden; */
-width: 100%;
-/* background: #000; */
-}
 
-.categorySlider{
+/* Main page container */
+.main {
+  width: 100%;
   display: flex;
-  /* align-items: center; */
-  /* justify-content:center; */
-  /* background: #241499; */
-  gap: 20px ;
-  overflow: hidden;
-  
-}
-.categorySlide{
-  display: flex;
-  align-items: center;
   flex-direction: column;
-
-
 }
-.categoryImage{
-  border-radius: 10px;
-  object-fit: cover;
-  
+
+/* Image container */
+#img-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
-.categoryText{
-  margin-top: 4%;
-color: black;}
+
+/* Show image styling */
+#showimg {
+  margin: 1.25rem;
+}

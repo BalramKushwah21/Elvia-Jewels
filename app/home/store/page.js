@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import "./store.css";
 
 // ⭐ ULTRA LONG PREMIUM JEWELLERY HOMEPAGE (Error Safe + Professional)
 
@@ -29,59 +30,59 @@ export default function HomePage() {
   );
 
   return (
-    <div className="bg-[#fff6fa] min-h-screen text-gray-800">
+    <div className="store-page">
       
 
       {/* HERO */}
-      <section className="grid md:grid-cols-2 gap-16 px-12 py-20 items-center">
+      <section className="hero">
         <div>
-          <h2 className="text-6xl font-semibold mb-6 leading-tight">
+          <h2 className="hero-title">
             Discover Elegant Jewellery Collections
           </h2>
 
-          <p className="text-gray-600 mb-10 text-lg">
+          <p className="hero-subtitle">
             Premium handcrafted ornaments designed for weddings, parties and
             daily luxury styling. Shine with timeless beauty.
           </p>
 
-          <button className="bg-pink-500 text-white px-12 py-4 rounded-full text-lg shadow hover:scale-105 transition">
+          <button className="btn btn-primary">
             Explore Now
           </button>
         </div>
 
         <img
           src="https://i.pinimg.com/736x/42/89/b7/4289b745029c67cca24790d4ffc1940a.jpg"
-          className="rounded-3xl shadow-2xl"
+          className="hero-image"
           alt="hero"
         />
       </section>
 
       {/* CATEGORY SECTION */}
-      <section className="px-12 pb-20">
-        <h3 className="text-4xl font-semibold mb-12">Shop By Category</h3>
+      <section className="category-section">
+        <h3 className="section-title">Shop By Category</h3>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="category-grid">
           {["Rings", "Necklaces", "Earrings", "Bracelets"].map((c, i) => (
-            <div key={i} className="bg-white rounded-2xl p-10 text-center shadow hover:shadow-xl transition cursor-pointer">
-              <p className="text-xl font-medium">{c}</p>
+            <div key={i} className="category-card">
+              <p className="category-label">{c}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* PRODUCTS */}
-      <section className="px-12 pb-24">
-        <h3 className="text-4xl font-semibold mb-12">Trending Products</h3>
+      <section className="products-section">
+        <h3 className="section-title">Trending Products</h3>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+        <div className="products-grid">
           {filtered.map((p) => (
-            <div key={p.id} className="bg-white rounded-3xl p-5 shadow hover:shadow-2xl transition">
-              <img src={p.img} className="h-56 w-full object-cover rounded-2xl mb-4" alt={p.name} />
+            <div key={p.id} className="product-card">
+              <img src={p.img} className="product-image" alt={p.name} />
 
-              <p className="text-lg font-medium">{p.name}</p>
-              <p className="text-pink-500 font-bold text-xl mb-4">₹{p.price}</p>
+              <p className="product-name">{p.name}</p>
+              <p className="product-price">₹{p.price}</p>
 
-              <Link href={`/product/${p.id}`} className="block text-center bg-pink-500 text-white py-3 rounded-full">
+              <Link href={`/product/${p.id}`} className="btn btn-primary btn-block">
                 View Product
               </Link>
             </div>
@@ -90,23 +91,23 @@ export default function HomePage() {
       </section>
 
       {/* OFFER BANNER */}
-      <section className="mx-12 mb-24 bg-gradient-to-r from-pink-400 to-pink-600 text-white rounded-3xl p-16 text-center">
-        <h3 className="text-4xl font-semibold mb-4">Wedding Collection Sale</h3>
-        <p className="text-lg mb-8">Flat 25% OFF on Bridal Jewellery</p>
-        <button className="bg-white text-pink-500 px-10 py-4 rounded-full font-medium">
+      <section className="offer-banner">
+        <h3 className="offer-title">Wedding Collection Sale</h3>
+        <p className="offer-subtitle">Flat 25% OFF on Bridal Jewellery</p>
+        <button className="btn btn-outline">
           Shop Now
         </button>
       </section>
 
       {/* TESTIMONIAL */}
-      <section className="px-12 pb-24">
-        <h3 className="text-4xl font-semibold mb-12">What Our Customers Say</h3>
+      <section className="testimonial-section">
+        <h3 className="section-title">What Our Customers Say</h3>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="testimonial-grid">
           {[1,2,3].map(i => (
-            <div key={i} className="bg-white p-8 rounded-2xl shadow">
-              <p className="text-gray-600 mb-4">Amazing quality jewellery and very fast delivery. Totally loved it!</p>
-              <p className="font-semibold">Customer {i}</p>
+            <div key={i} className="testimonial-card">
+              <p className="testimonial-text">Amazing quality jewellery and very fast delivery. Totally loved it!</p>
+              <p className="testimonial-author">Customer {i}</p>
             </div>
           ))}
         </div>
