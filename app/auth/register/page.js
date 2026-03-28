@@ -23,22 +23,22 @@ export default function Register() {
             <form>
               <div className="input-box">
                 <span className="span">👤</span>
-                <input type="text" placeholder="Full Name" />
+                <input-line type="text" placeholder="Full Name" />
               </div>
 
               <div className="input-box">
                 <span className="span">📧</span>
-                <input type="email" placeholder="Email" />
+                <input-line type="email" placeholder="Email" />
               </div>
 
               <div className="input-box">
                 <span className="span">🔒</span>
-                <input type="password" placeholder="Password" />
+                <input-line type="password" placeholder="Password" />
               </div>
 
               <div className="input-box">
                 <span className="span">🔒</span>
-                <input type="password" placeholder="Confirm Password" />
+                <input-line type="password" placeholder="Confirm Password" />
               </div>
 
               <button className="btn">REGISTER</button>

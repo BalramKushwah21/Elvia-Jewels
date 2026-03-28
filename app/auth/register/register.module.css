@@ -75,7 +75,7 @@ body {
 }
 
 /* INPUT */
-.input-box {
+.input-line {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ccc;
@@ -83,12 +83,12 @@ body {
   padding-bottom: 5px;
 }
 
-.input-box .span {
+.input-line .span {
   margin-right: 10px;
   font-size: 18px;
 }
 
-.input-box .input {
+.input-line .input {
   border: none;
   outline: none;
   width: 100%;
