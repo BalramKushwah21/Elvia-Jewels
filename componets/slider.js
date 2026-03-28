@@ -100,7 +100,7 @@ export default function Slider() {
             >
               <div className={"card"}>
                 <img className={"card"} src={slide.img} alt={slide.title} 
-                onClick={() => router.push(`/colletions/${slide.title.toLowerCase()}`)}/>
+                onClick={() => router.push(`/collections/${slide.title.toLowerCase()}`)}/>
                 
 
                 <div className={"content"}>
