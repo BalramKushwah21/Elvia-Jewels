@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import styles from "./slider.css";
+import  "./slider.css";
 
 export default function Slider() {
   const visibleSlides = 6;
@@ -73,7 +73,7 @@ export default function Slider() {
 
   return (
     <div className={"sliderContainer"}>
-      <button className="btn" onClick={prevSlide}>⬅</button>
+    
 
       <div className={"slider"}>
         <div
@@ -101,7 +101,12 @@ export default function Slider() {
         </div>
       </div>
 
-      <button className="btn" onClick={nextSlide}>➡</button>
+      <button className="slider_btn slider_btn_prev" onClick={prevSlide}>
+    ❮
+  </button>
+  <button className="slider_btn slider_btn_next" onClick={nextSlide}>
+    ❯
+  </button>
     </div>
   );
 }

@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
-  margin-top: 40px;
+ 
 }
 
 .slider {
@@ -55,9 +55,27 @@
   transform: translateY(-5px);
 }
 
-.btn{
-  width: 20px;
-  height: 40px;
-  background-color: var(--primary-color);
-  margin: 5px;
+
+
+/* Buttons */
+.slider_btn {
+  position: absolute;
+  top: 80%;
+  transform: translateY(-50%);
+  background: var(--primary-color);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: large;
+  z-index:2;
+}
+
+.slider_btn_prev {
+  left: 10px;
+}
+
+.slider_btn_next {
+  right: 10px;
 }

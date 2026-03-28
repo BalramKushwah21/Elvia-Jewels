@@ -2,7 +2,13 @@
 :root {
 
   --primary-color: #f698c7;
+  --secondary-color: #f7f4f0;
+  --accent-color: #d4af37;
+  --text-color: #333;
+  --background-color: #e9e6e2;
+  --input-background: #eee;
 }
+
 
 * {
   margin: 0;
