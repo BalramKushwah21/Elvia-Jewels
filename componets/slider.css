@@ -1,36 +1,37 @@
 .sliderContainer {
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  
  
 }
 
 .slider {
-  width: 100%;
+  width: 95%;
   overflow: hidden;
 }
 
 .sliderTrack {
+  gap: 2%;
+  
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
 
-.slide {
-  width: 100%;
+.slide { 
   padding: 5px;
+ 
 }
 
 .slide img {
   width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 30%;
 }
 .card {
-  background: var(--primary-color);
-  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+ 
 }
 
 .content {
@@ -60,7 +61,7 @@
 /* Buttons */
 .slider_btn {
   position: absolute;
-  top: 80%;
+  top: 74%;
   transform: translateY(-50%);
   background: var(--primary-color);
   color: rgb(0, 0, 0);

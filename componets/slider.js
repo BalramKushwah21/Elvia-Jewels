@@ -3,7 +3,7 @@ import { useState } from "react";
 import  "./slider.css";
 
 export default function Slider() {
-  const visibleSlides = 6;
+  const visibleSlides = 8;
   const [index, setIndex] = useState(0);
 
   const slides = [
@@ -86,10 +86,10 @@ export default function Slider() {
             <div
               className={"slide"}
               key={i}
-              style={{ minWidth: `${100 / visibleSlides}%` }}
+              style={{ minWidth: `${85.6 / visibleSlides}%` }}
             >
               <div className={"card"}>
-                <img src={slide.img} alt={slide.title} />
+                <img className={"card"} src={slide.img} alt={slide.title} />
 
                 <div className={"content"}>
                   <h3>{slide.title}</h3>
