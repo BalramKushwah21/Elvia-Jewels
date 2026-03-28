@@ -7,7 +7,7 @@ background:linear-gradient(120deg,#7a0f3c,#c34a7e);
 }
 
 
-input{ 
+.input{ 
     color: black;
 }
 
@@ -103,7 +103,7 @@ margin:auto;
 box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
-.right h3{
+.right .head3{
 margin-top:15px;
 letter-spacing:2px;
 }
@@ -121,7 +121,7 @@ padding-bottom:8px;
 margin-right:10px;
 }
 
-.inputGroup input{
+.inputGroup .input{
 border:none;
 outline:none;
 background:transparent;

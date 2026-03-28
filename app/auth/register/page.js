@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import "./register.css";
+import "./register.module.css";
 
 export default function Register() {
   return (

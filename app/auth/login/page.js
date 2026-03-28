@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 
-import "./login.css"
+import "./login.module.css"
 
 export default function Login(){
 return(
@@ -29,16 +29,16 @@ return(
 
 <div className="avatar">👤</div>
 
-<h3>LOGIN</h3>
+<h3 className="head3">LOGIN</h3>
 
 <div className="inputGroup">
 <span>👤</span>
-<input placeholder="Email"/>
+<input className="input" placeholder="Email"/>
 </div>
 
 <div className="inputGroup">
 <span>🔒</span>
-<input placeholder="Password"/>
+<input  className="input" placeholder="Password"/>
 </div>
 
 <div className="forgot">Forgot Password?</div>
