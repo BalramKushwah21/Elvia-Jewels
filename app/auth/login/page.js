@@ -1,66 +1,57 @@
 "use client";
 import Link from "next/link";
+import styles from "./login.module.css";
 
-import "./login.module.css"
+export default function Login() {
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.card}>
 
-export default function Login(){
-return(
+        {/* LEFT */}
+        <div className={styles.left}>
+          <div className={styles.triangle1}></div>
+          <div className={styles.triangle2}></div>
+          <div className={styles.triangle3}></div>
 
-<div className="wrapper">
+          <div className={styles.leftText}>
+            <h2>LOGIN</h2>
+            <p>SIGN IN</p>
+          </div>
+        </div>
 
-<div className="card">
+        {/* RIGHT */}
+        <div className={styles.right}>
+          <div className={styles.avatar}>👤</div>
 
-{/* LEFT DESIGN */}
-<div className="left">
+          <h3 className={styles.heading}>LOGIN</h3>
 
-<div className="triangle1"></div>
-<div className="triangle2"></div>
-<div className="triangle3"></div>
+          <div className={styles.inputGroup}>
+            <span className={styles.icon}>👤</span>
+            <input className={styles.inputField} placeholder="Email" />
+          </div>
 
-<div className="leftText">
-<h2>LOGIN</h2>
-<p>SIGN IN</p>
-</div>
+          <div className={styles.inputGroup}>
+            <span className={styles.icon}>🔒</span>
+            <input className={styles.inputField} placeholder="Password" />
+          </div>
 
-</div>
+          <div className={styles.forgot}>Forgot Password?</div>
 
-{/* RIGHT */}
-<div className="right">
+          <button className={styles.button}>LOGIN</button>
 
-<div className="avatar">👤</div>
+          <div className={styles.social}>
+            Or Login With
+            <span className={styles.link}>Google</span>
+            <span className={styles.link}>Facebook</span>
 
-<h3 className="head3">LOGIN</h3>
+            <div className={styles.notMember}>
+              <span>Not a member?</span>{" "}
+              <Link href="/auth/register">Register</Link>
+            </div>
+          </div>
+        </div>
 
-<div className="inputGroup">
-<span className="span">👤</span>
-<input className="input-line" placeholder="Email"/>
-</div>
-
-<div className="inputGroup">
-<span className="span">🔒</span>
-<input  className="input-line" placeholder="Password"/>
-</div>
-
-<div className="forgot">Forgot Password?</div>
-
-<button className="btn">LOGIN</button>
-
-<div className="social text-black font-bold">
-Or Login With
-<span className="span">Google</span>
-<span className="span">Facebook</span>
-<div className="notMenber">
-    <span className="span">Not a membet</span> <Link href="./register">Register</Link>
-    
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-)
+      </div>
+    </div>
+  );
 }

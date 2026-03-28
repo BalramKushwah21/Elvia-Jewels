@@ -1,52 +1,57 @@
 "use client";
-import React from "react";
-import "./register.module.css";
+import Link from "next/link";
+import styles from "./register.module.css";
 
 export default function Register() {
   return (
-    <div className="main">
-      <div className="container">
+    <div className={styles.wrapper}>
+      <div className={styles.card}>
 
-        {/* LEFT SIDE */}
-        <div className="left">
-          <h1 className="head1 ">REGISTER</h1>
-          <p>Create your account</p>
+        {/* LEFT */}
+        <div className={styles.left}>
+          <div className={styles.triangle1}></div>
+          <div className={styles.triangle2}></div>
+          <div className={styles.triangle3}></div>
+
+          <div className={styles.leftText}>
+            <h2>REGISTER</h2>
+            <p>CREATE ACCOUNT</p>
+          </div>
         </div>
 
-        {/* RIGHT SIDE */}
-        <div className="right">
-          <div className="form-box">
+        {/* RIGHT */}
+        <div className={styles.right}>
+          <div className={styles.avatar}>👤</div>
 
-            <div className="avatar">👤</div>
-            <h2 className="head2">REGISTER</h2>
+          <h3 className={styles.heading}>REGISTER</h3>
 
-            <form>
-              <div className="input-box">
-                <span className="span">👤</span>
-                <input-line type="text" placeholder="Full Name" />
-              </div>
+          <div className={styles.inputGroup}>
+            <span className={styles.icon}>👤</span>
+            <input className={styles.inputField} placeholder="Full Name" />
+          </div>
 
-              <div className="input-box">
-                <span className="span">📧</span>
-                <input-line type="email" placeholder="Email" />
-              </div>
+          <div className={styles.inputGroup}>
+            <span className={styles.icon}>📧</span>
+            <input className={styles.inputField} placeholder="Email" />
+          </div>
 
-              <div className="input-box">
-                <span className="span">🔒</span>
-                <input-line type="password" placeholder="Password" />
-              </div>
+          <div className={styles.inputGroup}>
+            <span className={styles.icon}>🔒</span>
+            <input type="password" className={styles.inputField} placeholder="Password" />
+          </div>
 
-              <div className="input-box">
-                <span className="span">🔒</span>
-                <input-line type="password" placeholder="Confirm Password" />
-              </div>
+          <div className={styles.inputGroup}>
+            <span className={styles.icon}>🔒</span>
+            <input type="password" className={styles.inputField} placeholder="Confirm Password" />
+          </div>
 
-              <button className="btn">REGISTER</button>
-              <p className ="para">
-                Already have an account?  <a className ="link" href="/login">Login</a>
-              </p>
-            </form>
+          <button className={styles.button}>REGISTER</button>
 
+          <div className={styles.social}>
+            Already have an account?
+            <Link href="/auth/login" className={styles.link}>
+              Login
+            </Link>
           </div>
         </div>
 
