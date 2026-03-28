@@ -1,0 +1,149 @@
+body{
+  margin:0;
+  font-family:Segoe UI;
+  background:#f6f4f6;
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background:white;
+  border-bottom:1px solid #ddd;
+}
+
+.logoSection{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#8b0a3d;
+}
+
+.nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:black;
+}
+
+/* STEPPER */
+.stepper{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  gap:10px;
+  background:white;
+}
+
+.step{
+  text-align:center;
+  color:gray;
+}
+
+.circle{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  border:2px solid gray;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+}
+
+.active .circle{
+  border-color:#8b0a3d;
+  color:#8b0a3d;
+}
+
+.active p{
+  font-weight:bold;
+  color:black;
+}
+
+.line{
+  width:60px;
+  height:2px;
+  background:lightgray;
+}
+
+/* MAIN */
+.container{
+  display:flex;
+  gap:30px;
+  padding:30px;
+}
+
+/* LEFT */
+.left{
+  flex:2;
+}
+
+.card{
+  display:flex;
+  gap:20px;
+  background:white;
+  padding:20px;
+  margin-bottom:20px;
+  border-radius:15px;
+}
+
+.img{
+  border-radius:10px;
+}
+
+.price{
+  color:#c04a7b;
+  font-weight:bold;
+}
+
+.price span{
+  text-decoration:line-through;
+  color:gray;
+  margin-left:10px;
+}
+
+.remove{
+  margin-top:10px;
+  border:none;
+  background:none;
+  color:#8b0a3d;
+  cursor:pointer;
+}
+
+/* RIGHT */
+.right{
+  flex:1;
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  height:fit-content;
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  margin:10px 0;
+}
+
+.discount{
+  color:green;
+}
+
+.total{
+  font-weight:bold;
+  font-size:18px;
+}
+
+.btn{
+  width:100%;
+  margin-top:20px;
+  padding:15px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#8b0a3d,#c04a7b);
+  color:white;
+  cursor:pointer;
+}

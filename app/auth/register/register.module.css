@@ -33,12 +33,12 @@ body {
   padding: 60px;
 }
 
-.left h1 {
+.left head1 {
   font-size: 38px;
   margin-bottom: 10px;
 }
 
-.left p {
+.left para{
   font-size: 18px;
 }
 
@@ -70,7 +70,7 @@ body {
   margin-bottom: 10px;
 }
 
-h2 {
+.head2 {
   margin-bottom: 25px;
 }
 
@@ -83,12 +83,12 @@ h2 {
   padding-bottom: 5px;
 }
 
-.input-box span {
+.input-box .span {
   margin-right: 10px;
   font-size: 18px;
 }
 
-.input-box input {
+.input-box .input {
   border: none;
   outline: none;
   width: 100%;
@@ -97,7 +97,7 @@ h2 {
 }
 
 /* BUTTON */
-button{
+.btn{
   width: 100%;
   padding: 12px;
   border: none;
@@ -110,16 +110,16 @@ button{
   transition: 0.3s;
 }
 
-button:hover {
+.btn:hover {
   transform: scale(1.05);
 }
 
 /* LINK */
-p {
+.para{
   margin-top: 15px;
 }
 
-a {
+.link {
   color: #d90429;
   font-weight: bold;
   text-decoration: none;

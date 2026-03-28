@@ -1,85 +1,109 @@
 "use client";
-import { useState } from "react";
+
+import Image from "next/image";
+import Link from "next/link";
 
 export default function CartPage() {
-  const [cart, setCart] = useState([
+
+  const products = [
     {
       id: 1,
-      name: "Gold Necklace",
-      price: 2500,
-      qty: 1,
+      name: "Gold Necklace Set",
+      price: 1299,
+      oldPrice: 1599,
+      image: "/necklace.jpg",
+      qty: 1
     },
     {
       id: 2,
-      name: "Diamond Ring",
-      price: 2000,
-      qty: 1,
-    },
-  ]);
+      name: "Diamond Earrings",
+      price: 899,
+      oldPrice: 1099,
+      image: "/earring.jpg",
+      qty: 1
+    }
+  ];
 
-  const increaseQty = (id) => {
-    setCart(cart.map(item =>
-      item.id === id ? { ...item, qty: item.qty + 1 } : item
-    ));
-  };
-
-  const decreaseQty = (id) => {
-    setCart(cart.map(item =>
-      item.id === id && item.qty > 1
-        ? { ...item, qty: item.qty - 1 }
-        : item
-    ));
-  };
-
-  const removeItem = (id) => {
-    setCart(cart.filter(item => item.id !== id));
-  };
-
-  const subtotal = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
-  const discount = 500;
-  const total = subtotal - discount;
+  const total = products.reduce((acc, item) => acc + item.price, 0);
+  const discount = 200;
 
   return (
-    <div style={{ padding: "20px", background: "#f9f7f4", minHeight: "100vh" }}>
-      <h2>🛒 Elvia Jewels Cart</h2>
+    <div className="page">
 
-      <div style={{ display: "flex", gap: "20px" }}>
+      {/* 🔥 HEADER */}
+      <div className="header">
+        <div className="logoSection">
+          <Image src="/logo.png" width={50} height={50} alt="logo" />
+          <h2>ELVIA JEWELS</h2>
+        </div>
+
+        <div className="nav">
+          <Link href="/">Home</Link>
+          <Link href="/store">Store</Link>
+          <Link href="/contact">Contact</Link>
+          <Link href="/cart">Cart</Link>
+          <Link href="/login">Login</Link>
+        </div>
+      </div>
+
+      {/* 🔥 STEPPER */}
+      <div className="stepper">
+        <div className="step active">
+          <div className="circle">1</div>
+          <p>Cart</p>
+        </div>
+
+        <div className="line"></div>
+
+        <div className="step">
+          <div className="circle">2</div>
+          <p>Address</p>
+        </div>
+
+        <div className="line"></div>
+
+        <div className="step">
+          <div className="circle">3</div>
+          <p>Payment</p>
+        </div>
+
+        <div className="line"></div>
+
+        <div className="step">
+          <div className="circle">4</div>
+          <p>Summary</p>
+        </div>
+      </div>
+
+      {/* 🔥 MAIN */}
+      <div className="container">
 
         {/* LEFT */}
-        <div style={{
-          flex: 2,
-          background: "#fff",
-          padding: "20px",
-          borderRadius: "10px"
-        }}>
-          {cart.map(item => (
-            <div key={item.id} style={{
-              display: "flex",
-              justifyContent: "space-between",
-              borderBottom: "1px solid #ddd",
-              padding: "15px 0"
-            }}>
+        <div className="left">
+          <h3>Product Details</h3>
 
-              <div>
+          {products.map((item) => (
+            <div className="card" key={item.id}>
+
+              <Image
+                src={item.image}
+                width={100}
+                height={100}
+                alt="product"
+                className="img"
+              />
+
+              <div className="info">
                 <h4>{item.name}</h4>
-                <p>₹{item.price}</p>
 
-                <div>
-                  <button onClick={() => decreaseQty(item.id)}>-</button>
-                  <span style={{ margin: "0 10px" }}>{item.qty}</span>
-                  <button onClick={() => increaseQty(item.id)}>+</button>
-                </div>
-
-                <p
-                  onClick={() => removeItem(item.id)}
-                  style={{ color: "red", cursor: "pointer" }}
-                >
-                  Remove
+                <p className="price">
+                  ₹{item.price}
+                  <span> ₹{item.oldPrice}</span>
                 </p>
-              </div>
 
-              <div>
-                <strong>₹{item.price * item.qty}</strong>
+                <p>Qty: {item.qty}</p>
+
+                <button className="remove">REMOVE</button>
               </div>
 
             </div>
@@ -87,47 +111,29 @@ export default function CartPage() {
         </div>
 
         {/* RIGHT */}
-        <div style={{
-          flex: 1,
-          background: "#fff",
-          padding: "20px",
-          borderRadius: "10px",
-          height: "fit-content"
-        }}>
-          <h3>Price Summary</h3>
+        <div className="right">
 
-          <p style={{ display: "flex", justifyContent: "space-between" }}>
-            <span>Subtotal</span>
-            <span>₹{subtotal}</span>
-          </p>
+          <h3>Price Details</h3>
 
-          <p style={{ display: "flex", justifyContent: "space-between" }}>
+          <div className="row">
+            <span>Total Price</span>
+            <span>₹{total}</span>
+          </div>
+
+          <div className="row discount">
             <span>Discount</span>
-            <span>₹{discount}</span>
-          </p>
+            <span>- ₹{discount}</span>
+          </div>
 
           <hr />
 
-          <p style={{
-            display: "flex",
-            justifyContent: "space-between",
-            fontWeight: "bold"
-          }}>
-            <span>Total</span>
-            <span>₹{total}</span>
-          </p>
+          <div className="row total">
+            <span>Order Total</span>
+            <span>₹{total - discount}</span>
+          </div>
 
-          <button style={{
-            width: "100%",
-            padding: "10px",
-            background: "#C9A646",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer"
-          }}>
-            Proceed to Checkout
-          </button>
+          <button className="btn">Continue</button>
+
         </div>
 
       </div>
