@@ -32,12 +32,12 @@ return(
 <h3 className="head3">LOGIN</h3>
 
 <div className="inputGroup">
-<span>👤</span>
+<span className="span">👤</span>
 <input className="input" placeholder="Email"/>
 </div>
 
 <div className="inputGroup">
-<span>🔒</span>
+<span className="span">🔒</span>
 <input  className="input" placeholder="Password"/>
 </div>
 
@@ -47,10 +47,10 @@ return(
 
 <div className="social text-black font-bold">
 Or Login With
-<span>Google</span>
-<span>Facebook</span>
+<span className="span">Google</span>
+<span className="span">Facebook</span>
 <div className="notMenber">
-    <span>Not a membet</span> <Link href="./register">Register</Link>
+    <span className="span">Not a membet</span> <Link href="./register">Register</Link>
     
 </div>
 

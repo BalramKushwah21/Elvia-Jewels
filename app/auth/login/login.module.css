@@ -71,12 +71,12 @@ left:80px;
 color:white;
 }
 
-.leftText h2{
+.leftText .head2{
 margin:0;
 font-size:30px;
 }
 
-.leftText p{
+.leftText .para{
 margin-top:8px;
 opacity:.8;
 }
@@ -117,7 +117,7 @@ border-bottom:1px solid #aaa;
 padding-bottom:8px;
 }
 
-.inputGroup span{
+.inputGroup .span{
 margin-right:10px;
 }
 
@@ -152,7 +152,7 @@ cursor:pointer;
 margin-top:35px;
 }
 
-.social span{
+.social .span{
 margin-left:10px;
 color:#c0437a;
 cursor:pointer;
