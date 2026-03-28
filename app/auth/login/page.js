@@ -33,12 +33,12 @@ return(
 
 <div className="inputGroup">
 <span className="span">👤</span>
-<input className="input" placeholder="Email"/>
+<input className="input-line" placeholder="Email"/>
 </div>
 
 <div className="inputGroup">
 <span className="span">🔒</span>
-<input  className="input" placeholder="Password"/>
+<input  className="input-line" placeholder="Password"/>
 </div>
 
 <div className="forgot">Forgot Password?</div>
