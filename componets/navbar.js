@@ -27,10 +27,10 @@ const navbar = () => {
         <Link href="/home/cart">
           Cart
         </Link>
-        <Link href="/auth/login" className="btn">
+        <Link href="/api/auth/login" className="btn">
           Login
         </Link>
-        <Link href="/auth/register">
+        <Link href="/api/auth/register">
           Register
         </Link>
       </div>
