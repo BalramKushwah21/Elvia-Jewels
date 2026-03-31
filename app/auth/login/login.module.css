@@ -144,3 +144,13 @@
 .notMember {
   margin-top: 15px;
 }
+
+.error {
+  color: #ff4d4f;
+  background: rgba(255, 77, 79, 0.1);
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-align: center;
+}
