@@ -220,7 +220,6 @@ const styles = {
     cursor: "pointer"
   }
 };
-=======
 export default function Cart(){
     return(
         <div>
