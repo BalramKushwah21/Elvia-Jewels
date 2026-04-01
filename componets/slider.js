@@ -1,45 +1,60 @@
 "use client";
 import { useState } from "react";
 import  "./slider.css";
+import { useRouter } from "next/navigation";
+
 
 export default function Slider() {
   const visibleSlides = 8;
   const [index, setIndex] = useState(0);
+  
+  const router = useRouter();
+
+
+  
+
+
+
 
   const slides = [
     {
-      img: "/category/anklet.png",
-      title: "Bracelet One",
+      img: "/category/bracelet.png",
+      title: "Bracelet",
       price: "₹199",
     },
     {
       img: "/category/bangle.png",
-      title: "Bracelet Two",
+      title: "Bangles",
       price: "₹249",
     },
     {
-      img: "/category/bracelet.png",
-      title: "Bracelet Three",
+      img: "/category/ring.png",
+      title: "Ring",
       price: "₹299",
     },
     {
       img: "/category/earring.png",
-      title: "Bracelet Four",
+      title: "Earring",
       price: "₹349",
     },
     {
       img: "/category/pendant.png",
-      title: "Bracelet Five",
+      title: "Pendant",
       price: "₹399",
     },
     {
-      img: "/category/ring.png",
-      title: "Bracelet Five",
+      img: "/category/anklet.png",
+      title: "Anklet",
       price: "₹399",
     },
     {
       img: "/category/sets.png",
-      title: "Bracelet Five",
+      title: "Sets",
+      price: "₹399",
+    },
+    {
+      img: "/category/mangalsutras.png",
+      title: "Mangalsutras",
       price: "₹399",
     },
     {
@@ -48,13 +63,8 @@ export default function Slider() {
       price: "₹399",
     },
     {
-      img: "/category/anklet.png",
-      title: "Bracelet Five",
-      price: "₹399",
-    },
-    {
-      img: "/category/anklet.png",
-      title: "Bracelet Five",
+      img: "/category/meninsilver.png",
+      title: "Men In Silver",
       price: "₹399",
     },
   ];
@@ -89,7 +99,9 @@ export default function Slider() {
               style={{ minWidth: `${85.6 / visibleSlides}%` }}
             >
               <div className={"card"}>
-                <img className={"card"} src={slide.img} alt={slide.title} />
+                <img className={"card"} src={slide.img} alt={slide.title} 
+                onClick={() => router.push(`/collections/${slide.title.toLowerCase()}`)}/>
+                
 
                 <div className={"content"}>
                   <h3>{slide.title}</h3>

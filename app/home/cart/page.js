@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 import { useState } from "react";
 
@@ -219,3 +220,12 @@ const styles = {
     cursor: "pointer"
   }
 };
+=======
+export default function Cart(){
+    return(
+        <div>
+            this is card
+        </div>
+    )
+}
+>>>>>>> 9ba33d7f2cd7601e358e55423d3e49dda3fd14c9
