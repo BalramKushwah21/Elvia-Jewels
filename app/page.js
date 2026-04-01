@@ -1,13 +1,19 @@
-"use client";
-import React from "react";
 
-import { useEffect } from "react";
-// import { useState } from "react";
+import React from "react";
 import "./home.css";
-import Slider from "../components/slider";
-import ShowSlider from "../components/imageSlider";
+import Slider from "../componets/slider";
+import ShowSlider from "../componets/imageSlider";
+import { redirect } from "next/navigation";
+import { getUserFromToken } from "@/lib/auth";
+
 
 export default function Home() {
+  const user = getUserFromToken();
+
+  if (!user) {
+    redirect("/auth/login");
+  }
+
   return (
     <div className="main">
       <ShowSlider />
