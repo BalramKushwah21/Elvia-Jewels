@@ -4,8 +4,8 @@ import React from "react";
 import { useEffect } from "react";
 // import { useState } from "react";
 import "./home.css";
-import Slider from "../componets/slider";
-import ShowSlider from "../componets/imageSlider";
+import Slider from "../components/slider";
+import ShowSlider from "../components/imageSlider";
 
 export default function Home() {
   return (
