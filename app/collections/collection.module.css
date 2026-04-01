@@ -1,0 +1,121 @@
+.wrapper {
+  font-family: "Poppins", sans-serif;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #ffe4ec, #ffd1dc);
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.heroContent {
+  text-align: center;
+}
+
+.title {
+  font-size: 48px;
+  font-family: "Playfair Display", serif;
+  color: #6b2c3e;
+}
+
+.subtitle {
+  color: #8a4b5d;
+  margin-top: 8px;
+}
+
+/* TOP BAR */
+.topBar {
+  padding: 20px 40px;
+}
+
+.sortText {
+  font-size: 14px;
+  color: #777;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  padding: 20px 40px;
+}
+
+/* CARD */
+.card {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* WISHLIST */
+.wishlist {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: white;
+  border-radius: 50%;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* IMAGE */
+.imageWrapper {
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  transition: 0.3s;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+/* INFO */
+.info {
+  padding: 14px;
+}
+
+.name {
+  font-size: 14px;
+  color: #444;
+}
+
+.price {
+  color: #e91e63;
+  font-weight: 600;
+  margin-top: 5px;
+}
+.addToCart {
+  background: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

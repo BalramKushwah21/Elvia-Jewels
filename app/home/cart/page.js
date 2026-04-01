@@ -1,6 +1,7 @@
-<<<<<<< HEAD
+
 "use client";
 import { useState } from "react";
+import styles from "./cart.module.css";
 
 export default function CartPage() {
 
@@ -115,6 +116,7 @@ export default function CartPage() {
 }
 
 
+<<<<<<< HEAD
 /* STYLES */
 const styles = {
 
@@ -227,4 +229,6 @@ export default function Cart(){
         </div>
     )
 }
+=======
+>>>>>>> bf31ec1036cda2d78c49875cb25bb5513968bf38
 
