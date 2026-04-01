@@ -2,131 +2,109 @@
 import { useState } from "react";
 
 export default function CartPage() {
+
   const [cart, setCart] = useState([
     {
       id: 1,
       name: "Gold Necklace",
       price: 2500,
       qty: 1,
+      img: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=500"
     },
     {
       id: 2,
       name: "Diamond Ring",
-      price: 2000,
+      price: 1800,
       qty: 1,
+      img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=500"
     },
+    {
+      id: 3,
+      name: "Luxury Bracelet",
+      price: 1500,
+      qty: 1,
+      img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=500"
+    }
   ]);
 
-  const increaseQty = (id) => {
-    setCart(cart.map(item =>
-      item.id === id ? { ...item, qty: item.qty + 1 } : item
-    ));
-  };
-
-  const decreaseQty = (id) => {
-    setCart(cart.map(item =>
-      item.id === id && item.qty > 1
-        ? { ...item, qty: item.qty - 1 }
-        : item
-    ));
-  };
-
-  const removeItem = (id) => {
-    setCart(cart.filter(item => item.id !== id));
+  const changeQty = (id, val) => {
+    setCart(cart.map(item => {
+      if (item.id === id) {
+        let newQty = item.qty + val;
+        if (newQty < 1) newQty = 1;
+        return { ...item, qty: newQty };
+      }
+      return item;
+    }));
   };
 
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
-  const discount = 500;
-  const total = subtotal - discount;
+  const gst = 200;
+  const total = subtotal + gst;
 
   return (
-    <div style={{ padding: "20px", background: "#f9f7f4", minHeight: "100vh" }}>
-      <h2>🛒 Elvia Jewels Cart</h2>
+    <div style={styles.page}>
+      <div style={styles.container}>
 
-      <div style={{ display: "flex", gap: "20px" }}>
+        {/* LEFT SIDE */}
+        <div style={styles.left}>
 
-        {/* LEFT */}
-        <div style={{
-          flex: 2,
-          background: "#fff",
-          padding: "20px",
-          borderRadius: "10px"
-        }}>
+          {/* Steps */}
+          <div style={styles.steps}>
+            <span style={styles.active}>🛒 Cart</span>
+            <span>Checkout</span>
+            <span>Order</span>
+          </div>
+
+          {/* Items */}
           {cart.map(item => (
-            <div key={item.id} style={{
-              display: "flex",
-              justifyContent: "space-between",
-              borderBottom: "1px solid #ddd",
-              padding: "15px 0"
-            }}>
+            <div key={item.id} style={styles.item}>
 
-              <div>
+              <img src={item.img} style={styles.img} />
+
+              <div style={styles.details}>
                 <h4>{item.name}</h4>
-                <p>₹{item.price}</p>
-
-                <div>
-                  <button onClick={() => decreaseQty(item.id)}>-</button>
-                  <span style={{ margin: "0 10px" }}>{item.qty}</span>
-                  <button onClick={() => increaseQty(item.id)}>+</button>
-                </div>
-
-                <p
-                  onClick={() => removeItem(item.id)}
-                  style={{ color: "red", cursor: "pointer" }}
-                >
-                  Remove
-                </p>
+                <p style={{ color: "gray" }}>Premium Jewelry</p>
               </div>
 
-              <div>
-                <strong>₹{item.price * item.qty}</strong>
+              {/* Quantity */}
+              <div style={styles.qty}>
+                <button style={styles.qtyBtn} onClick={() => changeQty(item.id, -1)}>-</button>
+                <span>{item.qty}</span>
+                <button style={styles.qtyBtn} onClick={() => changeQty(item.id, 1)}>+</button>
+              </div>
+
+              {/* Price */}
+              <div style={styles.price}>
+                ₹{item.price * item.qty}
               </div>
 
             </div>
           ))}
+
         </div>
 
-        {/* RIGHT */}
-        <div style={{
-          flex: 1,
-          background: "#fff",
-          padding: "20px",
-          borderRadius: "10px",
-          height: "fit-content"
-        }}>
-          <h3>Price Summary</h3>
+        {/* RIGHT SIDE */}
+        <div style={styles.right}>
+          <h3>Elvia Jewels</h3>
 
-          <p style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={styles.row}>
             <span>Subtotal</span>
             <span>₹{subtotal}</span>
-          </p>
+          </div>
 
-          <p style={{ display: "flex", justifyContent: "space-between" }}>
-            <span>Discount</span>
-            <span>₹{discount}</span>
-          </p>
+          <div style={styles.row}>
+            <span>GST</span>
+            <span>₹{gst}</span>
+          </div>
 
-          <hr />
-
-          <p style={{
-            display: "flex",
-            justifyContent: "space-between",
-            fontWeight: "bold"
-          }}>
+          <div style={styles.total}>
             <span>Total</span>
             <span>₹{total}</span>
-          </p>
+          </div>
 
-          <button style={{
-            width: "100%",
-            padding: "10px",
-            background: "#C9A646",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer"
-          }}>
-            Proceed to Checkout
+          <button style={styles.checkout}>
+            Place Order 💎
           </button>
         </div>
 
@@ -134,3 +112,110 @@ export default function CartPage() {
     </div>
   );
 }
+
+
+/* STYLES */
+const styles = {
+
+  page: {
+    background: "#eef1f5",
+    minHeight: "100vh",
+    padding: "40px"
+  },
+
+  container: {
+    display: "flex",
+    gap: "20px",
+    maxWidth: "1100px",
+    margin: "auto"
+  },
+
+  left: {
+    flex: 3,
+    background: "#fff",
+    padding: "20px",
+    borderRadius: "10px"
+  },
+
+  steps: {
+    display: "flex",
+    justifyContent: "space-between",
+    background: "#f3f3f3",
+    padding: "12px",
+    borderRadius: "10px",
+    marginBottom: "20px"
+  },
+
+  active: {
+    fontWeight: "bold"
+  },
+
+  item: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "15px 0",
+    borderBottom: "1px solid #eee"
+  },
+
+  img: {
+    width: "80px",
+    height: "80px",
+    objectFit: "cover",
+    borderRadius: "10px"
+  },
+
+  details: {
+    flex: 2,
+    marginLeft: "15px"
+  },
+
+  qty: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px"
+  },
+
+  qtyBtn: {
+    padding: "5px 10px",
+    border: "none",
+    background: "#ddd",
+    cursor: "pointer"
+  },
+
+  price: {
+    fontWeight: "bold"
+  },
+
+  right: {
+    flex: 1,
+    background: "#0b3c6d",  // 🔵 BLUE THEME
+    color: "white",
+    padding: "20px",
+    borderRadius: "10px"
+  },
+
+  row: {
+    display: "flex",
+    justifyContent: "space-between",
+    margin: "10px 0"
+  },
+
+  total: {
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: "20px",
+    fontWeight: "bold",
+    fontSize: "18px"
+  },
+
+  checkout: {
+    width: "100%",
+    padding: "12px",
+    marginTop: "20px",
+    background: "#ffd700",
+    border: "none",
+    fontWeight: "bold",
+    cursor: "pointer"
+  }
+};
