@@ -1,103 +1,106 @@
- page: {
-    background: "#eef1f5",
-    minHeight: "100vh",
-    padding: "40px"
-  },
+.container {
+  padding: 30px;
+  background: #f3f3f3;
+}
 
-  container: {
-    display: "flex",
-    gap: "20px",
-    maxWidth: "1100px",
-    margin: "auto"
-  },
+.title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
 
-  left: {
-    flex: 3,
-    background: "#fff",
-    padding: "20px",
-    borderRadius: "10px"
-  },
+/* CARD */
+.card {
+  display: flex;
+  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
 
-  steps: {
-    display: "flex",
-    justifyContent: "space-between",
-    background: "#f3f3f3",
-    padding: "12px",
-    borderRadius: "10px",
-    marginBottom: "20px"
-  },
+/* IMAGE */
+.imageBox img {
+  border-radius: 10px;
+}
 
-  active: {
-    fontWeight: "bold"
-  },
-  
+/* DETAILS */
+.details {
+  flex: 2;
+}
 
-  item: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "15px 0",
-    borderBottom: "1px solid #eee"
-  },
+.details h3 {
+  font-size: 18px;
+}
 
-  img: {
-    width: "80px",
-    height: "80px",
-    objectFit: "cover",
-    borderRadius: "10px"
-  },
+.stock {
+  color: green;
+  font-size: 14px;
+}
 
-  details: {
-    flex: 2,
-    marginLeft: "15px"
-  },
+.delivery {
+  font-size: 14px;
+  margin: 5px 0;
+}
 
-  qty: {
-    display: "flex",
-    alignItems: "center",
-    gap: "10px"
-  },
+/* QUANTITY */
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
 
-  qtyBtn: {
-    padding: "5px 10px",
-    border: "none",
-    background: "#ddd",
-    cursor: "pointer"
-  },
+.qty button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
 
-  price: {
-    fontWeight: "bold"
-  },
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+}
 
-  right: {
-    flex: 1,
-    background: "#0b3c6d",  // 🔵 BLUE THEME
-    color: "white",
-    padding: "20px",
-    borderRadius: "10px"
-  },
+.actions button {
+  background: none;
+  border: none;
+  color: #007185;
+  cursor: pointer;
+}
 
-  row: {
-    display: "flex",
-    justifyContent: "space-between",
-    margin: "10px 0"
-  },
+/* PRICE */
+.price {
+  text-align: right;
+}
 
-  total: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginTop: "20px",
-    fontWeight: "bold",
-    fontSize: "18px"
-  },
+.newPrice {
+  font-size: 20px;
+  font-weight: bold;
+}
 
-  checkout: {
-    width: "100%",
-    padding: "12px",
-    marginTop: "20px",
-    background: "#ffd700",
-    border: "none",
-    fontWeight: "bold",
-    cursor: "pointer"
+.oldPrice {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.discount {
+  color: red;
+  font-size: 14px;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
   }
-};
+
+  .price {
+    text-align: left;
+  }
+}

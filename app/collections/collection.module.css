@@ -113,9 +113,18 @@
   transition: 0.3s;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1000px) {
-  .grid {
+/* Tablet */
+@media (max-width: 2024px) {
+  .wrapper {
     grid-template-columns: repeat(2, 1fr);
+    padding: 30px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    padding: 15px;
   }
 }
