@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className="main">
       <ShowSlider />
-      <Slider />
+      <Slider/>
       <div className="imageContainer">
         <div className="image">
           <img alt="" src="/features/demo1.jpeg" />
