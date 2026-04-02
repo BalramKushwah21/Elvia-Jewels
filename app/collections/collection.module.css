@@ -45,6 +45,9 @@
 
 /* CARD */
 .card {
+  display: flex;
+  flex-direction: column;
+
   position: relative;
   border-radius: 14px;
   overflow: hidden;
@@ -100,6 +103,14 @@
   color: #e91e63;
   font-weight: 600;
   margin-top: 5px;
+}
+.addToCart {
+  background: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 /* RESPONSIVE */

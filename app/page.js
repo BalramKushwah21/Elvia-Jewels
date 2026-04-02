@@ -1,8 +1,8 @@
 
 import React from "react";
 import "./home.css";
-import Slider from "../componets/slider";
-import ShowSlider from "../componets/imageSlider";
+import Slider from "../components/slider";
+import ShowSlider from "../components/imageSlider";
 import { redirect } from "next/navigation";
 import { getUserFromToken } from "@/lib/auth";
 
