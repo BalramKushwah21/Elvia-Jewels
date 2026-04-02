@@ -10,7 +10,7 @@ const initialItems = [
     name: "Diamond Bracelet",
     price: 1644,
     oldPrice: 2499,
-    image: "https://m.media-amazon.com/images/I/71kfBx7zHBL._SY575_.jpg",
+    image: "https://i.pinimg.com/1200x/0f/20/5b/0f205bc5d36dd7f447e6067aae575b8c.jpg",
     qty: 1,
   },
   {
