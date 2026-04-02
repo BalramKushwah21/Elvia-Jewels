@@ -228,4 +228,4 @@ export default function Cart(){
         </div>
     )
 }
->>>>>>> 9ba33d7f2cd7601e358e55423d3e49dda3fd14c9
+
