@@ -10,7 +10,7 @@ const initialItems = [
     name: "Diamond Bracelet",
     price: 1644,
     oldPrice: 2499,
-    image: "/images/b1.png",
+    image: "https://i.pinimg.com/1200x/0f/20/5b/0f205bc5d36dd7f447e6067aae575b8c.jpg",
     qty: 1,
   },
   {
@@ -18,7 +18,7 @@ const initialItems = [
     name: "Gold Anklet",
     price: 899,
     oldPrice: 1299,
-    image: "/images/a1.png",
+    image: "https://kinclimg5.bluestone.com/f_webp,c_scale,w_1024,b_rgb:f0f0f0/giproduct/BIKB0818A28_RAA18DIG6XXXXXXXX_ABCD00-PICS-00000-1024-81292.png",
     qty: 1,
   },
 ];
