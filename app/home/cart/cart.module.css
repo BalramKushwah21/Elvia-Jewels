@@ -1,76 +1,54 @@
 .container {
-  padding: 30px;
-  background: #f3f3f3;
-}
-
-.title {
-  font-size: 28px;
-  margin-bottom: 20px;
+  padding: 15px;
+  background: #f9f6f2;
 }
 
 /* CARD */
 .card {
   display: flex;
-  gap: 20px;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  align-items: center;
+  gap: 14px;
+  background: #fff;
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 /* IMAGE */
 .imageBox img {
-  border-radius: 10px;
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
-/* DETAILS */
-.details {
-  flex: 2;
+/* CONTENT */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.details h3 {
-  font-size: 18px;
+/* TOP ROW */
+.topRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* TEXT */
+.title {
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .stock {
   color: green;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .delivery {
-  font-size: 14px;
-  margin: 5px 0;
-}
-
-/* QUANTITY */
-.qty {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 10px 0;
-}
-
-.qty button {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #ccc;
-  background: white;
-  cursor: pointer;
-}
-
-/* ACTIONS */
-.actions {
-  display: flex;
-  gap: 10px;
-  font-size: 14px;
-}
-
-.actions button {
-  background: none;
-  border: none;
-  color: #007185;
-  cursor: pointer;
+  font-size: 12px;
+  color: #555;
 }
 
 /* PRICE */
@@ -79,64 +57,63 @@
 }
 
 .newPrice {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
 }
 
 .oldPrice {
+  font-size: 12px;
   text-decoration: line-through;
   color: gray;
 }
 
 .discount {
+  font-size: 12px;
   color: red;
-  font-size: 14px;
 }
 
-/* 📱 MOBILE */
-@media (max-width: 768px) {
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .price {
-    text-align: left;
-  }
+/* QTY */
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
 }
-@media (max-width: 1024px) {
-  .container {
-    padding: 15px;
-  }
 
+.qty button {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+.actions button {
+  border: none;
+  background: none;
+  color: #007185;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
   .card {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
+    padding: 12px;
   }
 
   .imageBox img {
-    width: 100%;
-    height: auto;
+    width: 80px;
+    height: 80px;
   }
 
-  .details h3 {
-    font-size: 16px;
-  }
-
-  .price {
-    width: 100%;
-    text-align: left;
-    margin-top: 10px;
-  }
-
-  .qty {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .actions {
-    flex-wrap: wrap;
-    gap: 8px;
+  .title {
+    font-size: 14px;
   }
 }

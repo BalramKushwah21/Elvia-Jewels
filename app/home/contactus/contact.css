@@ -1,5 +1,4 @@
 
-
 .body {
   /* background-image: url("https://img.freepik.com/premium-photo/rich-burgundy-color-background-that-exudes-elegance-sophistication-creating-perfect-backdrop-refined-designs-projects_1280080-2559.jpg"); */
   margin: auto;
@@ -140,5 +139,42 @@ p {
     background-color: #06e8a4;
   } */
 }
+@media (max-width: 768px) {
 
+  .container {
+    flex-direction: column;
+    width: 95%;
+    margin: 10px auto;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .text {
+    font-size: 14px;
+    margin: 10px 0;
+  }
+
+  .input,
+  .textarea {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .button {
+    width: 100%;
+    padding: 12px;
+  }
+}
   

@@ -50,49 +50,53 @@ export default function CartPage() {
       {cartItems.map((item) => (
         <div key={item.id} className={styles.card}>
           
-          {/* LEFT IMAGE */}
+          {/* IMAGE */}
           <div className={styles.imageBox}>
             <Image
               src={item.image}
               alt={item.name}
-              width={120}
-              height={120}
+              width={90}
+              height={90}
             />
           </div>
 
-          {/* CENTER DETAILS */}
-          <div className={styles.details}>
-            <h3>{item.name}</h3>
-            <p className={styles.stock}>In stock</p>
+          {/* CONTENT */}
+          <div className={styles.content}>
 
-            <p className={styles.delivery}>
-              Free delivery available
-            </p>
+            {/* TOP */}
+            <div className={styles.topRow}>
+              <div>
+              <h3 className={styles.title}>{item.name}</h3>
+                <p className={styles.stock}>In stock</p>
+              <p className={styles.delivery}>Free delivery available</p>
+              </div>
 
-            {/* QUANTITY */}
+              <div className={styles.price}>
+                <p className={styles.newPrice}>₹{item.price}</p>
+                <p className={styles.oldPrice}>₹{item.oldPrice}</p>
+                <p className={styles.discount}>
+                  {Math.round(
+                    ((item.oldPrice - item.price) / item.oldPrice) * 100
+                  )}
+                  % off
+                </p>
+              </div>
+            </div>
+
+            {/* QTY */}
             <div className={styles.qty}>
               <button onClick={() => updateQty(item.id, "dec")}>−</button>
               <span>{item.qty}</span>
               <button onClick={() => updateQty(item.id, "inc")}>+</button>
             </div>
 
+            {/* ACTIONS */}
             <div className={styles.actions}>
               <button onClick={() => removeItem(item.id)}>Delete</button>
               <span>|</span>
               <button>Save for later</button>
             </div>
-          </div>
 
-          {/* RIGHT PRICE */}
-          <div className={styles.price}>
-            <p className={styles.newPrice}>₹{item.price}</p>
-            <p className={styles.oldPrice}>₹{item.oldPrice}</p>
-            <p className={styles.discount}>
-              {Math.round(
-                ((item.oldPrice - item.price) / item.oldPrice) * 100
-              )}
-              % off
-            </p>
           </div>
         </div>
       ))}
