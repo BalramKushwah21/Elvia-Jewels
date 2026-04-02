@@ -133,3 +133,12 @@ p {
   cursor: pointer;
   color: black;
 }
+
+
+@media (max-width: 1000px) {
+  /* .left {
+    background-color: #06e8a4;
+  } */
+}
+
+  
