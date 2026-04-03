@@ -15,6 +15,7 @@ const products = [
   { id: 6, name: "Rose Gold Ring", price: 8999, img: "https://images.unsplash.com/photo-1603561596112-0a132b757442?q=80&w=800" },
   { id: 7, name: "Luxury Pendant", price: 10999, img: "https://salty.co.in/cdn/shop/files/NS11592_Vday.png?v=1773958035" },
   { id: 8, name: "Silver Anklet", price: 3999, img: "https://rukminim2.flixcart.com/image/300/300/xif0q/anklet/u/y/j/na-na-2-anklet253-shreeji-baroda-anant-fashion-original-imahd74zfkgyxbqn.jpeg" },
+  
 ];
 
 export default function HomePage() {

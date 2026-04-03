@@ -65,3 +65,64 @@ nav {
   background-color: #fecaca;
   color: #000000;
 }
+/* Profile container */
+.profile-container {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Trigger */
+.profile-trigger {
+  padding: 0.75rem;
+  font-weight: bold;
+}
+
+/* Dropdown box */
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: white;
+  color: black;
+  border-radius: 8px;
+  min-width: 160px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 100;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Items */
+.dropdown-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dropdown-item:hover {
+  background: #f3f4f6;
+}
+
+/* Divider */
+.dropdown-divider {
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* Logout style */
+.logout {
+  color: red;
+  font-weight: bold;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

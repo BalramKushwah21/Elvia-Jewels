@@ -91,7 +91,7 @@ export default function BraceletsPage() {
       {/* HERO */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1 className={styles.title}>Bracelets</h1>
+          <h1 className={styles.title}>Mangalsutras</h1>
           <p className={styles.subtitle}>
             Where elegance meets sparkle
           </p>

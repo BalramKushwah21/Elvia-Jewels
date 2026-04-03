@@ -71,7 +71,7 @@ export default function Register() {
             <span className={styles.icon}>👤</span>
             <input
               className={styles.inputField}
-              type="text"
+              type="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Full Name"
