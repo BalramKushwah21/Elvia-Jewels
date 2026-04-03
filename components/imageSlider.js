@@ -8,7 +8,7 @@ export default function ImageSlider() {
     "/slider/image2.jpeg",
     "/slider/image3.png",
     "/slider/image4.png",
-    "/slider/image5.jpg",
+    
     "/slider/image6.jpg"
   ];
   
