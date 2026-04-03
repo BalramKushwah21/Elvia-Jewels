@@ -4,15 +4,12 @@ import "./imageSlider.css";
 
 export default function ImageSlider() {
   const images = [
-    "/slider/image1.png",
-    "/slider/image1.png",
-    "/slider/image1.png",
-    "/slider/image1.png",
-    "/slider/image1.png",
-    "/slider/image1.png",
-    "/slider/image1.png",
-    "/slider/image1.png",
-    
+    "/slider/image1.jpg",
+    "/slider/image2.jpeg",
+    "/slider/image3.jpg",
+    "/slider/image4.jpg",
+    "/slider/image5.jpg",
+    "/slider/image6.jpg"
   ];
   
   const [index, setIndex] = useState(0);
