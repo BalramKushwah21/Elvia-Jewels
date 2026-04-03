@@ -75,7 +75,7 @@ const products = [
   
  
 
-export default function BraceletsPage() {
+export default function AnkletesPage() {
   const [wishlist, setWishlist] = useState([]);
 
   const toggleWishlist = (id) => {
@@ -91,7 +91,7 @@ export default function BraceletsPage() {
       {/* HERO */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1 className={styles.title}>Bracelets</h1>
+          <h1 className={styles.title}>Anklets</h1>
           <p className={styles.subtitle}>
             Where elegance meets sparkle
           </p>

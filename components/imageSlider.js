@@ -6,8 +6,8 @@ export default function ImageSlider() {
   const images = [
     "/slider/image1.jpg",
     "/slider/image2.jpeg",
-    "/slider/image3.jpg",
-    "/slider/image4.jpg",
+    "/slider/image3.png",
+    "/slider/image4.png",
     "/slider/image5.jpg",
     "/slider/image6.jpg"
   ];
