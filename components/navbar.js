@@ -10,7 +10,7 @@ export default async function Navbar() {
   
 
   return (
-    <nav>
+    <nav className="header_navbar">
       <div className="navbar-brand">
         <img src="/logo.jpeg" alt="Elvia Jewels" />
         

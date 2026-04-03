@@ -1,5 +1,5 @@
 /* Navbar container */
-nav {
+.header_navbar {
   background-color: #ffffff;
   color: #000000;
   padding: 1rem;
@@ -174,8 +174,9 @@ nav {
     display: block;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    top: 10%;
+    gap: 10px;
+    top: 4%;
+    left: 80%;
   }
 
   
