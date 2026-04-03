@@ -4,7 +4,6 @@ import "./imageSlider.css";
 
 export default function ImageSlider() {
   const images = [
- HEAD
     "/slider/image1.png",
     "/slider/image1.png",
     "/slider/image1.png",
