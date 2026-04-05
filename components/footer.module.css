@@ -1,0 +1,171 @@
+.footer {
+  position: relative;
+  background: #ffffff;
+  padding: 80px 100px 40px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+}
+
+/* ✨ Gradient Top Border */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+}
+
+/* Section */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Brand */
+.brand {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Heading */
+.heading {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 10px;
+}
+
+/* Links */
+.link {
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+
+/* Hover underline animation */
+.link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background: #2575fc;
+  transition: 0.3s;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.link:hover {
+  color: #2575fc;
+}
+
+/* 🌐 Social Icons */
+.socials {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.icon:hover {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* 📩 Newsletter */
+.newsletter {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #2575fc;
+}
+
+.subscribeBtn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.subscribeBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* Bottom */
+.bottom {
+  grid-column: span 4;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 40px;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+
+/* 📱 Tablet */
+@media (max-width: 1024px) {
+  .footer {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 60px 40px;
+  }
+
+  .bottom {
+    grid-column: span 2;
+  }
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+  .footer {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+    gap: 30px;
+  }
+
+  .bottom {
+    grid-column: span 1;
+  }
+}

@@ -1,18 +1,14 @@
 
 import React from "react";
 import "./home.css";
-import Slider from "../components/slider";
-import ShowSlider from "../components/imageSlider";
+import Slider from "@/components/slider";
+import ShowSlider from "@/components/imageSlider";
 import { redirect } from "next/navigation";
-import { getUserFromToken } from "@/lib/auth";
+import { getUserFromToken }  from "@/lib/auth.server";
 
 
-export default function Home() {
-  const user = getUserFromToken();
-
-  if (!user) {
-    redirect("/auth/login");
-  }
+export default async  function Home() {
+  const user = await getUserFromToken();
 
   return (
     <div className="main">
