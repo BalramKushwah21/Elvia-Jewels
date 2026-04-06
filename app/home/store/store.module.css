@@ -4,6 +4,28 @@
   color: #1f2937;
 }
 
+
+/* store.module.css */
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+
 .hero {
   display: grid;
   gap: 4rem;

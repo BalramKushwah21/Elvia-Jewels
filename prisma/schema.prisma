@@ -8,9 +8,67 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  password  String
+  id           String  @id @default(cuid())
+  email        String  @unique
+  password     String
+  name         String
+  role         String  @default("USER") // USER / ADMIN
+  refreshToken String? // store hashed version ideally
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  userAgent String
+  ip        String
   createdAt DateTime @default(now())
+}
+
+model OTP {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  expiresAt DateTime
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  price       Int
+  image       String
+  stock       Int
+  createdAt   DateTime @default(now())
+}
+
+model Cart {
+  id     String     @id @default(cuid())
+  userId String
+  items  CartItem[] @relation("CartToItems")
+}
+
+model CartItem {
+  id        String @id @default(cuid())
+  cartId    String
+  productId String
+  quantity  Int
+
+  cart Cart @relation("CartToItems", fields: [cartId], references: [id])
+}
+
+model Order {
+  id        String      @id @default(cuid())
+  userId    String
+  status    String      @default("PENDING")
+  items     OrderItem[]
+  createdAt DateTime    @default(now())
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int
+
+  order Order @relation(fields: [orderId], references: [id])
 }
