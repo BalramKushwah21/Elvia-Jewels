@@ -37,7 +37,6 @@
 .img_slider_btn {
   position: absolute;
   top: 42%;
-  transform: translateY(-50%);
   background: rgba(0,0,0,0.5);
   color: white;
   border: none;
@@ -75,5 +74,5 @@
 
 .slider_dot_active {
   background: white;
-  transform: scale(1.2);
+  transform: scale(2);
 }

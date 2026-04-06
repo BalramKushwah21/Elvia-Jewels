@@ -11,6 +11,8 @@ export default async function Store() {
         <div key={p.id} className={styles.card}>
           <img src={p.image} className={styles.image} />
           <h3>{p.name}</h3>
+          <h3>{p.description}</h3>
+
           <p>₹{p.price}</p>
 
           <AddToCart productId={p.id} />
