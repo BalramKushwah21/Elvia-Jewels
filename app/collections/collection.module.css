@@ -121,19 +121,20 @@
     padding: 30px;
   
   }
+  .image{
+    height: 100%;
+    width: 100%;
+    border : 2px solid rgb(255, 0, 0,0.5);
+    border-radius: 20px;
+  }
+  .name, .price{
+    font-size: 12px;
+  }
+  .info{
+    padding: 5px;
+  }
+  
 }
-.image{
-  height: 140px;
-   border : 2px solid rgb(255, 0, 0,0.5);
-   border-radius: 20px;
-}
-.name, .price{
-  font-size: 12px;
-}
-.info{
-  padding: 5px;
-}
-
 
 
 /* Mobile */
