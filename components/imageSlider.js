@@ -4,8 +4,7 @@ import "./imageSlider.css";
 
 export default function ImageSlider() {
   const images = [
-   
-   "/slider/image1.png",
+    "/slider/image1.png",
     "/slider/image1.png",
     "/slider/image2.png",
     "/slider/image5.png",
@@ -17,8 +16,35 @@ export default function ImageSlider() {
     "/slider/image10.png",
   ];
 
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  
+  };
+
+  const handleTouchMove = (e) => {
+
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+
+    const distance = touchStartX - touchEndX;
+
+    const minSwipeDistance = 50; // threshold
+
+    if (distance > minSwipeDistance) {
+      // 👉 swipe left → next
+      nextSlide();
+    } else if (distance < -minSwipeDistance) {
+      // 👉 swipe right → prev
+      prevSlide();
+    }
+  };
 
   // 👉 Auto Slide Logic
   useEffect(() => {
@@ -26,7 +52,7 @@ export default function ImageSlider() {
 
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 2000);
+    },4000);
 
     return () => clearInterval(interval);
   }, [isPaused, images.length]);
@@ -45,6 +71,11 @@ export default function ImageSlider() {
       className="slider_wrapper"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onTouchMoveCapture={() => setIsPaused(true)}
+      onTouchEndCapture={() => setIsPaused(false)}
     >
       <div
         className="slider_track"
@@ -60,10 +91,16 @@ export default function ImageSlider() {
         ))}
       </div>
 
-      <button className="img_slider_btn img_slider_btn_prev" onClick={prevSlide}>
+      <button
+        className="img_slider_btn img_slider_btn_prev"
+        onClick={prevSlide}
+      >
         ❮
       </button>
-      <button className="img_slider_btn img_slider_btn_next" onClick={nextSlide}>
+      <button
+        className="img_slider_btn img_slider_btn_next"
+        onClick={nextSlide}
+      >
         ❯
       </button>
 
@@ -71,8 +108,7 @@ export default function ImageSlider() {
         {images.map((_, i) => (
           <span
             key={i}
-            className={`slider_dot ${i === index ? "slider_dot_active" : ""
-              }`}
+            className={`slider_dot ${i === index ? "slider_dot_active" : ""}`}
             onClick={() => setIndex(i)}
           ></span>
         ))}

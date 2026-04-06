@@ -76,3 +76,54 @@
   background: white;
   transform: scale(2);
 }
+
+
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  /* Wrapper */
+  .slider_wrapper {
+    height: 220px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+
+  /* Image */
+  .slider_item img {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  /* Buttons (smaller + better positioning) */
+  .img_slider_btn {
+    display:none;
+    padding: 6px;
+    font-size: 14px;
+    top: 40%;
+    background: rgba(0,0,0,0.4);
+  }
+
+  .img_slider_btn_prev {
+    left: 5px;
+  }
+
+  .img_slider_btn_next {
+    right: 5px;
+  }
+
+  /* Dots */
+ 
+
+  .slider_dot {
+    height: 8px;
+    width: 8px;
+    margin:5px;
+  }
+
+  .slider_dot_active {
+    transform: scale(1.5);
+  }
+}
