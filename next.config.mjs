@@ -6,7 +6,7 @@ import { clear } from 'node:console';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
-  allowedDevOrigins: ["192.168.0.129"],
+  allowedDevOrigins: ["10.245.37.43"],
     images: {
     remotePatterns: [
       {
