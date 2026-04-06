@@ -11,8 +11,6 @@ export default function Slider() {
   const router = useRouter();
 
 
-  
-
 
 
 
