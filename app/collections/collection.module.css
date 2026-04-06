@@ -114,15 +114,30 @@
 }
 
 /* Tablet */
-@media (max-width: 2024px) {
-  .wrapper {
+@media (max-width: 1024px) {
+  .grid {
+    display:grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 30px;
+  
   }
 }
+.image{
+  height: 140px;
+   border : 2px solid rgb(255, 0, 0,0.5);
+   border-radius: 20px;
+}
+.name, .price{
+  font-size: 12px;
+}
+.info{
+  padding: 5px;
+}
+
+
 
 /* Mobile */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .wrapper {
     grid-template-columns: 1fr;
     padding: 15px;

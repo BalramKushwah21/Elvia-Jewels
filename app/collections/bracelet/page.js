@@ -112,8 +112,8 @@ export default function BraceletsPage() {
             <Image
               src={item.image}
               alt={item.name}
-              width={350}
-              height={280}
+              width={320}
+              height={320}
               className={styles.image}
             />
              {/* ❤️ Wishlist */}
