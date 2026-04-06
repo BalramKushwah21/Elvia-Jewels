@@ -4,9 +4,10 @@ import "./imageSlider.css";
 
 export default function ImageSlider() {
   const images = [
-    "/slider/image1.png",
+   
+   "/slider/image1.png",
+    "/slider/image2.png",
     "/slider/image5.png",
-    "/slider/image2.jpeg",
     "/slider/image3.png",
     "/slider/image4.png",
     "/slider/image6.jpg",
