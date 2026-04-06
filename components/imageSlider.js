@@ -11,7 +11,6 @@ export default function ImageSlider() {
     "/slider/image5.png",
     "/slider/image3.png",
     "/slider/image4.png",
-    "/slider/image6.png",
     "/slider/image7.png",
     "/slider/image8.png",
     "/slider/image9.png",
