@@ -1,10 +1,11 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./login.module.css";
 import { useState } from "react";
 
 export default function Login() {
+  const router = useRouter();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -48,17 +49,25 @@ export default function Login() {
         credentials: "include",
       });
 
-      const data = await res.json();
+      const text = await res.text();
+      console.log("RAW RESPONSE:", text);
+
+      let data = null;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = null;
+      }
 
       if (res.ok) {
-        // ✅ success
-        window.location.href = "/";
+        router.replace("/");
+        router.refresh();
       } else if (res.status === 401) {
         setError("Invalid email or password");
       } else if (res.status === 404) {
         setError("User not found");
       } else {
-        setError(data.message || "Something went wrong");
+        setError(data?.error || "Something went wrong");
       }
     } catch (err) {
       console.error(err);
@@ -71,7 +80,6 @@ export default function Login() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
-        
         {/* LEFT SIDE */}
         <div className={styles.left}>
           <div className={styles.triangle1}></div>
@@ -101,9 +109,7 @@ export default function Login() {
               className={styles.inputField}
               placeholder="Email"
               value={form.email}
-              onChange={(e) =>
-                setForm({ ...form, email: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
             />
           </div>
 
@@ -115,20 +121,14 @@ export default function Login() {
               className={styles.inputField}
               placeholder="Password"
               value={form.password}
-              onChange={(e) =>
-                setForm({ ...form, password: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
             />
           </div>
 
           <div className={styles.forgot}>Forgot Password?</div>
 
           {/* BUTTON */}
-          <button
-            className={styles.button}
-            onClick={submit}
-            disabled={loading}
-          >
+          <button className={styles.button} onClick={submit} disabled={loading}>
             {loading ? "Logging in..." : "LOGIN"}
           </button>
 
@@ -136,7 +136,6 @@ export default function Login() {
             Or Login With
             <span className={styles.link}>Google</span>
             <span className={styles.link}>Facebook</span>
-
             <div className={styles.notMember}>
               <span>Not a member?</span>{" "}
               <Link href="/auth/register">Register</Link>
