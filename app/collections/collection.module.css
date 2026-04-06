@@ -85,9 +85,6 @@
   transition: 0.3s;
 }
 
-.card:hover .image {
-  transform: scale(1.05);
-}
 
 /* INFO */
 .info {
@@ -121,20 +118,28 @@
     padding: 30px;
   
   }
-  .image{
-    height: 100%;
-    width: 100%;
-    border : 2px solid rgb(255, 0, 0,0.5);
-    border-radius: 20px;
-  }
-  .name, .price{
-    font-size: 12px;
-  }
-  .info{
-    padding: 5px;
-  }
+
+.image{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+  border-radius: 15%;
+  border:2px solid rgba(173, 33, 110, 0.495);
+}
+.name, .price{
+  font-size: 12px;
+}
+.info{
+  padding: 5px;
   
 }
+.card{
+  border-radius: 10%;
+  
+}
+}
+
 
 
 /* Mobile */
