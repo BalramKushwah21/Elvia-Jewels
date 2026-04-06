@@ -37,7 +37,7 @@ export default function Slider() {
     },
     {
       img: "/category/pendant.png",
-      title: "Pendant",
+      title: "Pendants",
       price: "₹399",
     },
     {
