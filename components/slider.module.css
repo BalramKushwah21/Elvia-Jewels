@@ -99,6 +99,10 @@
   }
 
   .sliderTrack {
+    overflow-x: auto;
+  overflow-y: hidden;
+     scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;
     gap: 10px;
   }
 

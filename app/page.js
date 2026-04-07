@@ -1,6 +1,6 @@
-
+import Image from "next/image";
 import React from "react";
-import "./home.css";
+import styles from "./home.module.css";
 import Slider from "@/components/slider";
 import ShowSlider from "@/components/imageSlider";
 import { redirect } from "next/navigation";
@@ -11,29 +11,27 @@ export default async  function Home() {
   const user = await getUserFromToken();
 
   return (
-    <div className="main">
+    <div className={styles.main}>
       <ShowSlider />
       <Slider/>
-      <div className="imageContainer">
-        <div className="image">
-          <img alt="" src="/features/demo1.jpeg" />
-        </div>
-        <div className="image">
-          <img alt="" src="/features/demo1.jpeg" />
-        </div>
-        <div className="image">
-          <img alt="" src="/features/demo1.jpeg" />
-        </div>
-        <div className="image">
-          <img alt="" src="/features/demo1.jpeg" />
-        </div>
-        <div className="image">
-          <img alt="" src="/features/demo1.jpeg" />
-        </div>
-        <div className="image">
-          <img alt="" src="/features/demo1.jpeg" />
-        </div>
+      <div className={styles.features}>
+        <h3 className={styles.text}>Our Features</h3>
+        <h3 className={styles.text}>Our Features</h3>
+        <h3 className={styles.text}>Our Features</h3>
+        <h3 className={styles.text}>Our Features</h3>
+        <h3 className={styles.text}>Our Features</h3>
+
       </div>
+      <h2 className={styles.recipient}>
+        <button className={styles.recipientBtn}>
+          <Image src="/Images/male-recipient.png"  width={500} height={200} />
+          <span className={styles.recipientText}>Him</span>
+
+        </button>
+
+      </h2>
+
+
     </div>
   );
 }

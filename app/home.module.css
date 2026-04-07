@@ -1,0 +1,62 @@
+/* Home page styles */
+.imageContainer {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.features {
+  background-color: #f1a8ee;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 2%;
+}
+.text {
+  
+  text-align: center;
+  padding: 5px;
+  width: 15%;
+  border-radius: 5px;
+  margin: 10px;
+  background-color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.recipient, .recipientBtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: white;
+}
+.recipientText {
+  top: 70%;
+  left: 70%;
+  position: absolute;
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  z-index: 10;
+} 
+.recipientBtn:hover{
+
+}
+
+
+@media (max-width: 768px) {
+  .features {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+    gap: 10px;
+     scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;
+  }
+  .text {
+    font-size: 12px;
+    width: 100%;
+  }
+}

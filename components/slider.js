@@ -7,29 +7,31 @@ import { useEffect } from "react";
 export default function Slider() {
   const [visibleSlides, setVisibleSlides] = useState(8);
 
-  const [touchStartX, setTouchStartX] = useState(0);
-const [touchEndX, setTouchEndX] = useState(0);
+// //this is for touch events on mobile devices to swipe the slider left and right
 
-const handleTouchStart = (e) => {
-  setTouchStartX(e.touches[0].clientX);
-};
+//   const [touchStartX, setTouchStartX] = useState(0);
+// const [touchEndX, setTouchEndX] = useState(0);
 
-const handleTouchMove = (e) => {
-  setTouchEndX(e.touches[0].clientX);
-};
+// const handleTouchStart = (e) => {
+//   setTouchStartX(e.touches[0].clientX);
+// };
 
-const handleTouchEnd = () => {
-  const distance = touchStartX - touchEndX;
-  const minSwipeDistance = 20;
+// const handleTouchMove = (e) => {
+//   setTouchEndX(e.touches[0].clientX);
+// };
 
-  if (distance > minSwipeDistance) {
-    // 👉 swipe left → next
-    nextSlide();
-  } else if (distance < -minSwipeDistance) {
-    // 👉 swipe right → prev
-    prevSlide();
-  }
-};
+// const handleTouchEnd = () => {
+//   const distance = touchStartX - touchEndX;
+//   const minSwipeDistance = 20;
+
+//   if (distance > minSwipeDistance) {
+//     // 👉 swipe left → next
+//     nextSlide();
+//   } else if (distance < -minSwipeDistance) {
+//     // 👉 swipe right → prev
+//     prevSlide();
+//   }
+// };
 
 useEffect(() => {
   const updateSlides = () => {
@@ -124,9 +126,9 @@ useEffect(() => {
 
     <div
       className={styles.slider}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      // onTouchStart={handleTouchStart}
+      // onTouchMove={handleTouchMove}
+      // onTouchEnd={handleTouchEnd}
     >
       <div
         className={styles.sliderTrack}

@@ -16,6 +16,7 @@ useEffect(() => {
         return JSON.parse(text);
       } catch {
         console.error("Invalid JSON:", text);
+        alert("Invalid JSON:", text);
         return null;
       }
     })
