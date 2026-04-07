@@ -1,14 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import styles from "./navbar.module.css";
-import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [user, setUser] = useState(null);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // 👈 used for BOTH mobile + dropdown
   const router = useRouter();
 
   // 🔹 Fetch user
@@ -37,11 +36,16 @@ export default function Navbar() {
         Elvia Jewels
       </div>
 
-      {/* Mobile Menu */}
+      {/* ✅ Mobile Menu */}
       <div
-        className={`${styles.mobileNavbar} ${open ? styles.mobileActive : ""}`}
+        className={`${styles.mobileNavbar} ${
+          open ? styles.showMenu : ""
+        }`}
       >
-        <button className={styles.navbarClose} onClick={() => setOpen(false)}>
+        <button
+          className={styles.navbarClose}
+          onClick={() => setOpen(false)}
+        >
           ✖
         </button>
 
@@ -59,33 +63,36 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Toggle */}
-      <button className={styles.navbarOpen} onClick={() => setOpen(true)}>
+      {/* ✅ Toggle Button */}
+      <button
+        className={styles.navbarOpen}
+        onClick={() => setOpen(true)}
+      >
         ☰
       </button>
 
       {/* Desktop */}
       <div className={styles.navbarLinks}>
-        {/* <Link className={styles.navbarLink} href="/">Home</Link>
-        <Link className={styles.navbarLink} href="/home/store">Store</Link>
-        <Link className={styles.navbarLink} href="/home/contactus">Contact</Link>
-        <Link className={styles.navbarLink} href="/home/cart">Cart</Link> */}
-
         {user ? (
           <div className={styles.userMenu}>
             <div className={styles.laptopNavbar}>
+              <Link className={styles.navbarLink} href="/">
+                Home
+              </Link>
+              <Link className={styles.navbarLink} href="/home/store">
+                Store
+              </Link>
+              <Link className={styles.navbarLink} href="/home/cart">
+                Cart
+              </Link>
 
-             <Link className={styles.navbarLink} href="/">Home</Link>
-             <Link className={styles.navbarLink} href="/home/store">Store</Link>
-            <Link className={styles.navbarLink} href="/home/cart">Cart</Link>
-
-            <button
-              className={styles.userButton}
-              onClick={() => setOpen(!open)}
+              <button
+                className={styles.userButton}
+                onClick={() => setOpen(!open)}
               >
-              Hi, {user.name} 👇
-            </button>
-              </div>
+                Hi, {user.name} 👇
+              </button>
+            </div>
 
             {open && (
               <div className={styles.dropdown}>
@@ -96,11 +103,17 @@ export default function Navbar() {
                 <Link href="/" onClick={() => setOpen(false)}>
                   Home
                 </Link>
-                <Link href="/home/contactus" onClick={() => setOpen(false)}>
+                <Link
+                  href="/home/contactus"
+                  onClick={() => setOpen(false)}
+                >
                   Contact
                 </Link>
 
-                <button className={styles.logoutBtn} onClick={handleLogout}>
+                <button
+                  className={styles.logoutBtn}
+                  onClick={handleLogout}
+                >
                   Logout
                 </button>
               </div>

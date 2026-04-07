@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-
+import styles from "./add-products.module.css";
 export default function AddProduct() {
   const [form, setForm] = useState({
     name: "",
@@ -23,7 +23,7 @@ export default function AddProduct() {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2>Add Product</h2>
 
       <input placeholder="Name"

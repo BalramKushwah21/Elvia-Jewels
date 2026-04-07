@@ -1,11 +1,54 @@
 "use client";
 import { useState } from "react";
-import  "./slider.css";
+import styles from "./slider.module.css";
 import { useRouter } from "next/navigation";
-
+import { useEffect } from "react";
 
 export default function Slider() {
-  const visibleSlides = 8;
+  const [visibleSlides, setVisibleSlides] = useState(8);
+
+  const [touchStartX, setTouchStartX] = useState(0);
+const [touchEndX, setTouchEndX] = useState(0);
+
+const handleTouchStart = (e) => {
+  setTouchStartX(e.touches[0].clientX);
+};
+
+const handleTouchMove = (e) => {
+  setTouchEndX(e.touches[0].clientX);
+};
+
+const handleTouchEnd = () => {
+  const distance = touchStartX - touchEndX;
+  const minSwipeDistance = 20;
+
+  if (distance > minSwipeDistance) {
+    // 👉 swipe left → next
+    nextSlide();
+  } else if (distance < -minSwipeDistance) {
+    // 👉 swipe right → prev
+    prevSlide();
+  }
+};
+
+useEffect(() => {
+  const updateSlides = () => {
+    if (window.innerWidth < 768) {
+      setVisibleSlides(2); // mobile
+    } else if (window.innerWidth < 1024) {
+      setVisibleSlides(4); // tablet
+    } else {
+      setVisibleSlides(8); // desktop
+    }
+  };
+
+  updateSlides();
+  window.addEventListener("resize", updateSlides);
+
+  return () => window.removeEventListener("resize", updateSlides);
+}, []);
+
+
   const [index, setIndex] = useState(0);
   
   const router = useRouter();
@@ -14,6 +57,19 @@ export default function Slider() {
 
 
 
+  
+  const nextSlide = () => {
+    if (index < slides.length - visibleSlides) {
+      setIndex(index + 1);
+    }
+  };
+  
+  const prevSlide = () => {
+    if (index > 0) {
+      setIndex(index - 1);
+    }
+  };
+  
   const slides = [
     {
       img: "/category/bracelet.png",
@@ -62,57 +118,60 @@ export default function Slider() {
       price: "₹399",
     },
   ];
-
-  const nextSlide = () => {
-    if (index < slides.length - visibleSlides) {
-      setIndex(index + 1);
-    }
-  };
-
-  const prevSlide = () => {
-    if (index > 0) {
-      setIndex(index - 1);
-    }
-  };
-
   return (
-    <div className={"sliderContainer"}>
     
+    <div className={styles.sliderContainer}>
 
-      <div className={"slider"}>
-        <div
-          className={"sliderTrack"}
-          style={{
-            transform: `translateX(-${index * (100 / visibleSlides)}%)`,
-          }}
-        >
-          {slides.map((slide, i) => (
-            <div
-              className={"slide"}
-              key={i}
-              style={{ minWidth: `${85.6 / visibleSlides}%` }}
-            >
-              <div className={"card"}>
-                <img className={"card"} src={slide.img} alt={slide.title} 
-                onClick={() => router.push(`/collections/${slide.title.toLowerCase()}`)}/>
-                
+    <div
+      className={styles.slider}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div
+        className={styles.sliderTrack}
+        style={{
+          transform: `translateX(-${index * (100 / visibleSlides)}%)`,
+        }}
+      >
+        {slides.map((slide, i) => (
+          <div
+            className={styles.slide}
+            key={i}
+            style={{ minWidth: `${85.6 / visibleSlides}%` }}
+          >
+            <div className={styles.card}>
+              <img
+                src={slide.img}
+                alt={slide.title}
+                onClick={() =>
+                  router.push(`/collections/${slide.title.toLowerCase()}`)
+                }
+              />
 
-                <div className={"content"}>
-                  <h3>{slide.title}</h3>
-                  {/* <p>{slide.price}</p> */}
-                </div>
+              <div className={styles.content}>
+                <h3>{slide.title}</h3>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-
-      <button className="slider_btn slider_btn_prev" onClick={prevSlide}>
-    ❮
-  </button>
-  <button className="slider_btn slider_btn_next" onClick={nextSlide}>
-    ❯
-  </button>
     </div>
-  );
+
+    <button
+      className={`${styles.slider_btn} ${styles.slider_btn_prev}`}
+      onClick={prevSlide}
+    >
+      ❮
+    </button>
+
+    <button
+      className={`${styles.slider_btn} ${styles.slider_btn_next}`}
+      onClick={nextSlide}
+    >
+      ❯
+    </button>
+  </div>
+);
+  
 }
