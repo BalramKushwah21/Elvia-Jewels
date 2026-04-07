@@ -55,14 +55,10 @@ export default function Slider() {
       title: "Mangalsutras",
       price: "₹399",
     },
-    {
-      img: "/category/anklet.png",
-      title: "Bracelet Five",
-      price: "₹399",
-    },
+    
     {
       img: "/category/meninsilver.png",
-      title: "Men In Silver",
+      title: "Men-In-Silver",
       price: "₹399",
     },
   ];
