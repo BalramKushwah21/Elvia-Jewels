@@ -82,3 +82,60 @@
 .slider_btn_next {
   right: 10px;
 }
+
+
+
+/* ================= MOBILE VIEW ================= */
+
+@media (max-width: 768px) {
+
+  .sliderContainer {
+    margin-top: 5px;
+    padding: 0 5px;
+  }
+
+  .slider {
+    width: 100%;
+  }
+
+  .sliderTrack {
+    gap: 10px;
+  }
+
+  /* Show fewer items (visually larger cards) */
+  .slide {
+    padding: 3px;
+  }
+
+  .slide img {
+    border-radius: 15px;
+  }
+
+  .card {
+    border-radius: 12px;
+  }
+
+  .content h3 {
+    font-size: 13px;
+  }
+
+  /* Buttons smaller + repositioned */
+  .slider_btn {
+    display: none;
+    top: 50%;
+    padding: 6px;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  .slider_btn_prev {
+    left: 2px;
+  }
+
+  .slider_btn_next {
+    right: 2px;
+  }
+  .sliderTrack {
+  will-change: transform;
+}
+}

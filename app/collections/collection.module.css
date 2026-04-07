@@ -85,9 +85,6 @@
   transition: 0.3s;
 }
 
-.card:hover .image {
-  transform: scale(1.05);
-}
 
 /* INFO */
 .info {
@@ -114,15 +111,39 @@
 }
 
 /* Tablet */
-@media (max-width: 2024px) {
-  .wrapper {
+@media (max-width: 1024px) {
+  .grid {
+    display:grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 30px;
+  
   }
+
+.image{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+  border-radius: 15%;
+  border:2px solid rgba(173, 33, 110, 0.495);
+}
+.name, .price{
+  font-size: 12px;
+}
+.info{
+  padding: 5px;
+  
+}
+.card{
+  border-radius: 10%;
+  
+}
 }
 
+
+
 /* Mobile */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .wrapper {
     grid-template-columns: 1fr;
     padding: 15px;

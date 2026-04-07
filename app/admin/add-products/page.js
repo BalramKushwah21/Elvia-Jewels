@@ -6,6 +6,7 @@ export default function AddProduct() {
     name: "",
     description: "",
     price: "",
+    stock:"",
     image: "",
   });
 
@@ -30,6 +31,9 @@ export default function AddProduct() {
 
       <input placeholder="Price"
         onChange={e => setForm({...form, price: e.target.value})} />
+
+      <input placeholder="Stock"
+        onChange={e => setForm({...form, stock: e.target.value})} />
 
       <input placeholder="Image URL"
         onChange={e => setForm({...form, image: e.target.value})} />
