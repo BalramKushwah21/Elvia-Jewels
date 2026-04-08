@@ -1,7 +1,7 @@
 // app/api/auth/refresh/route.js
 
 import prisma from "@/lib/prisma";
-import { verifyRefresh, signAccessToken } from "@/lib/auth.server";
+import { signAccessToken } from "@/lib/auth.server";
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
