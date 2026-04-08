@@ -28,7 +28,7 @@ export default function AddProduct() {
   return (
     <div className={styles.container}>
       <h2>Add Product</h2>
-
+    <div className={styles.formgrid}>
       <input
         placeholder="Name"
         onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -58,7 +58,7 @@ export default function AddProduct() {
         placeholder="Color"
         onChange={(e) => setForm({ ...form, color: e.target.value })}
       />
-
+    <div className={styles.genderBox}>
       <label>
          Male
         <input type="radio" name="gender" value="male" onChange={(e) => setForm({ ...form, gender: e.target.value })}/>
@@ -69,15 +69,17 @@ export default function AddProduct() {
         Female
         <input type="radio" name="gender" value="female" onChange={(e) => setForm({ ...form, gender: e.target.value })} />
         
+      
       </label>
-
+    </div>
     
 
       <textarea
         placeholder="Description"
         onChange={(e) => setForm({ ...form, description: e.target.value })}
       />
-
+  
+  </div>
       <button onClick={submit}>Add</button>
     </div>
   );
