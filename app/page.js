@@ -5,6 +5,7 @@ import Slider from "@/components/slider";
 import ShowSlider from "@/components/imageSlider";
 import { redirect } from "next/navigation";
 import { getUserFromToken }  from "@/lib/auth.server";
+import  TopRatedProducts  from "@/components/TopRatedProducts";
 
 import Link from "next/link";
 
@@ -41,8 +42,7 @@ export default async  function Home() {
         </Link>
 
       </div>
-
-
+      <TopRatedProducts/>
     </div>
   );
 }
