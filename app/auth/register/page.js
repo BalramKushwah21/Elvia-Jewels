@@ -1,16 +1,35 @@
 "use client";
 import Link from "next/link";
-import styles from "./register.module.css";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import styles from "./register.module.css";
 
-export default function Register() {
+export default function RegisterPage() {
+  const router = useRouter();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
   const [loading, setLoading] = useState(false);
+
+  // ✅ handle change
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // ✅ register
   const handleRegister = async () => {
+    if (!form.name || !form.email || !form.password) {
+      alert("All fields are required");
+      return;
+    }
+
     try {
       setLoading(true);
 
@@ -19,27 +38,28 @@ export default function Register() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify(form),
       });
 
       const data = await res.json();
 
-      if (res.status === 201) {
-        alert("Registration successful 🎉");
-        setName("");
-        setEmail("");
-        setPassword("");
-        window.location.href = "/auth/login";
+      if (!res.ok) {
+        alert(data.error || "Registration failed");
+        return;
       }
-      else if(res.status === 401){
-        alert(data.message || "User already exists");
-        window.location.href = "/auth/login";
 
-      } 
-      else {
-        alert(data.message || data.error || "Registration failed" );
-      }
-    } catch (error) {
+      alert("Registration successful 🎉");
+
+      setForm({
+        name: "",
+        email: "",
+        password: "",
+      });
+
+      router.push("/auth/login");
+
+    } catch (err) {
+      console.log(err);
       alert("Something went wrong");
     } finally {
       setLoading(false);
@@ -67,50 +87,52 @@ export default function Register() {
 
           <h3 className={styles.heading}>REGISTER</h3>
 
+          {/* NAME */}
           <div className={styles.inputGroup}>
             <span className={styles.icon}>👤</span>
             <input
               className={styles.inputField}
-              type="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
               placeholder="Full Name"
             />
           </div>
 
+          {/* EMAIL */}
           <div className={styles.inputGroup}>
             <span className={styles.icon}>📧</span>
             <input
               className={styles.inputField}
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              value={form.email}
+              onChange={handleChange}
               placeholder="Email"
             />
           </div>
 
+          {/* PASSWORD */}
           <div className={styles.inputGroup}>
             <span className={styles.icon}>🔒</span>
             <input
               type="password"
+              name="password"
               className={styles.inputField}
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={form.password}
+              onChange={handleChange}
             />
           </div>
 
-          {/* <div className={styles.inputGroup}>
-            <span className={styles.icon}>🔒</span>
-            <input
-              type="password"
-              className={styles.inputField}
-              placeholder="Confirm Password"
-            />
-          </div> */}
-
-          <button className={styles.button}  onClick={handleRegister} disabled={loading}>
-        {loading ? "Registering..." : "Register"}</button>
+          <button
+            className={styles.button}
+            onClick={handleRegister}
+            disabled={loading}
+          >
+            {loading ? "Registering..." : "Register"}
+          </button>
 
           <div className={styles.social}>
             Already have an account?

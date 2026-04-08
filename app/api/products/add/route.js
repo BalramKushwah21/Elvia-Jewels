@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 console.log("🔥 ADD PRODUCT API HIT");
 export async function POST(req) {
   try {
-    const { name, description, price, stock, image } = await req.json();
+    const { category,color,gender, name, description, price, stock, image } = await req.json();
 
     if (!name || !price) {
       return NextResponse.json(
@@ -14,7 +14,10 @@ export async function POST(req) {
 
     const product = await prisma.product.create({
       data: {
-        stock,
+        category,
+        color,
+        gender,
+        stock:parseInt(stock),
         name,
         description,
         price: parseFloat(price),

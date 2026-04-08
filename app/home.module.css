@@ -13,8 +13,7 @@
   justify-content: space-around;
   margin: 2%;
 }
-.text {
-  
+.item {
   text-align: center;
   padding: 5px;
   width: 15%;
@@ -25,38 +24,150 @@
   font-weight: bold;
 }
 
-.recipient, .recipientBtn {
+.recipient {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  background-color: white;
+  justify-content: space-around;
+  /* margin: 20px; */
 }
-.recipientText {
-  top: 70%;
-  left: 70%;
+
+.recipientImage {
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+}
+.recipientTextHim {
+  left: 28%;
   position: absolute;
-  margin-left: 10px;
-  font-size: 18px;
+  margin-top: 3%;
+  font-size: 25px;
+  font-weight: bold;
+  z-index: 10;
+  background-color: rgba(242, 15, 200, 0.459);
+  padding: 10px;
+  width: 10%;
+  text-align: center;
+  border-radius: 10px;
+  color: black;
+}
+.recipientTextHer {
+  right: 12%;
+  position: absolute;
+  margin-top: 3%;
+  font-size: 25px;
   font-weight: bold;
   color: black;
   z-index: 10;
-} 
-.recipientBtn:hover{
-
+  background-color: rgba(242, 15, 200, 0.459);
+  padding: 10px;
+  width: 10%;
+  text-align: center;
+  border-radius: 10px;
+  color: black;
 }
 
+.TextShopHim {
+  left: 28%;
+  position: absolute;
+  margin-top: 7%;
+  background-color: rgba(242, 15, 200, 0.459);
+  padding: 15px;
+  width: 10%;
+  text-align: center;
+  border-radius: 10px;
+  color: black;
+}
+.TextShopHer {
+  position: absolute;
+  right: 12%;
+  margin-top: 7%;
+  background-color: rgba(242, 15, 200, 0.459);
+  padding: 15px;
+  width: 10%;
+  text-align: center;
+  border-radius: 10px;
+  color: black;
+}
 
 @media (max-width: 768px) {
   .features {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
     gap: 10px;
-     scrollbar-width: none;       /* Firefox */
-  -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
   }
-  .text {
+
+  .recipient{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+
+.recipientImage{
+width: 90%;
+height: auto;
+margin: 5%;
+
+
+}
+
+  .item {
     font-size: 12px;
     width: 100%;
+  }
+  .recipientTextHim {
+    left: 60%;
+    position: absolute;
+    margin-top: 8%;
+    font-size: 25px;
+    font-weight: bold;
+    z-index: 10;
+    background-color: rgba(242, 15, 200, 0.459);
+    padding: 10px;
+    width: 25%;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+  }
+  .recipientTextHer {
+    left: 60%;
+    position: absolute;
+    margin-top: 8%;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    z-index: 10;
+    background-color: rgba(242, 15, 200, 0.459);
+    padding: 10px;
+    width: 25%;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+  }
+
+  .TextShopHim {
+    left: 60%;
+    position: absolute;
+    margin-top: 20%;
+    background-color: rgba(242, 15, 200, 0.459);
+    padding: 15px;
+    width: 25%;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+  }
+  .TextShopHer {
+    position: absolute;
+    left: 60%;
+    margin-top: 20%;
+    background-color: rgba(242, 15, 200, 0.459);
+    padding: 15px;
+    width: 25%;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
   }
 }

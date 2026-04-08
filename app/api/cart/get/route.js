@@ -1,29 +1,28 @@
-import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { getUserFromToken } from "@/lib/auth.server";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const cart = await prisma.cart.findFirst({
+    const user = await getUserFromToken();
+
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const cart = await prisma.cart.findUnique({
+      where: { userId: user.id },
       include: {
-        items: true,
+        items: {
+          include: { product: true },
+        },
       },
     });
 
-    return NextResponse.json({
-      success: true,
-      items: cart?.items || [],
-    });
+    return NextResponse.json(cart || { items: [] });
 
-  } catch (error) {
-    console.error("Cart fetch error:", error);
-
-    return NextResponse.json(
-      {
-        success: false,
-        items: [],
-        error: "Failed to fetch cart",
-      },
-      { status: 500 }
-    );
+  } catch (err) {
+    console.log(err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

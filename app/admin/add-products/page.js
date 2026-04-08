@@ -3,10 +3,13 @@ import { useState } from "react";
 import styles from "./add-products.module.css";
 export default function AddProduct() {
   const [form, setForm] = useState({
+    category: "",
+    color: "",
+    gender: "",
     name: "",
     description: "",
     price: "",
-    stock:"",
+    stock: "",
     image: "",
   });
 
@@ -26,20 +29,54 @@ export default function AddProduct() {
     <div className={styles.container}>
       <h2>Add Product</h2>
 
-      <input placeholder="Name"
-        onChange={e => setForm({...form, name: e.target.value})} />
+      <input
+        placeholder="Name"
+        onChange={(e) => setForm({ ...form, name: e.target.value })}
+      />
 
-      <input placeholder="Price"
-        onChange={e => setForm({...form, price: e.target.value})} />
+      <input
+        placeholder="Price"
+        onChange={(e) => setForm({ ...form, price: e.target.value })}
+      />
 
-      <input placeholder="Stock"
-        onChange={e => setForm({...form, stock: e.target.value})} />
+      <input
+        placeholder="Stock"
+        onChange={(e) => setForm({ ...form, stock: e.target.value })}
+      />
 
-      <input placeholder="Image URL"
-        onChange={e => setForm({...form, image: e.target.value})} />
+      <input
+        placeholder="Image URL"
+        onChange={(e) => setForm({ ...form, image: e.target.value })}
+      />
 
-      <textarea placeholder="Description"
-        onChange={e => setForm({...form, description: e.target.value})} />
+      <input
+        placeholder="Category"
+        onChange={(e) => setForm({ ...form, category: e.target.value })}
+      />
+
+      <input
+        placeholder="Color"
+        onChange={(e) => setForm({ ...form, color: e.target.value })}
+      />
+
+      <label>
+         Male
+        <input type="radio" name="gender" value="male" onChange={(e) => setForm({ ...form, gender: e.target.value })}/>
+       
+      </label>
+
+      <label>
+        Female
+        <input type="radio" name="gender" value="female" onChange={(e) => setForm({ ...form, gender: e.target.value })} />
+        
+      </label>
+
+    
+
+      <textarea
+        placeholder="Description"
+        onChange={(e) => setForm({ ...form, description: e.target.value })}
+      />
 
       <button onClick={submit}>Add</button>
     </div>

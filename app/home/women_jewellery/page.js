@@ -3,7 +3,11 @@ import AddToCart from "@/components/AddToCart";
 import styles from "../store.module.css"; // 👈 import module
 
 export default async function Store() {
-  const products = await prisma.product.findMany();
+  const products = await prisma.product.findMany({
+    where:{
+        gender:"female"
+    }
+  });
 
   return (
     <div className={styles.container}>

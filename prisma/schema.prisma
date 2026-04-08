@@ -14,6 +14,7 @@ model User {
   name         String
   role         String  @default("USER") // USER / ADMIN
   refreshToken String? // store hashed version ideally
+  cart Cart?
 }
 
 model Session {
@@ -38,12 +39,17 @@ model Product {
   price       Int
   image       String
   stock       Int
+  category    String
+  color       String
+  gender      String
   createdAt   DateTime @default(now())
+  CartItem CartItem[]
 }
 
 model Cart {
   id     String     @id @default(cuid())
-  userId String
+  userId String     @unique
+  user   User       @relation(fields: [userId], references: [id])
   items  CartItem[] @relation("CartToItems")
 }
 
@@ -51,9 +57,12 @@ model CartItem {
   id        String @id @default(cuid())
   cartId    String
   productId String
-  quantity  Int
+  quantity  Int    @default(1)
 
-  cart Cart @relation("CartToItems", fields: [cartId], references: [id])
+  cart    Cart    @relation("CartToItems", fields: [cartId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+
+  @@unique([cartId, productId]) // ✅ prevents duplicate entries
 }
 
 model Order {
