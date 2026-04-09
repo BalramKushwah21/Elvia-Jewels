@@ -76,6 +76,7 @@ export default function ImageSlider() {
       onTouchEnd={handleTouchEnd}
       onTouchMoveCapture={() => setIsPaused(true)}
       onTouchEndCapture={() => setIsPaused(false)}
+      
     >
       <div
         className="slider_track"

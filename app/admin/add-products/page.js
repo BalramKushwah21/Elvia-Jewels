@@ -32,26 +32,31 @@ export default function AddProduct() {
       <input
         placeholder="Name"
         onChange={(e) => setForm({ ...form, name: e.target.value })}
+        required
       />
 
       <input
         placeholder="Price"
         onChange={(e) => setForm({ ...form, price: e.target.value })}
+        required
       />
 
       <input
         placeholder="Stock"
         onChange={(e) => setForm({ ...form, stock: e.target.value })}
+        required
       />
 
       <input
         placeholder="Image URL"
         onChange={(e) => setForm({ ...form, image: e.target.value })}
+        required
       />
 
       <input
         placeholder="Category"
         onChange={(e) => setForm({ ...form, category: e.target.value })}
+        required
       />
 
       <input
@@ -61,13 +66,15 @@ export default function AddProduct() {
 
       <label>
          Male
-        <input type="radio" name="gender" value="male" onChange={(e) => setForm({ ...form, gender: e.target.value })}/>
+        <input type="radio" name="gender" value="male" onChange={(e) => setForm({ ...form, gender: e.target.value })}
+        required/>
        
       </label>
 
       <label>
         Female
-        <input type="radio" name="gender" value="female" onChange={(e) => setForm({ ...form, gender: e.target.value })} />
+        <input type="radio" name="gender" value="female" onChange={(e) => setForm({ ...form, gender: e.target.value })} 
+        required/>
         
       </label>
 
@@ -76,6 +83,7 @@ export default function AddProduct() {
       <textarea
         placeholder="Description"
         onChange={(e) => setForm({ ...form, description: e.target.value })}
+        required
       />
 
       <button onClick={submit}>Add</button>

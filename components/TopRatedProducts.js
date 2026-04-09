@@ -1,10 +1,16 @@
+
 import React from 'react'
 import styles from "@/components/TopRatedProducts.module.css"
 import AddToCart from '@/components/AddToCart';
 import { prisma } from "@/lib/prisma"
+import  SendToStore  from '@/components/Client';
+
 
 export default async function TopRatedProducts() {
   // const router = useRouter();
+
+
+
   const products = await prisma.product.findMany({
     where:{
         gender:"male"
@@ -26,7 +32,7 @@ export default async function TopRatedProducts() {
       ))}
 
     </div>
-      <button className={styles.ShowMoreBtn}>Show More</button>
+      <SendToStore/>
       </div>
   );
 }

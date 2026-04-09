@@ -1,0 +1,12 @@
+.showMoreBtn{
+    box-sizing: border-box;
+    background-color: #f0a8edcc;
+    color: black;
+    font-weight: 900;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.showMoreBtn:hover{
+
+transform: translate3d(20%);
+}
