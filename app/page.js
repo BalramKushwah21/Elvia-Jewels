@@ -8,8 +8,38 @@ import { getUserFromToken } from "@/lib/auth.server";
 import TopRatedProducts from "@/components/TopRatedProducts";
 import Link from "next/link";
 
+
+
 export default async function Home() {
-  const user = await getUserFromToken();
+ const images = [
+  {
+  img:"/Card_Images/infinity.jpeg",
+  title:"Infinity",
+ },
+  {
+  img:"/Card_Images/water_drops.jpeg",
+  title:"Water Drops",
+ },
+  {
+  img:"/Card_Images/knots.jpeg",
+  title:"Knots",
+ },
+  {
+  img:"/Card_Images/leaves.jpeg",
+  title:"Leaves",
+ },
+  {
+  img:"/Card_Images/moon_and_star.jpeg",
+  title:"Moon And Star",
+ },
+  {
+  img:"/Card_Images/bubbles.jpeg",
+  title:"Bubbles",
+ },
+  
+
+
+ ];
 
   return (
     <div className={styles.main}>
@@ -78,6 +108,23 @@ export default async function Home() {
       alt="Poster" 
       >
       </Image>
+
+      {/* This is for showcase jewellery */}
+     <div
+        className={styles.card_Container}>
+        {images.map((item, i) => (
+          <div className={styles.card_Image} key={i} >
+            <Image src={item.img}
+            className={styles.Images}
+            width={200}
+            height={200}
+            alt="Image" />
+            <p className={styles.image_caption}>{item.title}</p>
+          </div>
+        ))}
+      </div>
+
+
       <Image
       className={styles.posterImage}
       src={"https://www.giva.co/cdn/shop/files/first_access_Collection_Web_2.webp"}

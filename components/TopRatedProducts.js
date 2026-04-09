@@ -12,9 +12,8 @@ export default async function TopRatedProducts() {
 
 
   const products = await prisma.product.findMany({
-    where:{
-        gender:"male"
-    }
+    take: 6,
+  
   });
 
   return (
