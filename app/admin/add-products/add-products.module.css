@@ -2,7 +2,7 @@
 
 .container {
   width: 100%;
-  max-width: 400px;
+  max-width: 700px;
   margin: 50px auto;
   padding: 25px;
   background: #ffffff;
@@ -58,4 +58,35 @@
 }
 body{
   background:linear-gradient(135deg, #6c63ff, #4facfe);
+}
+.formgrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap:15px;
+}
+.genderBox{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.genderBox label{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #333;
+}
+.formGrid input,
+.formGrid textarea{
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+.formGrid textarea{
+  grid-column: span 1;
 }
