@@ -80,7 +80,7 @@ export default async function Home() {
       </Image>
       <Image
       className={styles.posterImage}
-      src={"/Images/poster1.webp"}
+      src={"/Images/ElviaBoat.png"}
       width={1000}
       height={100}
       alt="Poster"
