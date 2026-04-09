@@ -1,6 +1,6 @@
 // app/api/auth/otp/verify/route.js
 
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { signAccessToken, signRefreshToken } from "@/lib/auth.server";
 
 export async function POST(req) {

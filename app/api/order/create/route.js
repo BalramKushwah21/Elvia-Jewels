@@ -1,6 +1,6 @@
 // app/api/order/create/route.js
 
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { getUserFromToken } from "@/lib/auth.server";
 
 export async function POST(req) {

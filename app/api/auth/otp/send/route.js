@@ -1,6 +1,6 @@
 // app/api/auth/otp/send/route.js
 
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(req) {
   const { email } = await req.json();
