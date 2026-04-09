@@ -80,7 +80,7 @@ export default async function Home() {
       </Image>
       <Image
       className={styles.posterImage}
-      src={"/Images/ElviaBoat.png"}
+      src={"https://www.giva.co/cdn/shop/files/first_access_Collection_Web_2.webp"}
       width={1000}
       height={100}
       alt="Poster"
