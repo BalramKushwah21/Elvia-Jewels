@@ -64,6 +64,16 @@
   border-radius: 10px;
   color: black;
 }
+.shopByRecipient {
+  text-align: center;
+  margin: 20px;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 24px;
+}
+
+
 
 .TextShopHim {
   left: 28%;
@@ -88,6 +98,59 @@
   color: black;
 }
 
+/* Styles for reach Boxes */
+
+.shopByReach {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.reachBox {
+  width: 30%;
+  height: 25vh;
+  background-color: rgb(102, 21, 21);
+  text-align: center;
+
+  font-size: 50px;
+  font-weight: 900;
+  color: white;
+
+  border: 2px solid #0070f3;
+  background: transparent;
+  color: #0070f3;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.reachBox:hover{
+   background: #0070f3;
+  color: white;
+}
+
+.poster{
+margin: 50px;
+margin-bottom: 50px;
+}
+
+.posterImage{
+width: 100%;
+height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* styles for Mobile */
 @media (max-width: 768px) {
   .features {
     width: 100%;
@@ -98,21 +161,19 @@
     -ms-overflow-style: none;
   }
 
-  .recipient{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10%;
-}
+  .recipient {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+  }
 
-.recipientImage{
-width: 90%;
-height: auto;
-margin: 5%;
-
-
-}
+  .recipientImage {
+    width: 90%;
+    height: auto;
+    margin: 5%;
+  }
 
   .item {
     font-size: 12px;
