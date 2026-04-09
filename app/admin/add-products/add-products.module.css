@@ -5,7 +5,7 @@
   max-width: 700px;
   margin: 50px auto;
   padding: 25px;
-  background: #ffffff;
+  background: #f7d6f7;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -13,6 +13,7 @@
 }
 
 .container h2 {
+  width: 100%;
   text-align: center;
   margin-bottom: 20px;
   color: #333;
@@ -38,7 +39,7 @@
 }
 
 .container button {
-  padding: 12px;
+  padding: 16px;
   border: none;
   border-radius: 10px;
   background: linear-gradient(135deg, #6c63ff, #4facfe);
@@ -89,4 +90,22 @@ body{
 }
 .formGrid textarea{
   grid-column: span 1;
+}
+.inputBox{
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+}
+.inputBox label{
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+.page {
+  display: flex;
+  min-height: 100vh;;
+  background: linear-gradient(135deg, #FBEEEE, #F6DCDD); 
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
