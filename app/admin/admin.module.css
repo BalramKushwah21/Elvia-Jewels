@@ -1,0 +1,20 @@
+.container{
+    margin-top: 20px;
+display: flex;
+justify-content:space-around;
+align-items: center;
+}
+.users, .products, .revenue{
+border: 2px solid black;
+width: 20%;
+height:80px;
+text-align: center;
+}
+
+
+.OtherPages{
+    margin-top: 10%;
+display: flex;
+justify-content: space-around;
+
+}
