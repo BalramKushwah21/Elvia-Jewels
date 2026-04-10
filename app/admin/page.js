@@ -26,8 +26,9 @@ export default function AdminPage(){
             </div>
 
             <div className={styles.OtherPages}>
-            <Link href ="admin/add-products">Add Products</Link>
-            <Link href ="admin/edit-products">Edit Products</Link>
+            <Link href ="admin/products/add">Add Products</Link>
+            <Link href ="admin/products/edit">Edit Products</Link>
+            <Link href ="admin/products">All Products</Link>
             </div>
         </div>
     )
