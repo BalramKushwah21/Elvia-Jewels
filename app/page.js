@@ -69,45 +69,36 @@ export default async function Home() {
         <Link href="home/men_jewellery">
           <Image
             className={styles.recipientImage}
-            src="/Images/male-recipient.png"
+            src="/Images/male.jpeg"
+            
             alt="Recipient"
-            width={1000}
+            width={500}
             height={400}
           />
-          <span className={`${styles.recipientTextHim} ${styles.text}`}>
-            Him
-          </span>
-          <span className={`${styles.TextShopHim} ${styles.text}`}>
-            Shop Now
-          </span>
+          
         </Link>
 
         <Link href="home/women_jewellery">
           <Image
-            className={styles.recipientImage}
-            src="/Images/male-recipient.png"
-            alt="Recipient"
-            width={1000}
-            height={400}
-          />
-          <span className={`${styles.recipientTextHer} ${styles.text}`}>
-            Her
-          </span>
-          <span className={`${styles.TextShopHer} ${styles.text}`}>
-            Shop Now
-          </span>
+  className={styles.recipientImage}
+  src="/Images/female.jpeg"
+  alt="Recipient"
+  width={500}
+  height={400}
+/>
+        
         </Link>
       </div>
       <TopRatedProducts />
     <div className={styles.poster}>
       <Image
-      className={styles.posterImage}
-      src={"/Images/poster.webp"}
-      width={1000}
-      height={100}
-      alt="Poster" 
-      >
-      </Image>
+  className={styles.posterImage}
+  src={"/Images/poster.webp"}
+  width={1000}
+  height={100}
+  alt="Poster"
+/>
+      
 
       {/* This is for showcase jewellery */}
      <div
@@ -131,11 +122,10 @@ export default async function Home() {
       width={1000}
       height={100}
       alt="Poster"
-      >
-      </Image>
+      />
 
     </div>
-
     </div>
-  );
+    );
+
 }
