@@ -69,7 +69,7 @@ background: linear-gradient(135deg, #632345, #f3d1e6, #eac4dc);
   border-radius: 12px;
   border: none;
 
-  background: linear-gradient(135deg, #d4af37, #f7d774);
+  background: linear-gradient(135deg, #f47bc2, #eb5ac2);
   color: #fff;
   font-weight: 600;
 
@@ -93,14 +93,67 @@ background: linear-gradient(135deg, #632345, #f3d1e6, #eac4dc);
   font-size: 16px;
 }
 
-/* RESPONSIVE */
+/* 📱 REAL MOBILE CONTACT UI */
 @media (max-width: 768px) {
+
+  .container {
+    padding: 15px;
+    align-items: flex-start; /* top align like real apps */
+  }
+
   .glass-card {
     flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    gap: 25px;
   }
 
   .left,
   .right {
     width: 100%;
+  }
+
+  /* Heading like real apps */
+  .heading {
+    font-size: 26px;
+    text-align: left;
+    margin-bottom: 15px;
+  }
+
+  /* Inputs like real mobile UI */
+  .left input,
+  .left textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  /* Button like mobile app */
+  .left button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+
+  /* Right section becomes info card style */
+  .right {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .desc {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .info p {
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 }
