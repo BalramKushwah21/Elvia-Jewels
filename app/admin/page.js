@@ -7,6 +7,9 @@ export default function AdminPage(){
 
     return(
         <div className={styles.main_container}>
+            <h1 className={styles.heading}>
+            Wellcome To Admin Panel
+            </h1>
           
             <div className={styles.container}>
 
