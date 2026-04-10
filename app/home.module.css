@@ -136,7 +136,53 @@ margin-bottom: 50px;
 .posterImage{
 width: 100%;
 height: auto;
+
+border-radius:50px;
+margin-top:30px;
 }
+
+.card_Container{
+  margin-top: 20px;
+display: flex;
+justify-content: space-around;
+
+}
+
+.card_Image{
+border-radius: 20px;
+display: flex;
+flex-direction: column  ;
+justify-content: center;
+align-items: center;
+/* background-color: #E6D6FF; */
+background: linear-gradient(135deg, #f3e7ff, #ffd6e8);
+}
+
+
+.Images{
+  padding: 10px;
+  width: 200px;
+  height: auto;
+border-radius:10px 50px;
+}
+
+.image_caption{
+  margin-top: 10px;
+font-size: 25px;
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
