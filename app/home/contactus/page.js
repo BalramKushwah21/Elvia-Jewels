@@ -19,7 +19,7 @@ export default function ContactPage() {
 
         {/* RIGHT */}
         <div className="right">
-          <h1 className="heading">Contact Us</h1>
+          <h1 className="heading">Get in Touch</h1>
 
           <p className="desc">
             We’d love to hear from you! Please reach out with any questions,
