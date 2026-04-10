@@ -8,9 +8,13 @@ export default function EditProduct() {
   const router = useRouter();
 
   const [product, setProduct] = useState({
+     category: "",
+    color: "",
+    gender: "",
     name: "",
-    price: "",
     description: "",
+    price: "",
+    stock: "",
     image: "",
   });
 
@@ -25,6 +29,10 @@ export default function EditProduct() {
       price: data.price || "",
       description: data.description || "",
       image: data.image || "",
+      category: data.category || "",
+      color: data.color || "",
+      gender: data.gender || "",
+      stock: data.stock || "",
     });
   }
 
@@ -94,6 +102,38 @@ export default function EditProduct() {
             setProduct({ ...product, image: e.target.value })
           }
           placeholder="Image URL"
+        />
+        <input
+          type="text"
+          value={product.category}
+          onChange={(e) =>
+            setProduct({ ...product, category: e.target.value })
+          }
+          placeholder="Category"
+        />
+        <input
+          type="text"
+          value={product.color}
+          onChange={(e) =>
+            setProduct({ ...product, color: e.target.value })
+          }
+          placeholder="Color"
+        />
+        <input
+          type="text"
+          value={product.gender}
+          onChange={(e) =>
+            setProduct({ ...product, gender: e.target.value })
+          }
+          placeholder="Gender"
+        />
+        <input
+          type="text"
+          value={product.stock}
+          onChange={(e) =>
+            setProduct({ ...product, stock: e.target.value })
+          }
+          placeholder="Stock"
         />
 
         <button type="submit">Update</button>
