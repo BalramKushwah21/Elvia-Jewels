@@ -13,27 +13,27 @@ import Link from "next/link";
 export default async function Home() {
  const images = [
   {
-  img:"/Card_Images/infinity.jpeg",
+  img:"/Card_Images/infinity.png",
   title:"Infinity",
  },
   {
-  img:"/Card_Images/water_drops.jpeg",
+  img:"/Card_Images/water_drops.png",
   title:"Water Drops",
  },
   {
-  img:"/Card_Images/knots.jpeg",
+  img:"/Card_Images/knots.png",
   title:"Knots",
  },
   {
-  img:"/Card_Images/leaves.jpeg",
+  img:"/Card_Images/leaves.png",
   title:"Leaves",
  },
   {
-  img:"/Card_Images/moon_and_star.jpeg",
+  img:"/Card_Images/moon_and_star.png",
   title:"Moon And Star",
  },
   {
-  img:"/Card_Images/bubbles.jpeg",
+  img:"/Card_Images/bubbles.png",
   title:"Bubbles",
  },
   
