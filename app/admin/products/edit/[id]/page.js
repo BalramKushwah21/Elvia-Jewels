@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import styles from "./EditProduct.module.css";
+import styles from "./Setproduct.module.css";
 
 export default function EditProduct() {
   const { id } = useParams();
