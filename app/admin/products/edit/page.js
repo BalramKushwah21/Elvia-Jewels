@@ -1,4 +1,4 @@
-import styles from "./edit-products.module.css"
+
 export default function EditProduct(){
 
     return(
