@@ -1,30 +1,79 @@
+.page {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
-  max-width: 500px;
-  margin: 60px auto;
-  padding: 25px;
+  width: 400px;
   background: #ffffff;
+  padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.heading {
   text-align: center;
-  font-family: Arial, sans-serif;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-.text {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 15px;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* Optional button (future use) */
+.input,
+.textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #e8b4b8;
+  box-shadow: 0 0 0 2px rgba(232, 180, 184, 0.2);
+}
+
+.textarea {
+  min-height: 80px;
+  resize: none;
+}
+
 .button {
-  padding: 10px 15px;
-  background: linear-gradient(135deg, #F0C6C9, #E8B4B8);
+  background-color: #e8b4b8;
+  color: white;
+  padding: 10px;
   border: none;
   border-radius: 8px;
+  font-size: 15px;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .button:hover {
-  background: #E8B4B8;
+  background-color: #d99aa0;
+}
+
+.deleteBtn {
+  margin-top: 15px;
+  width: 100%;
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  background-color: #e60000;
 }
