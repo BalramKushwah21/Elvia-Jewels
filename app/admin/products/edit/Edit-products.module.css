@@ -1,0 +1,30 @@
+.container {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.text {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Optional button (future use) */
+.button {
+  padding: 10px 15px;
+  background: linear-gradient(135deg, #F0C6C9, #E8B4B8);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #E8B4B8;
+}
