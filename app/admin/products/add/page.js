@@ -19,7 +19,7 @@ export default function AddProduct() {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(Form), // FIXED
+    body: JSON.stringify(form), // FIXED
   });
 
   alert("Product added!");
