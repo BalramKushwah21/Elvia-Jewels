@@ -1,0 +1,95 @@
+
+.container {
+  max-width: 720px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  font-family: "Poppins", sans-serif;
+}
+
+.heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #e4e4e4;
+  font-size: 14px;
+  background: #fafafa;
+  transition: all 0.25s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #e8b4b8;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.25);
+}
+
+.priceInput {
+  font-weight: 600;
+}
+
+.textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.updateButton {
+  margin-top: 10px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e8b4b8, #d89aa0);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.updateButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(232, 180, 184, 0.4);
+}
+
+.deleteButton {
+  margin-top: 25px;
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: #ff4d4f;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.deleteButton:hover {
+  background: #d9363e;
+  box-shadow: 0 10px 20px rgba(255, 77, 79, 0.4);
+}
+
+.imagePreview {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 5px;
+}

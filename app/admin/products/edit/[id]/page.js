@@ -66,11 +66,12 @@ export default function EditProduct() {
   }
 
   return (
-    <div>
-      <h1>Edit Product</h1>
+    <div className={styles.container}>
+      <h1 className={styles.heading}>Edit Product</h1>
 
-      <form onSubmit={handleUpdate}>
+      <form onSubmit={handleUpdate} className={styles.form}>
         <input
+          className={styles.input}
           type="text"
           value={product.name}
           onChange={(e) =>
@@ -80,6 +81,7 @@ export default function EditProduct() {
         />
 
         <input
+        className={styles.priceInput}
           type="number"
           value={product.price}
           onChange={(e) =>
@@ -89,6 +91,7 @@ export default function EditProduct() {
         />
 
         <textarea
+        className={styles.textarea }
           value={product.description}
           onChange={(e) =>
             setProduct({ ...product, description: e.target.value })
@@ -97,6 +100,7 @@ export default function EditProduct() {
         />
 
         <input
+          className={styles.input}
           type="text"
           value={product.image}
           onChange={(e) =>
@@ -105,6 +109,8 @@ export default function EditProduct() {
           placeholder="Image URL"
         />
         <input
+           className={styles.input}
+
           type="text"
           value={product.category}
           onChange={(e) =>
@@ -113,6 +119,8 @@ export default function EditProduct() {
           placeholder="Category"
         />
         <input
+          className={styles.input}
+
           type="text"
           value={product.color}
           onChange={(e) =>
@@ -121,6 +129,8 @@ export default function EditProduct() {
           placeholder="Color"
         />
         <input
+                  className={styles.input}
+
           type="text"
           value={product.gender}
           onChange={(e) =>
@@ -129,6 +139,8 @@ export default function EditProduct() {
           placeholder="Gender"
         />
         <input
+                  className={styles.input}
+
           type="text"
           value={product.stock}
           onChange={(e) =>
@@ -137,10 +149,12 @@ export default function EditProduct() {
           placeholder="Stock"
         />
 
-        <button type="submit">Update</button>
+        <button type="submit" className={styles.updateButton}>
+          Update Product
+        </button>
       </form>
 
-      <button onClick={handleDelete} style={{ color: "red" }}>
+      <button onClick={handleDelete} className={styles.deleteButton}>
         Delete Product
       </button>
     </div>
