@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import styles from "./add-products.module.css";
+ import styles from "./add.module.css";
 export default function AddProduct() {
-  const [form, setForm] = useState({
+     const [form, setForm] = useState({
     category: "",
     color: "",
     gender: "",
@@ -14,16 +14,16 @@ export default function AddProduct() {
   });
 
   const submit = async () => {
-    await fetch("/api/products/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    });
+  await fetch("/api/products/add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(Form), // FIXED
+  });
 
-    alert("Product added!");
-  };
+  alert("Product added!");
+};
 
   return (
     <div className={styles.container}>
@@ -114,5 +114,4 @@ export default function AddProduct() {
     </div>
     </div>
   );
-} 
-
+}
