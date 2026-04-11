@@ -2,28 +2,29 @@
 import { useState } from "react";
  import styles from "./add.module.css";
 export default function AddProduct() {
-     const [form, setForm] = useState({
-    category: "",
-    color: "",
-    gender: "",
-    name: "",
-    description: "",
-    price: "",
-    stock: "",
-    image: "",
-  });
+    const [form, setForm] = useState({
+  category: "",
+  color: "",
+  gender: "",
+  name: "",
+  description: "",
+  price: "",
+  stock: "",
+  image: "",
+});
 
-  const submit = async () => {
+const submit = async () => {
   await fetch("/api/products/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(Form), // FIXED
+    body: JSON.stringify(form), // ✅ FIXED
   });
 
   alert("Product added!");
 };
+  
 
   return (
     <div className={styles.container}>
