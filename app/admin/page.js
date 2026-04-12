@@ -18,7 +18,7 @@ export default function AdminPage(){
             </div>
 
             <div className={styles.products}>
-            this for producrts 
+            this for products 
             </div>
             <div className={styles.revenue}>
             this is for revenue

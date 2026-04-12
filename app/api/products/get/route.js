@@ -1,7 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET() { 
+  console.log("get api called");
   try {
     const products = await prisma.product.findMany({
       orderBy: { createdAt: "desc" },
