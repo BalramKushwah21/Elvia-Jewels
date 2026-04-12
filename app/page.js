@@ -93,7 +93,7 @@ export default async function Home() {
     <div className={styles.poster}>
       <Image
   className={styles.posterImage}
-  src={"/Images/poster.webp"}
+  src={"/Images/Poster.webp"}
   width={1000}
   height={100}
   alt="Poster"

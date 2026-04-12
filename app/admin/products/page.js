@@ -18,6 +18,7 @@ export default async function ProductsPage() {
             Edit
           </Link>
         </div>
+        
       ))}
     </div>
   );
