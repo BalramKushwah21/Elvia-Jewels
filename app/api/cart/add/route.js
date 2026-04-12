@@ -1,60 +1,63 @@
 import { prisma } from "@/lib/prisma";
-import { getUserFromToken } from "@/lib/auth.server";
-import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth"; // if using auth
 
 export async function POST(req) {
   try {
-    const user = await getUserFromToken();
+    const body = await req.json();
+    const { productId, quantity } = body;
 
-    if (!user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!productId) {
+      return Response.json({ error: "Product ID required" }, { status: 400 });
     }
 
-    const { productId } = await req.json();
+    // ⚠️ Replace this with your auth logic
+    const userId = 1; // TEMP (hardcoded)
 
-    // 1. Find or create cart
-    let cart = await prisma.cart.findUnique({
-      where: { userId: user.id },
+    // 1️⃣ Check/Create Cart
+    let cart = await prisma.cart.findFirst({
+      where: { userId },
     });
 
     if (!cart) {
       cart = await prisma.cart.create({
         data: {
-          userId: user.id,
+          userId,
         },
       });
     }
 
-    // 2. Check if product already in cart
-    const existingItem = await prisma.cartItem.findUnique({
+    // 2️⃣ Check if product already in cart
+    const existingItem = await prisma.cartItem.findFirst({
       where: {
-        cartId_productId: {
-          cartId: cart.id,
-          productId,
-        },
+        cartId: cart.id,
+        productId,
       },
     });
 
+    // 3️⃣ Update OR Create
     if (existingItem) {
-      // 3. Increase quantity
       await prisma.cartItem.update({
         where: { id: existingItem.id },
-        data: { quantity: existingItem.quantity + 1 },
+        data: {
+          quantity: existingItem.quantity + (quantity || 1),
+        },
       });
     } else {
-      // 4. Create new item
       await prisma.cartItem.create({
         data: {
           cartId: cart.id,
           productId,
+          quantity: quantity || 1,
         },
       });
     }
 
-    return NextResponse.json({ message: "Added to cart" });
-
+    return Response.json({ message: "Added to cart" });
   } catch (error) {
-    console.log(error);
-    return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+    console.error(error);
+    return Response.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }
