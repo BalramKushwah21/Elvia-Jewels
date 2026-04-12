@@ -4,6 +4,7 @@ import styles from "../store.module.css"; // 👈 import module
 
 export default async function Store() {
   const products = await prisma.product.findMany();
+  // console.log("Fetched products:", products);
 
   return (
     <div className={styles.container}>
@@ -13,7 +14,7 @@ export default async function Store() {
           <h3>{p.name}</h3>
           <h3>{p.description}</h3>
           <p>₹{p.price}</p>
-          <AddToCart productId={p.id} />
+          <AddToCart productId={p.id}/>
         </div>
       ))}
     </div>

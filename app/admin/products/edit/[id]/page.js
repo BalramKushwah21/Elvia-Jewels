@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import styles from "./edit-products.module.css";
+import styles from "./id.module.css";
 
 export default function EditProduct() {
   const { id } = useParams();
   const router = useRouter();
 
   const [product, setProduct] = useState({
-     category: "",
+    category: "",
     color: "",
     gender: "",
     name: "",
@@ -19,49 +19,61 @@ export default function EditProduct() {
     image: "",
   });
 
-  // Fetch product
+  // ✅ Fetch product
   useEffect(() => {
-  async function fetchProduct() {
-    const res = await fetch(`/api/products/${id}`);
-    const data = await res.json();
+    async function fetchProduct() {
+      const res = await fetch(`/api/products/${id}`);
+      const data = await res.json();
 
-    setProduct({
-      name: data.name || "",
-      price: data.price || "",
-      description: data.description || "",
-      image: data.image || "",
-      category: data.category || "",
-      color: data.color || "",
-      gender: data.gender || "",
-      stock: data.stock || "",
-    });
-  }
+      setProduct({
+        name: data.name || "",
+        price: data.price || "",
+        description: data.description || "",
+        image: data.image || "",
+        category: data.category || "",
+        color: data.color || "",
+        gender: data.gender || "",
+        stock: data.stock || "",
+      });
+    }
 
-  fetchProduct();
-}, [id]);
+    if (id) fetchProduct();
+  }, [id]);
 
-  // Handle update
+  // ✅ Update
   async function handleUpdate(e) {
     e.preventDefault();
 
-    await fetch(`/api/products/${id}`, {
+    const res = await fetch(`/api/products/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(product),
     });
 
+    if (!res.ok) {
+      alert("Update failed ❌");
+      return;
+    }
+
+    alert("Product updated ✅");
     router.push("/admin/products");
   }
 
-  // Handle delete
+  // ✅ Delete
   async function handleDelete() {
     const confirmDelete = confirm("Are you sure?");
     if (!confirmDelete) return;
 
-    await fetch(`/api/products/${id}`, {
+    const res = await fetch(`/api/products/${id}`, {
       method: "DELETE",
     });
 
+    if (!res.ok) {
+      alert("Delete failed ❌");
+      return;
+    }
+
+    alert("Product deleted 🗑️");
     router.push("/admin/products");
   }
 
@@ -81,7 +93,7 @@ export default function EditProduct() {
         />
 
         <input
-        className={styles.priceInput}
+          className={styles.priceInput}
           type="number"
           value={product.price}
           onChange={(e) =>
@@ -91,7 +103,7 @@ export default function EditProduct() {
         />
 
         <textarea
-        className={styles.textarea }
+          className={styles.textarea}
           value={product.description}
           onChange={(e) =>
             setProduct({ ...product, description: e.target.value })
@@ -108,9 +120,9 @@ export default function EditProduct() {
           }
           placeholder="Image URL"
         />
-        <input
-           className={styles.input}
 
+        <input
+          className={styles.input}
           type="text"
           value={product.category}
           onChange={(e) =>
@@ -118,9 +130,9 @@ export default function EditProduct() {
           }
           placeholder="Category"
         />
+
         <input
           className={styles.input}
-
           type="text"
           value={product.color}
           onChange={(e) =>
@@ -128,9 +140,9 @@ export default function EditProduct() {
           }
           placeholder="Color"
         />
-        <input
-                  className={styles.input}
 
+        <input
+          className={styles.input}
           type="text"
           value={product.gender}
           onChange={(e) =>
@@ -138,13 +150,13 @@ export default function EditProduct() {
           }
           placeholder="Gender"
         />
-        <input
-                  className={styles.input}
 
-          type="text"
+        <input
+          className={styles.input}
+          type="number"
           value={product.stock}
           onChange={(e) =>
-            setProduct({ ...product, stock: e.target.value })
+            setProduct({ ...product, stock: Number(e.target.value) })
           }
           placeholder="Stock"
         />
