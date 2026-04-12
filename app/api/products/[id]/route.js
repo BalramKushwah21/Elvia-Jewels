@@ -1,49 +1,75 @@
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
 
-// GET single product
-export async function GET(req, { params }) {
+// ✅ GET
+export async function GET(req, context) {
   try {
+    const id = Number(context.params.id);
+
+    if (!id) {
+      return Response.json({ error: "Invalid ID" }, { status: 400 });
+    }
+
     const product = await prisma.product.findUnique({
-      where: { id: parseInt(params.id) },
+      where: { id },
     });
 
-    return NextResponse.json(product);
+    return Response.json(product);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch product" });
+    console.error(error);
+    return Response.json({ error: "Failed to fetch" }, { status: 500 });
   }
 }
 
-// UPDATE product
-export async function PUT(req, { params }) {
+// ✅ UPDATE
+export async function PUT(req, context) {
   try {
+    const id = Number(context.params.id);
+
+    console.log("ID:", id); // 🔍 debug
+
+    if (!id) {
+      return Response.json({ error: "Invalid ID" }, { status: 400 });
+    }
+
     const body = await req.json();
 
     const updatedProduct = await prisma.product.update({
-      where: { id: parseInt(params.id) },
+      where: { id },
       data: {
         name: body.name,
-        price: body.price,
+        price: Number(body.price),
         description: body.description,
         image: body.image,
+        category: body.category,
+        color: body.color,
+        gender: body.gender,
+        stock: Number(body.stock),
       },
     });
 
-    return NextResponse.json(updatedProduct);
+    return Response.json(updatedProduct);
   } catch (error) {
-    return NextResponse.json({ error: "Update failed" });
+    console.error("UPDATE ERROR:", error);
+    return Response.json({ error: "Update failed" }, { status: 500 });
   }
 }
 
-// DELETE product
-export async function DELETE(req, { params }) {
+// ✅ DELETE
+export async function DELETE(req, context) {
   try {
+    const id = Number(context.params.id);
+
+    if (!id) {
+      return Response.json({ error: "Invalid ID" }, { status: 400 });
+    }
+
     await prisma.product.delete({
-      where: { id: parseInt(params.id) },
+      where: { id },
     });
 
-    return NextResponse.json({ message: "Product deleted" });
+    return Response.json({ message: "Deleted successfully" });
   } catch (error) {
-    return NextResponse.json({ error: "Delete failed" });
+    console.error("DELETE ERROR:", error);
+    return Response.json({ error: "Delete failed" }, { status: 500 });
   }
 }
