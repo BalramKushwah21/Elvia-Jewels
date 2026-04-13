@@ -3,12 +3,12 @@
 ========================= */
 
 .wrapper {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #7a0f3c, #c34a7e);
-  padding: 20px;
+  
 }
 
 .card {
@@ -152,11 +152,14 @@
 ========================= */
 
 @media (max-width: 600px) {
-
+.wrapper {
+    height: 60vh;
+  }
   .card {
     flex-direction: column;
     width: 100%;
     max-width: 360px;
+    
   }
 
   .left {

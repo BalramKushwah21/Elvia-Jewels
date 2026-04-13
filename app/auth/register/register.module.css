@@ -3,7 +3,7 @@
 ========================= */
 
 .wrapper {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,11 +152,14 @@
 ========================= */
 
 @media (max-width: 600px) {
-
+.wrapper{
+height:60vh;
+}
   .card {
     flex-direction: column;
     width: 100%;
     max-width: 360px;
+    
   }
 
   .left {
