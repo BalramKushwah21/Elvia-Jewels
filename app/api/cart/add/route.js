@@ -1,32 +1,22 @@
-import { prisma } from "@/lib/prisma";
-import { getServerSession } from "next-auth"; // if using auth
-
 export async function POST(req) {
   try {
     const body = await req.json();
+    console.log("BODY:", body); // 👈 important
+
     const { productId, quantity } = body;
 
-    if (!productId) {
-      return Response.json({ error: "Product ID required" }, { status: 400 });
-    }
+    const userId = "1"; // temp
 
-    // ⚠️ Replace this with your auth logic
-    const userId = 1; // TEMP (hardcoded)
-
-    // 1️⃣ Check/Create Cart
     let cart = await prisma.cart.findFirst({
       where: { userId },
     });
 
     if (!cart) {
       cart = await prisma.cart.create({
-        data: {
-          userId,
-        },
+        data: { userId },
       });
     }
 
-    // 2️⃣ Check if product already in cart
     const existingItem = await prisma.cartItem.findFirst({
       where: {
         cartId: cart.id,
@@ -34,7 +24,6 @@ export async function POST(req) {
       },
     });
 
-    // 3️⃣ Update OR Create
     if (existingItem) {
       await prisma.cartItem.update({
         where: { id: existingItem.id },
@@ -53,10 +42,12 @@ export async function POST(req) {
     }
 
     return Response.json({ message: "Added to cart" });
+
   } catch (error) {
-    console.error(error);
+    console.error("🔥 FULL ERROR:", error); // 👈 THIS LINE IS GOLD
+
     return Response.json(
-      { error: "Internal Server Error" },
+      { error: error.message }, // 👈 return REAL error
       { status: 500 }
     );
   }
