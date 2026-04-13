@@ -1,90 +1,26 @@
 "use client";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import styles from "./login.module.css";
 import { useState } from "react";
+import styles from "./login.module.css";
 
-export default function Login() {
-  const router = useRouter();
+export default function LoginPage() {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  // 🔍 Validate email format
-  const isValidEmail = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
-  const submit = async (e) => {
-    e.preventDefault();
-
-    if (loading) return; // prevent double click
-
-    setError("");
-
-    // 🧪 Validation
-    if (!form.email || !form.password) {
-      setError("All fields are required");
-      return;
-    }
-
-    if (!isValidEmail(form.email)) {
-      setError("Invalid email format");
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-        credentials: "include",
-      });
-
-      const text = await res.text();
-      console.log("RAW RESPONSE:", text);
-
-      let data = null;
-      try {
-        data = JSON.parse(text);
-      } catch {
-        data = null;
-      }
-
-      if (res.ok) {
-        router.replace("/");
-        router.refresh();
-      } else if (res.status === 401) {
-        setError("Invalid email or password");
-      } else if (res.status === 404) {
-        setError("User not found");
-      } else {
-        setError(data?.error || "Something went wrong");
-      }
-    } catch (err) {
-      console.error(err);
-      setError("Network error. Please try again.");
-    }
-
-    setLoading(false);
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
-        {/* LEFT SIDE */}
+
+        {/* LEFT */}
         <div className={styles.left}>
-          <div className={styles.triangle1}></div>
-          <div className={styles.triangle2}></div>
-          <div className={styles.triangle3}></div>
+          <div className={styles.shape1}></div>
+          <div className={styles.shape2}></div>
+          <div className={styles.shape3}></div>
 
           <div className={styles.leftText}>
             <h2>LOGIN</h2>
@@ -92,56 +28,41 @@ export default function Login() {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT */}
         <div className={styles.right}>
           <div className={styles.avatar}>👤</div>
 
-          <h3 className={styles.heading}>LOGIN</h3>
+          <h2 className={styles.heading}>LOGIN</h2>
 
-          {/* ❌ Error Message */}
-          {error && <p className={styles.error}>{error}</p>}
-
-          {/* EMAIL */}
           <div className={styles.inputGroup}>
-            <span className={styles.icon}>📧</span>
             <input
               type="email"
-              className={styles.inputField}
-              placeholder="Email"
+              name="email"
+              placeholder=" "
               value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              onChange={handleChange}
+              className={styles.inputField}
             />
+            <label>Email</label>
           </div>
 
-          {/* PASSWORD */}
           <div className={styles.inputGroup}>
-            <span className={styles.icon}>🔒</span>
             <input
               type="password"
-              className={styles.inputField}
-              placeholder="Password"
+              name="password"
+              placeholder=" "
               value={form.password}
-              onChange={(e) => setForm({ ...form, password: e.target.value })}
+              onChange={handleChange}
+              className={styles.inputField}
             />
+            <label>Password</label>
           </div>
 
-          <div className={styles.forgot}>Forgot Password?</div>
+          <p className={styles.link}>Forgot Password?</p>
 
-          {/* BUTTON */}
-          <button className={styles.button} onClick={submit} disabled={loading}>
-            {loading ? "Logging in..." : "LOGIN"}
-          </button>
-
-          <div className={styles.social}>
-            Or Login With
-            <span className={styles.link}>Google</span>
-            <span className={styles.link}>Facebook</span>
-            <div className={styles.notMember}>
-              <span>Not a member?</span>{" "}
-              <Link href="/auth/register">Register</Link>
-            </div>
-          </div>
+          <button className={styles.button}>LOGIN</button>
         </div>
+
       </div>
     </div>
   );
