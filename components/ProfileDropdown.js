@@ -1,52 +1,60 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import styles from "./ProfileDropdown.module.css";
 
-export default function ProfileDropdown({ user }) {
+export default function ProfileDropdown() {
+  const { data: session } = useSession();
+  const user = session?.user;
+
   const [open, setOpen] = useState(false);
-  const ref = useRef();
+  const dropdownRef = useRef();
 
-  // close dropdown on outside click
+  // 🔒 Close on outside click
   useEffect(() => {
     const handler = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) {
+      if (!dropdownRef.current?.contains(e.target)) {
         setOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const handleLogout = async () => {
-    await fetch("/api/auth/logout", {
-      method: "POST",
-      credentials: "include",
-    });
+  if (!user) return null;
 
-    window.location.href = "/auth/login";
-  };
+  const username = user.name || user.email?.split("@")[0];
 
   return (
-    <div className="profile-container" ref={ref}>
-      {/* Trigger */}
-      <div
-        className="profile-trigger"
+    <div className={styles.wrapper} ref={dropdownRef}>
+      {/* Button */}
+      <button
+        className={styles.userButton}
         onClick={() => setOpen(!open)}
       >
-        👤 {user.email.split("@")[0]} ⬇
-      </div>
+        Hi, {username} 👇
+      </button>
 
       {/* Dropdown */}
       {open && (
-        <div className="dropdown-menu">
-          <div className="dropdown-item">My Profile</div>
-          <div className="dropdown-item">Orders</div>
+        <div className={styles.dropdown}>
+          <Link href="/profile" onClick={() => setOpen(false)}>
+            Profile
+          </Link>
 
-          <div className="dropdown-divider"></div>
+          <Link href="/home/cart" onClick={() => setOpen(false)}>
+            Cart
+          </Link>
 
-          <div className="dropdown-item logout" onClick={handleLogout}>
+          <button
+            className={styles.logoutBtn}
+            onClick={() => signOut({ callbackUrl: "/" })}
+          >
             Logout
-          </div>
+          </button>
         </div>
       )}
     </div>

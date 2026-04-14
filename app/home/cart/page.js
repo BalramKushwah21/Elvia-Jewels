@@ -1,53 +1,72 @@
-// app/home/cart/page.js
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions";
+import { prisma } from "@/lib/prisma";
 
-"use client";
-import CheckoutButton from "./payButton";
-import { useEffect, useState } from "react";
+export default async function CartPage() {
+  const session = await getServerSession(authOptions);
 
-export default function CartPage() {
-  const [cart, setCart] = useState([]);
+  let cartItems = [];
 
-useEffect(() => {
-  fetch("/api/cart/get")
-    .then(async (res) => {
-      const text = await res.text();
-
-      try {
-        return JSON.parse(text);
-      } catch {
-        console.error("Invalid JSON:", text);
-        alert("Invalid JSON:", text);
-        return null;
-      }
-    })
-    .then((data) => {
-      setCart(data?.items || []);
-    })
-    .catch((err) => {
-      console.error("Fetch error:", err);
+  // ✅ If logged in → fetch from DB
+  if (session) {
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
     });
-}, []);
 
-  let total = 0;
+    if (user) {
+      const cart = await prisma.cart.findFirst({
+        where: { userId: user.id },
+        include: {
+          items: {
+            include: {
+              product: true, // 🔥 important
+            },
+          },
+        },
+      });
+
+      cartItems = cart?.items || [];
+    }
+  }
+
+  // ✅ calculate total
+  const total = cartItems.reduce((acc, item) => {
+    return acc + item.product.price * item.quantity;
+  }, 0);
 
   return (
     <div style={{ padding: "20px" }}>
       <h1>Your Cart</h1>
 
-      {cart.map(item => {
-        total += item.price * item.quantity;
+      {/* 🔓 Guest mode */}
+      {!session && (
+        <p style={{ color: "gray" }}>
+          You are browsing as guest. Login to save your cart.
+        </p>
+      )}
 
-        return (
-          <div key={item.id}>
-            <p>{item.productId}</p>
+      {/* 🛒 Cart items */}
+      {cartItems.length === 0 ? (
+        <p>Your cart is empty</p>
+      ) : (
+        cartItems.map((item) => (
+          <div key={item.id} style={{ marginBottom: "10px" }}>
+            <p><b>{item.product.name}</b></p>
+            <p>₹{item.product.price}</p>
             <p>Qty: {item.quantity}</p>
           </div>
-        );
-      })}
+        ))
+      )}
 
+      {/* 💰 Total */}
       <h2>Total: ₹{total}</h2>
 
-      <CheckoutButton amount={total} />
+      {/* 💳 Checkout */}
+      {total > 0 && (
+        <button>
+          Proceed to Checkout
+        </button>
+      )}
     </div>
   );
 }
