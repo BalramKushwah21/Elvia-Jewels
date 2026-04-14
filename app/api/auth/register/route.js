@@ -5,7 +5,7 @@ export async function POST(req) {
   try {
     const body = await req.json();
 
-    let { email, password } = body;
+    let { name,email, password } = body;
 
     // 🔐 Normalize email
     email = email?.toLowerCase().trim();
@@ -50,6 +50,7 @@ export async function POST(req) {
     // 💾 Create user
     const user = await prisma.user.create({
       data: {
+        name,
         email,
         password: hashedPassword,
       },

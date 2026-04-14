@@ -1,15 +1,15 @@
 "use client";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import styles from "../login/login.module.css"; // 🔥 reuse same styles
+import styles from "../login/login.module.css";
 
 export default function RegisterPage() {
 
-const validateEmail = (email) => {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-};
-
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
 
   const [emailError, setEmailError] = useState("");
   const [form, setForm] = useState({
@@ -23,12 +23,15 @@ const validateEmail = (email) => {
 
   const router = useRouter();
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!form.email.includes("@")) {
+    if (!validateEmail(form.email)) {
       return setError("Enter a valid email");
+    }
+
+    if (emailError) {
+      return setError("Fix email before submitting");
     }
 
     if (form.password.length < 6) {
@@ -49,12 +52,17 @@ const validateEmail = (email) => {
 
       const data = await res.json();
 
+      if (res.status === 409) {
+        setError("Email already registered. Redirecting...");
+        setTimeout(() => router.push("/auth/login"), 1500);
+        return;
+      }
+
       if (!res.ok) {
         setError(data.error || "Something went wrong");
         return;
       }
 
-      // 🔥 Auto login
       await signIn("credentials", {
         email: form.email,
         password: form.password,
@@ -64,7 +72,7 @@ const validateEmail = (email) => {
       router.push("/");
       router.refresh();
 
-    } catch (err) {
+    } catch {
       setError("Server error");
     } finally {
       setLoading(false);
@@ -74,8 +82,6 @@ const validateEmail = (email) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
-
-        {/* LEFT SIDE */}
         <div className={styles.left}>
           <div className={styles.shape1}></div>
           <div className={styles.shape2}></div>
@@ -87,19 +93,16 @@ const validateEmail = (email) => {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
         <div className={styles.right}>
           <div className={styles.avatar}>👤</div>
           <h2 className={styles.heading}>REGISTER</h2>
 
           <form onSubmit={handleSubmit}>
-
-            {/* Full Name */}
             <div className={styles.inputGroup}>
               <input
                 type="text"
                 className={styles.inputField}
-                placeholder=""
+                placeholder=" "
                 value={form.name}
                 onChange={(e) =>
                   setForm({ ...form, name: e.target.value })
@@ -108,32 +111,29 @@ const validateEmail = (email) => {
               />
               <label>Name</label>
             </div>
-            {/* EMAIL */}
+
             <div className={styles.inputGroup}>
               <input
-  type="email"
-  className={styles.inputField}
-  placeholder=" "
-  value={form.email}
-  onChange={(e) => {
-    const value = e.target.value;
+                type="email"
+                className={styles.inputField}
+                placeholder=" "
+                value={form.email}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setForm({ ...form, email: value });
 
-    setForm({ ...form, email: value });
-
-    if (!value) {
-      setEmailError("");
-    } else if (!validateEmail(value)) {
-      setEmailError("Invalid email format");
-    } else {
-      setEmailError("");
-    }
-  }}
-  required
-/>
-<label>Email</label>
+                  if (!value) setEmailError("");
+                  else if (!validateEmail(value))
+                    setEmailError("Invalid email format");
+                  else setEmailError("");
+                }}
+                required
+              />
+              <label>Email</label>
             </div>
 
-            {/* PASSWORD */}
+            {emailError && <p style={{ color: "red" }}>{emailError}</p>}
+
             <div className={styles.inputGroup}>
               <input
                 type="password"
@@ -148,25 +148,17 @@ const validateEmail = (email) => {
               <label>Password</label>
             </div>
 
-            {/* ERROR */}
-            {error && (
-              <p style={{ color: "red", marginTop: "10px" }}>
-                {error}
-              </p>
-            )}
+            {error && <p style={{ color: "red" }}>{error}</p>}
 
-            {/* BUTTON */}
             <button
               type="submit"
               className={styles.button}
-              disabled={loading}
+              disabled={loading || emailError}
             >
               {loading ? "Creating..." : "CREATE ACCOUNT"}
             </button>
-
           </form>
         </div>
-
       </div>
     </div>
   );
