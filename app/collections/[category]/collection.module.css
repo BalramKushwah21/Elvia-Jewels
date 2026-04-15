@@ -1,6 +1,12 @@
 /* =========================
-  💻 1. DESKTOP (DEFAULT)
+   💻 1. DESKTOP (DEFAULT)
 ========================= */
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+}
 
 .productsGrid {
   display: grid;

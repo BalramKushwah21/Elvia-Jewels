@@ -1,6 +1,9 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import { prisma } from "@/lib/prisma";
+import Link from "next/link";
+
+
 
 export default async function CartPage() {
   const session = await getServerSession(authOptions);
@@ -51,7 +54,10 @@ export default async function CartPage() {
       ) : (
         cartItems.map((item) => (
           <div key={item.id} style={{ marginBottom: "10px" }}>
-            <p><b>{item.product.name}</b></p>
+            <img src={item.product.image} alt={item.product.name} width={100} />
+            <p>
+              <b>{item.product.name}</b>
+            </p>
             <p>₹{item.product.price}</p>
             <p>Qty: {item.quantity}</p>
           </div>
@@ -62,11 +68,13 @@ export default async function CartPage() {
       <h2>Total: ₹{total}</h2>
 
       {/* 💳 Checkout */}
-      {total > 0 && (
-        <button>
-          Proceed to Checkout
-        </button>
-      )}
+      {!session ? (
+        <p>Please login to checkout</p>
+      ) : total > 0 ? (
+        <Link href="/home/checkout">
+          <button>Proceed to Checkout</button>
+        </Link>
+      ) : null}
     </div>
   );
 }
