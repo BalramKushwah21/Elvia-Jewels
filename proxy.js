@@ -15,8 +15,8 @@ export function proxy(req) {
 
   // 🔒 Protected routes (ONLY checkout + admin)
   if (
-    pathname.startsWith("/home/checkout") ||
-    pathname.startsWith("/admin")
+    pathname.startsWith("/home/checkout")
+   
   ) {
     const token = req.cookies.get("next-auth.session-token");
 
@@ -31,6 +31,6 @@ export function proxy(req) {
 export const config = {
   matcher: [
     "/home/checkout/:path*",
-    "/admin/:path*",
+   
   ],
 };
