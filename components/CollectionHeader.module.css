@@ -1,0 +1,74 @@
+.hero {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+      rgba(230, 198, 204, 0.85),
+      rgba(245, 225, 229, 0.85)
+    ),
+    url("/jewelry-bg.jpg"); /* optional image */
+
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* ✨ Soft glass overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(6px);
+}
+
+/* 🎯 Content center */
+.content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+/* 💎 Title */
+.title {
+  font-size: 56px;
+  font-weight: 600;
+  color: #4a2c32;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 1px;
+
+  animation: fadeUp 0.8s ease forwards;
+}
+
+/* ✨ Subtitle */
+.subtitle {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #6b4a50;
+  letter-spacing: 0.5px;
+
+  animation: fadeUp 1.2s ease forwards;
+}
+
+/* 🔥 Elegant divider */
+.divider {
+  width: 60px;
+  height: 2px;
+  background: #4a2c32;
+  margin: 15px auto 0;
+
+  animation: fadeUp 1.5s ease forwards;
+}
+
+/* 🌟 Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
