@@ -26,7 +26,7 @@ export default async function TopRatedProducts() {
           <h3>{p.name}</h3>
           <h3>{p.description}</h3>
           <p>₹{p.price}</p>
-          <AddToCart productId={p.id} />
+          <AddToCart productId={p.id } image={p.image} />
         </div>
       ))}
 

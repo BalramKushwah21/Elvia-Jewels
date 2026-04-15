@@ -1,29 +1,25 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import styles from "./navbar.module.css";
+import ProfileDropdown from "@/components/ProfileDropdown";
+import { useSession } from "next-auth/react";
+import useCartCount from "@/hooks/useCartCount";
+
 
 export default function Navbar() {
+  const count = useCartCount();
   const pathname = usePathname();
-  const [user, setUser] = useState(null);
-  const [open, setOpen] = useState(false); // 👈 used for BOTH mobile + dropdown
+  const { data: session, status } = useSession();
+  const [open, setOpen] = useState(false);
   const router = useRouter();
 
-  // 🔹 Fetch user
-  useEffect(() => {
-    fetch("/api/auth/me")
-      .then((res) => res.json())
-      .then((data) => setUser(data.user));
-  }, [pathname]);
+  const user = session?.user;
 
-  // 🔹 Logout
+  // 🔓 Logout (NextAuth)
   const handleLogout = async () => {
-    await fetch("/api/auth/logout", {
-      method: "POST",
-    });
-
-    setUser(null);
+    await signOut({ redirect: false });
     router.push("/");
     router.refresh();
   };
@@ -36,7 +32,7 @@ export default function Navbar() {
         Elvia Jewels
       </div>
 
-      {/* ✅ Mobile Menu */}
+      {/* Mobile Menu */}
       <div
         className={`${styles.mobileNavbar} ${
           open ? styles.showMenu : ""
@@ -49,21 +45,13 @@ export default function Navbar() {
           ✖
         </button>
 
-        <Link href="/" onClick={() => setOpen(false)}>
-          Home
-        </Link>
-        <Link href="/home/store" onClick={() => setOpen(false)}>
-          Store
-        </Link>
-        <Link href="/home/contactus" onClick={() => setOpen(false)}>
-          Contact
-        </Link>
-        <Link href="/home/cart" onClick={() => setOpen(false)}>
-          Cart
-        </Link>
+        <Link href="/" onClick={() => setOpen(false)}>Home</Link>
+        <Link href="/home/store" onClick={() => setOpen(false)}>Store</Link>
+        <Link href="/home/contactus" onClick={() => setOpen(false)}>Contact</Link>
+        <Link href="/home/cart" onClick={() => setOpen(false)}>Cart({count})</Link>
       </div>
 
-      {/* ✅ Toggle Button */}
+      {/* Toggle */}
       <button
         className={styles.navbarOpen}
         onClick={() => setOpen(true)}
@@ -73,74 +61,25 @@ export default function Navbar() {
 
       {/* Desktop */}
       <div className={styles.navbarLinks}>
-        {user ? (
-          <div className={styles.userMenu}>
-            <div className={styles.laptopNavbar}>
-              <Link className={styles.navbarLink} href="/">
-                Home
-              </Link>
-              <Link className={styles.navbarLink} href="/home/store">
-                Store
-              </Link>
-              <Link className={styles.navbarLink} href="/home/cart">
-                Cart
-              </Link>
+{user ? (
+  <>
+    <Link className={styles.navbarLink} href="/">Home</Link>
+    <Link className={styles.navbarLink} href="/home/store">Store</Link>
+    <Link className={styles.navbarLink} href="/home/cart">Cart</Link>
 
-              <button
-                className={styles.userButton}
-                onClick={() => setOpen(!open)}
-              >
-                Hi, {user.name} 👇
-              </button>
-            </div>
+    <ProfileDropdown />
+  </>
+) : (
+  <>
+    <Link className={styles.navbarLink} href="/">Home</Link>
+    <Link className={styles.navbarLink} href="/home/store">Store</Link>
+    <Link className={styles.navbarLink} href="/home/contactus">Contact</Link>
+    <Link className={styles.navbarLink} href="/home/cart">Cart</Link>
 
-            {open && (
-              <div className={styles.dropdown}>
-                <Link href="/profile" onClick={() => setOpen(false)}>
-                  Profile
-                </Link>
-
-                <Link href="/" onClick={() => setOpen(false)}>
-                  Home
-                </Link>
-                <Link
-                  href="/home/contactus"
-                  onClick={() => setOpen(false)}
-                >
-                  Contact
-                </Link>
-
-                <button
-                  className={styles.logoutBtn}
-                  onClick={handleLogout}
-                >
-                  Logout
-                </button>
-              </div>
-            )}
-          </div>
-        ) : (
-          <>
-            <Link className={styles.navbarLink} href="/">
-              Home
-            </Link>
-            <Link className={styles.navbarLink} href="/home/store">
-              Store
-            </Link>
-            <Link className={styles.navbarLink} href="/home/contactus">
-              Contact
-            </Link>
-            <Link className={styles.navbarLink} href="/home/cart">
-              Cart
-            </Link>
-            <Link href="/auth/login" className={styles.btn}>
-              Login
-            </Link>
-            <Link href="/auth/register" className={styles.btn}>
-              Register
-            </Link>
-          </>
-        )}
+    <Link href="/auth/login" className={styles.btn}>Login</Link>
+    <Link href="/auth/register" className={styles.btn}>Register</Link>
+  </>
+)}
       </div>
     </nav>
   );

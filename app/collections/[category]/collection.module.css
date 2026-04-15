@@ -2,6 +2,12 @@
    💻 1. DESKTOP (DEFAULT)
 ========================= */
 
+.container {
+  display: flex;
+  flex-direction: column;
+
+}
+
 .productsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

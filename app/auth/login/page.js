@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import styles from "./login.module.css";
 
 export default function LoginPage() {
@@ -8,15 +10,39 @@ export default function LoginPage() {
     password: "",
   });
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setError("");
+
+    const res = await signIn("credentials", {
+      email: form.email,
+      password: form.password,
+      redirect: false,
+    });
+
+    setLoading(false);
+
+    if (res?.error) {
+      setError("Invalid email or password");
+      return;
+    }
+
+    router.push("/");
+    router.refresh();
   };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
 
-        {/* LEFT */}
+        {/* LEFT SIDE */}
         <div className={styles.left}>
           <div className={styles.shape1}></div>
           <div className={styles.shape2}></div>
@@ -28,39 +54,60 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* RIGHT */}
+        {/* RIGHT SIDE */}
         <div className={styles.right}>
           <div className={styles.avatar}>👤</div>
-
           <h2 className={styles.heading}>LOGIN</h2>
 
-          <div className={styles.inputGroup}>
-            <input
-              type="email"
-              name="email"
-              placeholder=" "
-              value={form.email}
-              onChange={handleChange}
-              className={styles.inputField}
-            />
-            <label>Email</label>
-          </div>
+          <form onSubmit={handleSubmit}>
 
-          <div className={styles.inputGroup}>
-            <input
-              type="password"
-              name="password"
-              placeholder=" "
-              value={form.password}
-              onChange={handleChange}
-              className={styles.inputField}
-            />
-            <label>Password</label>
-          </div>
+            {/* EMAIL */}
+            <div className={styles.inputGroup}>
+              <input
+                type="email"
+                className={styles.inputField}
+                placeholder=" "
+                value={form.email}
+                onChange={(e) =>
+                  setForm({ ...form, email: e.target.value })
+                }
+                required
+              />
+              <label>Email</label>
+            </div>
 
-          <p className={styles.link}>Forgot Password?</p>
+            {/* PASSWORD */}
+            <div className={styles.inputGroup}>
+              <input
+                type="password"
+                className={styles.inputField}
+                placeholder=" "
+                value={form.password}
+                onChange={(e) =>
+                  setForm({ ...form, password: e.target.value })
+                }
+                required
+              />
+              <label>Password</label>
+            </div>
 
-          <button className={styles.button}>LOGIN</button>
+            {/* ERROR */}
+            {error && (
+              <p style={{ color: "red", marginTop: "10px" }}>
+                {error}
+              </p>
+            )}
+
+            {/* BUTTON */}
+            <button
+              type="submit"
+              className={styles.button}
+              disabled={loading}
+            >
+              {loading ? "Logging in..." : "LOGIN"}
+            </button>
+
+          </form>
         </div>
 
       </div>

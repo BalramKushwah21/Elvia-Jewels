@@ -1,23 +1,25 @@
 import { NextResponse } from "next/server";
 
-export function middleware(req) {
-  const token = req.cookies.get("token");
+export function proxy(req) {
   const { pathname } = req.nextUrl;
 
-  // 🌐 Public routes (always allowed)
+  // 🌐 Public routes
   if (
     pathname === "/" ||
     pathname.startsWith("/auth") ||
-    pathname.startsWith("/products")
+    pathname.startsWith("/products") ||
+    pathname.startsWith("/home/cart") // ✅ allow cart
   ) {
     return NextResponse.next();
   }
 
-  // 🔒 Protected routes
+  // 🔒 Protected routes (ONLY checkout + admin)
   if (
-    pathname.startsWith("/home/cart") ||
-    pathname.startsWith("/home/checkout")
+    pathname.startsWith("/home/checkout") ||
+    pathname.startsWith("/admin")
   ) {
+    const token = req.cookies.get("next-auth.session-token");
+
     if (!token) {
       return NextResponse.redirect(new URL("/auth/login", req.url));
     }
@@ -28,7 +30,7 @@ export function middleware(req) {
 
 export const config = {
   matcher: [
-    "/home/cart/:path*",
     "/home/checkout/:path*",
+    "/admin/:path*",
   ],
 };

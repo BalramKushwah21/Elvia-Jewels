@@ -1,54 +1,83 @@
+import { prisma } from "@/lib/prisma";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions";
+
 export async function POST(req) {
   try {
-    const body = await req.json();
-    console.log("BODY:", body); // 👈 important
+    const session = await getServerSession(authOptions);
 
-    const { productId, quantity } = body;
+    // 🔐 AUTH CHECK
+    if (!session) {
+      return Response.json(
+        { error: "Please login first" },
+        { status: 401 }
+      );
+    }
 
-    const userId = "1"; // temp
+    const { productId, quantity } = await req.json();
 
+    // ❌ DON'T convert to number (your IDs are strings)
+    // const pid = Number(productId); ❌ REMOVE
+
+    // ✅ Find user
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
+    });
+
+    if (!user) {
+      return Response.json(
+        { error: "User not found" },
+        { status: 404 }
+      );
+    }
+
+    // ✅ Find or create cart
     let cart = await prisma.cart.findFirst({
-      where: { userId },
+      where: { userId: user.id },
     });
 
     if (!cart) {
       cart = await prisma.cart.create({
-        data: { userId },
+        data: { userId: user.id },
       });
     }
 
-    const existingItem = await prisma.cartItem.findFirst({
+    // ✅ Check existing item
+    const existing = await prisma.cartItem.findFirst({
       where: {
         cartId: cart.id,
-        productId,
+        productId: productId, // 🔥 string 그대로
       },
     });
 
-    if (existingItem) {
-      await prisma.cartItem.update({
-        where: { id: existingItem.id },
+    if (existing) {
+      const updated = await prisma.cartItem.update({
+        where: { id: existing.id },
         data: {
-          quantity: existingItem.quantity + (quantity || 1),
+          quantity: { increment: 1 },
         },
       });
-    } else {
-      await prisma.cartItem.create({
-        data: {
-          cartId: cart.id,
-          productId,
-          quantity: quantity || 1,
-        },
-      });
+
+      return Response.json(updated);
     }
 
-    return Response.json({ message: "Added to cart" });
+    // ✅ Create new item
+    const item = await prisma.cartItem.create({
+      data: {
+        cartId: cart.id,
+        productId: productId,
+        quantity: quantity || 1,
+      },
+    });
 
-  } catch (error) {
-    console.error("🔥 FULL ERROR:", error); // 👈 THIS LINE IS GOLD
+    return Response.json(item);
+
+  } catch (err) {
+    console.error("CART ERROR:", err);
 
     return Response.json(
-      { error: error.message }, // 👈 return REAL error
+      { error: err.message },
       { status: 500 }
     );
   }
-}
+} 
