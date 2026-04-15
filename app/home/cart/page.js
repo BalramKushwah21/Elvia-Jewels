@@ -54,7 +54,7 @@ export default async function CartPage() {
       ) : (
         cartItems.map((item) => (
           <div key={item.id} style={{ marginBottom: "10px" }}>
-            <img src={item.image} alt={item.product.name} width={100} />
+            <img src={item.product.image} alt={item.product.name} width={100} />
             <p>
               <b>{item.product.name}</b>
             </p>
