@@ -66,7 +66,7 @@ export default async function Home() {
 
       <h3 className={styles.shopByRecipient}> Shop by Recipient</h3>
       <div className={styles.recipient}>
-        <Link href="home/men_jewellery">
+        <Link href="/home/store/male">
           <Image
             className={styles.recipientImage}
             src="/Images/male.jpeg"
@@ -78,7 +78,7 @@ export default async function Home() {
           
         </Link>
 
-        <Link href="home/women_jewellery">
+        <Link href="/home/store/female">
           <Image
   className={styles.recipientImage}
   src="/Images/female.jpeg"
