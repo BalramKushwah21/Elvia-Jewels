@@ -1,17 +1,24 @@
 import { prisma } from "@/lib/prisma";
 import AddToCart from "@/components/AddToCart";
-import styles from "./store.module.css";
+import styles from "./gender.module.css";
 import CollectionHeader from "@/components/CollectionHeader";
 
 export default async function Category({ params }) {
     const { gender } = await params;
 
-  const products = await prisma.product.findMany();
+  const products = await prisma.product.findMany({
+    where: {
+      gender: {
+        equals: gender,
+        mode: "insensitive",
+      },
+    },
+  });
 
   return (
     <div className={styles.container}>
 
-      <CollectionHeader title="Store" />  
+      <CollectionHeader title={gender} />  
     <div className={styles.productsGrid}>
       {products.map((p) => (
         <div key={p.id} className={styles.productCard}>
