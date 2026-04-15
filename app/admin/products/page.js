@@ -6,20 +6,22 @@ export default async function ProductsPage() {
   const products = await prisma.product.findMany();
 
   return (
-    <div>
-      <h1>All Products</h1>
-
+    <div className={styles.container}>
+      <h1 className={styles.title}>All Products</h1>
+      <div className={styles.productList}>
       {products.map((product) => (
-        <div key={product.id}>
-          <h3>{product.name}</h3>
-          <p>₹{product.price}</p>
+        <div key={product.id} className={styles.card}>
+          <h3 className={styles.productName}>{product.name}</h3>
+          <p className={styles.price}>₹{product.price}</p>
 
-          <Link href={`/admin/products/edit/${product.id}`}>
+          <Link href={`/admin/products/edit/${product.id}`}
+          className={styles.editLink}>
             Edit
           </Link>
         </div>
         
       ))}
+    </div>
     </div>
   );
 }
