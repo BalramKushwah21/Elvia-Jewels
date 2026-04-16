@@ -1,6 +1,6 @@
 .AddToCartBtn{
 width: 100%;
 margin-top: auto;
-
-
+background-color: rgba(127, 23, 108, 0.459);
+color: black;
 }
