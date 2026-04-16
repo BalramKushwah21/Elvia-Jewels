@@ -1,60 +1,84 @@
+/* 🌸 Soft Luxury Background */
+body {
+  background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+  margin: 0;
+  padding: 0;
+}
 
+/* Container */
 .container {
-  max-width: 720px;
+  max-width: 1000px;
   margin: 60px auto;
-  padding: 40px;
+  padding: 50px;
   background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   font-family: "Poppins", sans-serif;
 }
 
+/* Heading (Luxury Gold Touch) */
 .heading {
   text-align: center;
-  font-size: 28px;
-  font-weight: 600;
-  color: #222;
-  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #9f1239; /* deep rose */
+  margin-bottom: 40px;
+  letter-spacing: 0.5px;
 }
 
+/* Form */
 .form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
 }
 
+/* Full width */
+.fullWidth {
+  grid-column: span 2;
+}
+
+/* Inputs (Soft Premium Feel) */
 .input {
   width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid #e4e4e4;
+  padding: 15px 18px;
+  border-radius: 14px;
+  border: 1px solid #fbcfe8;
   font-size: 14px;
-  background: #fafafa;
-  transition: all 0.25s ease;
+  background: #fff7fb;
+  transition: all 0.3s ease;
+}
+
+.input::placeholder {
+  color: #9ca3af;
 }
 
 .input:focus {
   outline: none;
-  border-color: #e8b4b8;
+  border-color: #ec4899;
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.25);
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2);
 }
 
+/* Price */
 .priceInput {
   font-weight: 600;
+  color: #16a34a;
 }
 
+/* Textarea */
 .textarea {
-  min-height: 120px;
+  min-height: 140px;
   resize: none;
 }
 
+/* 🌟 Update Button (Rose Gold Style) */
 .updateButton {
   margin-top: 10px;
-  padding: 14px;
+  padding: 15px;
   border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #e8b4b8, #d89aa0);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ec4899, #be185d);
   color: white;
   font-size: 15px;
   font-weight: 600;
@@ -63,17 +87,17 @@
 }
 
 .updateButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(232, 180, 184, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(236, 72, 153, 0.4);
 }
 
+/* ❌ Delete Button (Soft Red) */
 .deleteButton {
-  margin-top: 25px;
-  width: 100%;
-  padding: 13px;
+  margin-top: 20px;
+  padding: 14px;
   border: none;
-  border-radius: 12px;
-  background: #ff4d4f;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fb7185, #e11d48);
   color: white;
   font-size: 14px;
   font-weight: 600;
@@ -82,14 +106,16 @@
 }
 
 .deleteButton:hover {
-  background: #d9363e;
-  box-shadow: 0 10px 20px rgba(255, 77, 79, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(225, 29, 72, 0.4);
 }
 
+/* Image Preview */
 .imagePreview {
   width: 100%;
-  max-height: 220px;
+  max-height: 250px;
   object-fit: cover;
-  border-radius: 12px;
-  margin-top: 5px;
+  border-radius: 16px;
+  margin-top: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
