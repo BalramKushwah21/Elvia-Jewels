@@ -56,17 +56,22 @@ export default async function Home() {
 
       <h3 className={styles.shopByRecipient}>Luxury within Reach</h3>
       <div className={styles.shopByReach}>
-      <button className={styles.reachBox}>
+        <Link href="/home/store/reach/1500" className={styles.reachBox}>
+
+      
         Under <br/>₹1499
-      </button>
-      <button className={styles.reachBox}>
+      
+    </Link>
+    <Link href="/home/store/reach/2000" className={styles.reachBox}> 
+     
         Under <br/>₹1999
-      </button>
+    
+    </Link>
       </div>
 
       <h3 className={styles.shopByRecipient}> Shop by Recipient</h3>
       <div className={styles.recipient}>
-        <Link href="/home/store/male">
+        <Link href="/home/store/gender/male">
           <Image
             className={styles.recipientImage}
             src="/Images/male.jpeg"
@@ -78,7 +83,7 @@ export default async function Home() {
           
         </Link>
 
-        <Link href="/home/store/female">
+        <Link href="/home/store/gender/female">
           <Image
   className={styles.recipientImage}
   src="/Images/female.jpeg"

@@ -1,16 +1,16 @@
 import { prisma } from "@/lib/prisma";
 import AddToCart from "@/components/AddToCart";
-import styles from "../store.module.css";
+import styles from "./reach.module.css";
 import CollectionHeader from "@/components/CollectionHeader";
 
 export default async function Category({ params }) {
-    const { gender } = await params;
-
+    const { reach } = await params;
+   const num = parseInt(reach);
   const products = await prisma.product.findMany({
     where: {
-      gender: {
-        equals: gender,
-        mode: "insensitive",
+      price: {
+        lt: num,
+       
       },
     },
   });
@@ -18,7 +18,7 @@ export default async function Category({ params }) {
   return (
     <div className={styles.container}>
 
-      <CollectionHeader title={gender} />  
+      <CollectionHeader title={`Price: ₹${num}`} />  
     <div className={styles.productsGrid}>
       {products.map((p) => (
         <div key={p.id} className={styles.productCard}>
