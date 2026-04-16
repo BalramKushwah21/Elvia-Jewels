@@ -4,16 +4,14 @@ import "./imageSlider.css";
 
 export default function ImageSlider() {
   const images = [
-    "/slider/image1.png",
-    "/slider/image1.png",
+    "/slider/image1.jpeg",
     "/slider/image2.png",
-    "/slider/image5.png",
-    "/slider/image3.png",
+    "/slider/image3.jpeg",
     "/slider/image4.png",
-    "/slider/image7.png",
-    "/slider/image8.png",
-    "/slider/image9.png",
-    "/slider/image10.png",
+    "/slider/image5.jpeg",
+    "/slider/image6.jpeg",
+    
+ 
   ];
 
   const [touchStartX, setTouchStartX] = useState(0);
