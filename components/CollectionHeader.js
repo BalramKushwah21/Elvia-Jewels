@@ -1,9 +1,13 @@
 import styles from "./CollectionHeader.module.css";
+import Image from "next/image";
 
 export default function CollectionHeader({ title }) {
+  const imgSrc = `/collection_header_images/${title}.jpeg`;
   return (
     <div className={styles.hero}>
-      <div className={styles.overlay}></div>
+      <div className={styles.overlay}>
+        <Image src={imgSrc} alt={title} fill style={{ objectFit: "cover" }} />
+      </div>
 
       <div className={styles.content}>
         <h1 className={styles.title}>

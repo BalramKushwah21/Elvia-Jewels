@@ -10,6 +10,8 @@ export default function ImageSlider() {
     "/slider/image4.png",
     "/slider/image5.jpeg",
     "/slider/image6.jpeg",
+    "/slider/image7.jpeg",
+    "/slider/image8.jpeg",
     
  
   ];

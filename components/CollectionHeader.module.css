@@ -4,11 +4,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+/* 
+  background-image: url("/collection_header_images/bangle.jpeg"); */
 
-  background: linear-gradient(
+  /* background: linear-gradient(
       rgba(230, 198, 204, 0.85),
-      rgba(245, 225, 229, 0.85)
-    );
+      rgba(245, 225, 229, 0.85) 
+    ); */
 
   background-size: cover;
   background-position: center;
@@ -19,7 +21,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  backdrop-filter: blur(6px);
+  /* backdrop-filter: blur(6px); */
 }
 
 /* 🎯 Content center */
