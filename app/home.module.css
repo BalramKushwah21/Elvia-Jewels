@@ -249,5 +249,43 @@
     text-align: center;
     border-radius: 10px;
     color: black;
+
   }
+  .reachBox {
+    width: 40%;
+    height: 10vh;
+    font-size: 30px;
+    padding: 5px 5px;
+  }
+  .shopByReach {
+     justify-content: space-around;
+     gap: 0px;
+  }
+  .poster {
+  margin: 5px;
+}
+
+.posterImage {
+  width: 100%;
+  height: auto;
+
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+}.card_Container {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.card_Image {
+  
+  min-width: 100px;   /* important for horizontal scroll */
+  flex-shrink: 0;
+
+  
 }

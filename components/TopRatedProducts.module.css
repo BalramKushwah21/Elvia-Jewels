@@ -21,7 +21,7 @@
   justify-content: space-between;
   padding: 10px;
   height: auto;
-  background-color: rgb(156, 203, 239);
+  background-color: rgba(226, 164, 217, 0.64);
   border-radius: 20px;
 }
 
@@ -108,13 +108,20 @@
     height: 8rem;
   }
 
-  /* TEXT */
-  .product-name {
-    font-size: 0.9rem;
+  .name {
+    font-size: 20px;
+    color: black;
+    margin-top: 5px;
   }
-
-  .product-price {
+  .description {
+    font-size: 0.8rem;
+      margin-top: 10px;
+  }
+  .price {
     font-size: 1rem;
+    font-weight: bold;
+    color: rgb(92, 31, 31);
+    
   }
 }
 /* 📲 TABLET */
@@ -150,5 +157,7 @@
   /* TEXT */
   .section-title {
     font-size: 2rem;
+  
   }
+
 }

@@ -65,7 +65,7 @@ export default function Navbar() {
   <>
     <Link className={styles.navbarLink} href="/">Home</Link>
     <Link className={styles.navbarLink} href="/home/store">Store</Link>
-    <Link className={styles.navbarLink} href="/home/cart">Cart</Link>
+    <Link className={styles.navbarLink} href="/home/cart">Cart ({count})</Link>
 
     <ProfileDropdown />
   </>

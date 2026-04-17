@@ -69,13 +69,13 @@
   background: #1d4ed8;
 }
 
-/* =========================
-  📱 4. MOBILE (≤480px)
-@media (max-width: 480px) {
+
+@media (max-width: 600px) {
   .productsGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 6fr));
     gap: 12px;
     padding: 10px;
+    
   }
 
   .productInfo {
@@ -99,4 +99,3 @@
     font-size: 0.85rem;
   }
 }
-   */
