@@ -1,101 +1,112 @@
 /* =========================
-  💻 1. DESKTOP (DEFAULT)
+  🔥 TOP IMAGE (FIXED PERFECT)
+========================= */
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 380px;          /* 👉 desktop height */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* ✅ IMAGE FIT PROPERLY */
+.topImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* 👉 best for banner */
+  object-position: center; /* 👉 center focus */
+  display: block;
+}
+
+/* ✨ TEXT ON IMAGE */
+.imageText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+}
+
+.imageText h1 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+
+/* =========================
+  🛍️ PRODUCTS GRID
 ========================= */
 
 .productsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding: 20px;
-
-
+  padding: 25px 0;
 }
 
+/* 📦 CARD */
 .productCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: #ffffff;
+  background: #fff;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: all 0.2s ease;
+  transition: 0.3s;
 }
 
 .productCard:hover {
-  transform: translateY(-px);
+  transform: translateY(-5px);
 }
 
+/* 🖼️ PRODUCT IMAGE */
 .productImage {
   width: 100%;
-  aspect-ratio: 1 / 1;   /* ✅ perfect square */
+  aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
+/* 📄 INFO */
 .productInfo {
   padding: 12px;
 }
 
 .productName {
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 4px;
 }
 
 .productDescription {
-  font-size: 0.85rem;
-  color: #6b7280;
+  font-size: 13px;
+  color: #666;
 }
 
 .productPrice {
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: bold;
   color: #ec4899;
   margin: 6px 0;
 }
 
-.btn-primary {
-  width: 100%;
-  padding: 10px;
-  font-size: 0.9rem;
-  border-radius: 8px;
-  border: none;
-  background: #2563eb;
-  color: white;
-  cursor: pointer;
-}
 
-.btn-primary:hover {
-  background: #1d4ed8;
-}
+/* =========================
+  📱 MOBILE RESPONSIVE
+========================= */
 
+@media (max-width: 768px) {
 
-@media (max-width: 600px) {
+  .imageWrapper {
+    height: 260px;   /* mobile banner */
+  }
+
+  .imageText h1 {
+    font-size: 28px;
+  }
+
   .productsGrid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 6fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    padding: 10px;
-    
-  }
-
-  .productInfo {
-    padding: 10px;
-  }
-
-  .productName {
-    font-size: 0.9rem;
-  }
-
-  .productDescription {
-    font-size: 0.8rem;
-  }
-
-  .productPrice {
-    font-size: 0.9rem;
-  }
-
-  .btn-primary {
-    padding: 8px;
-    font-size: 0.85rem;
   }
 }

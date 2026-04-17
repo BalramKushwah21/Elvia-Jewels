@@ -1,49 +1,52 @@
-/* Background */
 .container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f3e8ff, #fce7f3);
+  background: linear-gradient(135deg, #fdf4ff, #fce7f3, #ede9fe);
   padding: 20px;
 }
 
-/* Card */
 .card {
-  background: #ffffff;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  border-radius: 24px;
-  padding: 30px;
-  max-width: 400px;
+  background: #fff;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+  border-radius: 28px;
+  padding: 32px;
+  max-width: 420px;
   width: 100%;
   text-align: center;
 }
 
-/* Icon */
 .icon {
-  color: #22c55e;
   margin-bottom: 15px;
 }
 
-/* Heading */
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #1f2937;
+.placed {
+  color: #22c55e;
 }
 
-/* Text */
+.shipped {
+  color: #3b82f6;
+}
+
+.delivered {
+  color: #a855f7;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
 .subtitle {
   color: #6b7280;
-  margin-top: 8px;
-  font-size: 14px;
+  margin-top: 10px;
 }
 
-/* Order Info Box */
 .orderBox {
   background: #f9fafb;
-  border-radius: 12px;
   padding: 15px;
+  border-radius: 12px;
   margin-top: 20px;
   text-align: left;
 }
@@ -55,10 +58,12 @@
 
 .value {
   font-weight: 600;
-  color: #111827;
 }
 
-/* Buttons */
+.marginTop {
+  margin-top: 10px;
+}
+
 .btnGroup {
   display: flex;
   gap: 10px;
@@ -72,32 +77,13 @@
   padding: 10px;
   border-radius: 12px;
   border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.primaryBtn:hover {
-  background: #6d28d9;
 }
 
 .secondaryBtn {
   flex: 1;
-  background: transparent;
+  border: 1px solid #7c3aed;
   color: #7c3aed;
+  background: transparent;
   padding: 10px;
   border-radius: 12px;
-  border: 1px solid #7c3aed;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.secondaryBtn:hover {
-  background: #f3e8ff;
-}
-
-/* Responsive */
-@media (max-width: 500px) {
-  .btnGroup {
-    flex-direction: column;
-  }
 }
