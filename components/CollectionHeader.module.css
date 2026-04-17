@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  height: 200px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,7 @@
       rgba(230, 198, 204, 0.85),
       rgba(245, 225, 229, 0.85) 
     ); */
-
+  border-radius: 20px;
   background-size: cover;
   background-position: center;
   overflow: hidden;

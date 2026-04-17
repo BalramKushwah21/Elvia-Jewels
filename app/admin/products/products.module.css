@@ -1,9 +1,9 @@
 /* Container */
-body {
+/* body {
   background: linear-gradient(to right, #deb4f2, #eecbf6);
   margin: 0;
   padding: 0;
-}
+} */
 .container {
   padding: 20px;
   max-width: 1000px;

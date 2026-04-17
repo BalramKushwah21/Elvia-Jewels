@@ -1,8 +1,15 @@
+.main_container {
+  min-height: 100vh;
+  background: linear-gradient(to right, #deb4f2, #eecbf6);
+  padding: 20px;
+}
+
 .container {
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+
 }
 .heading {
   margin: 20px;
