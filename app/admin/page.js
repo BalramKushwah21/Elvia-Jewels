@@ -10,7 +10,6 @@ export default function AdminPage(){
             <h1 className={styles.heading}>
             Wellcome To Admin Panel
             </h1>
-          
             <div className={styles.container}>
 
             <div className={styles.users}>
