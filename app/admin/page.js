@@ -29,6 +29,8 @@ export default function AdminPage(){
             <Link href ="admin/products/add">Add Products</Link>
             <Link href ="admin/products">Edit Products</Link>
             <Link href ="admin/products">All Products</Link>
+            <Link href ="admin/order">order placed</Link>
+
             </div>
         </div>
     )
