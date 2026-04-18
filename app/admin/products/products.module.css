@@ -6,7 +6,7 @@
 } */
 .container {
   padding: 20px;
-  max-width: 1000px;
+  
   margin: 0 auto;
   font-family: Arial, sans-serif;
 }
@@ -23,12 +23,16 @@
 /* ✅ 2 COLUMN GRID (ONLY DESKTOP) */
 .productList {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
 }
 
 /* Card */
 .card {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   border: 1px solid #e5e5e5;
   padding: 18px;
   border-radius: 12px;

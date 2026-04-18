@@ -2,7 +2,7 @@ import styles from "./CollectionHeader.module.css";
 import Image from "next/image";
 
 export default function CollectionHeader({ title }) {
-  const imgSrc = `/collection_header_images/${title}.jpeg`;
+  const imgSrc = `/collection_header_images/${title}.png`;
   return (
     <div className={styles.hero}>
       <div className={styles.overlay}>
