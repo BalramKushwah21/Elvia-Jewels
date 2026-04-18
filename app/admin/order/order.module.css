@@ -1,89 +1,46 @@
 .container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #fdf4ff, #fce7f3, #ede9fe);
   padding: 20px;
-}
-
-.card {
-  background: #fff;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
-  border-radius: 28px;
-  padding: 32px;
-  max-width: 420px;
-  width: 100%;
-  text-align: center;
-}
-
-.icon {
-  margin-bottom: 15px;
-}
-
-.placed {
-  color: #22c55e;
-}
-
-.shipped {
-  color: #3b82f6;
-}
-
-.delivered {
-  color: #a855f7;
+  background: #f9f9f9;
+  min-height: 100vh;
 }
 
 .title {
-  font-size: 26px;
-  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.subtitle {
-  color: #6b7280;
-  margin-top: 10px;
-}
-
-.orderBox {
-  background: #f9fafb;
-  padding: 15px;
+.card {
+  background: white;
+  padding: 20px;
   border-radius: 12px;
-  margin-top: 20px;
-  text-align: left;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
 
-.label {
-  font-size: 12px;
-  color: #9ca3af;
+.header {
+  margin-bottom: 15px;
 }
 
-.value {
-  font-weight: 600;
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.marginTop {
-  margin-top: 10px;
-}
-
-.btnGroup {
+.product {
   display: flex;
   gap: 10px;
-  margin-top: 20px;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
 }
 
-.primaryBtn {
-  flex: 1;
-  background: #7c3aed;
-  color: white;
-  padding: 10px;
-  border-radius: 12px;
-  border: none;
+.image {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
 }
 
-.secondaryBtn {
-  flex: 1;
-  border: 1px solid #7c3aed;
-  color: #7c3aed;
-  background: transparent;
-  padding: 10px;
-  border-radius: 12px;
+.total {
+  margin-top: 15px;
 }

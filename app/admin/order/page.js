@@ -1,78 +1,55 @@
-import { prisma } from "@/lib/prisma";
-import Link from "next/link";
-import { CheckCircle } from "lucide-react";
 import styles from "./order.module.css";
 
-export default async function Page({ params }) {
-  const order = await prisma.order.findMany({
-    where: { id: params.id },
+async function getOrders() {
+  const res = await fetch("http://localhost:3000/api/orders", {
+    cache: "no-store",
   });
 
-  if (!order) {
-    return (
-      <div className={styles.container}>
-        <div className={styles.card}>
-          <h1>Order not found</h1>
-        </div>
-      </div>
-    );
-  }
+  if (!res.ok) return [];
+
+  return res.json();
+}
+
+export default async function OrdersPage() {
+  const orders = await getOrders();
 
   return (
     <div className={styles.container}>
-      <div className={styles.card}>
+      <h1 className={styles.title}>Customer Orders</h1>
 
-        {/* Icon */}
-        <CheckCircle 
-          className={`${styles.icon} ${styles[order.status]}`} 
-          size={60} 
-        />
+      {orders.length === 0 ? (
+        <p>No orders found</p>
+      ) : (
+        orders.map((order) => (
+          <div key={order.id} className={styles.card}>
+            
+            <div className={styles.header}>
+              <p><strong>Order:</strong> {order.id}</p>
+              <p><strong>User:</strong> {order.user.email}</p>
+              <p><strong>Status:</strong> {order.status}</p>
+            </div>
 
-        {/* Title */}
-        <h1 className={styles.title}>
-          {order.status === "delivered"
-            ? "Delivered 🎉"
-            : order.status === "shipped"
-            ? "Order Shipped 🚚"
-            : "Order Placed Successfully!"}
-        </h1>
+            <div className={styles.products}>
+              {order.items.map((item) => (
+                <div key={item.id} className={styles.product}>
+                  <img
+                    src={item.product.image || "/placeholder.png"}
+                    className={styles.image}
+                  />
+                  <div>
+                    <p>{item.product.name}</p>
+                    <p>₹{item.product.price}</p>
+                    <p>Qty: {item.quantity}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
 
-        {/* Message */}
-        <p className={styles.subtitle}>
-          Thank you for shopping with us 💎 <br />
-          Your jewelry will reach you soon.
-        </p>
+            <h3 className={styles.total}>Total: ₹{order.total}</h3>
 
-        {/* Order Info */}
-        <div className={styles.orderBox}>
-          <p className={styles.label}>Order ID</p>
-          <p className={styles.value}>#{order.id}</p>
-
-          <p className={`${styles.label} ${styles.marginTop}`}>
-            Estimated Delivery
-          </p>
-
-          <p className={styles.value}>
-            {order.deliveryDays} Business Days
-          </p>
-        </div>
-
-        {/* Buttons */}
-        <div className={styles.btnGroup}>
-          <Link href="/">
-            <button className={styles.primaryBtn}>
-              Continue Shopping
-            </button>
-          </Link>
-
-          <Link href={`/order/${order.id}`}>
-            <button className={styles.secondaryBtn}>
-              Refresh
-            </button>
-          </Link>
-        </div>
-
-      </div>
+          </div>
+        ))
+      )}
     </div>
   );
 }
