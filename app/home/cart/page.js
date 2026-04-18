@@ -20,8 +20,8 @@ export default async function CartPage() {
   if (session?.user?.email) {
     try {
       const user = await prisma.user.findUnique({
-        where: { email: session.user.email },
-      });
+  where: { email: session.user.email },
+});
 
       if (user) {
         const cart = await prisma.cart.findFirst({
