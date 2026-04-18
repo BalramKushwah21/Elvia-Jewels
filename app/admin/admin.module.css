@@ -1,35 +1,92 @@
-.main_container {
+/* Background */
+.wrapper {
   min-height: 100vh;
-  background: linear-gradient(to right, #deb4f2, #eecbf6);
-  padding: 20px;
+  padding: 40px;
+  text-align: center;
+
+  background: linear-gradient(135deg, #e9d5ff, #c4b5fd, #fbcfe8);
 }
 
-.container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-}
+/* Heading */
 .heading {
-  margin: 20px;
-  text-align: center;
-}
-.users,
-.products,
-.revenue {
-  border: 2px solid black;
-  width: 20%;
-  height: 80px;
-  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  color: #3b0764;
+  margin-bottom: 50px;
 }
 
-.OtherPages {
-  margin: 10%;
+/* Cards Layout */
+.cardContainer {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
+/* Card */
+.card {
+  width: 300px;
+  padding: 30px 20px;
+  border-radius: 16px;
 
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
 
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
 
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* Icon */
+.icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+/* Text */
+.card h2 {
+  margin-bottom: 10px;
+  color: #4c1d95;
+}
+
+.card p {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(to right, #7c3aed, #a855f7);
+  transition: 0.3s;
+}
+
+.btnBlue {
+  composes: btn;
+  background: linear-gradient(to right, #3b82f6, #6366f1);
+}
+
+.btn:hover,
+.btnBlue:hover {
+  opacity: 0.85;
+}
+
+/* Bottom links */
+.links {
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+.links a {
+  margin: 0 10px;
+  color: #4f46e5;
+  text-decoration: underline;
+}
