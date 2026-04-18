@@ -108,7 +108,7 @@
   text-decoration: none;
   width: 30%;
   height: 25vh;
-  background-color: rgb(102, 21, 21);
+  background-color: #edd3e9;
   text-align: center;
 
   font-size: 50px;
@@ -116,7 +116,7 @@
   color: white;
 
   border: 2px solid #0070f3;
-  background: transparent;
+  /* background: transparent; */
   color: #0070f3;
   padding: 25px 20px;
   border-radius: 6px;
