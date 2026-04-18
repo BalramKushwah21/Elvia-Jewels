@@ -16,8 +16,7 @@ export default async function Page() {
           alt="Store"
           className={styles.topImage}
         />
-        <div className={styles.imageText}>
-        </div>
+        <div className={styles.imageText}></div>
       </div>
 
       {/* ✅ Products */}
@@ -25,10 +24,11 @@ export default async function Page() {
         {products.map((p) => (
           <div key={p.id} className={styles.productCard}>
 
+            {/* ✅ FIXED IMAGE */}
             <img 
-              src={p.image} 
+              src={p?.image?.trim() ? p.image : "/placeholder.png"} 
               className={styles.productImage} 
-              alt={p.name}
+              alt={p?.name || "product"}
             />
 
             <div className={styles.productInfo}>
