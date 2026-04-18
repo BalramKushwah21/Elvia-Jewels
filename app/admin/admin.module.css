@@ -1,13 +1,10 @@
-/* Background */
 .wrapper {
   min-height: 100vh;
-  padding: 40px;
+  padding: 50px 20px;
   text-align: center;
-
-  background: linear-gradient(135deg, #e9d5ff, #c4b5fd, #fbcfe8);
+  background: linear-gradient(135deg, #ede9fe, #d8b4fe, #fbcfe8);
 }
 
-/* Heading */
 .heading {
   font-size: 36px;
   font-weight: 600;
@@ -15,7 +12,6 @@
   margin-bottom: 50px;
 }
 
-/* Cards Layout */
 .cardContainer {
   display: flex;
   justify-content: center;
@@ -23,15 +19,12 @@
   flex-wrap: wrap;
 }
 
-/* Card */
 .card {
   width: 300px;
   padding: 30px 20px;
   border-radius: 16px;
-
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(12px);
-
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   transition: 0.3s;
 }
@@ -40,13 +33,11 @@
   transform: translateY(-8px);
 }
 
-/* Icon */
 .icon {
   font-size: 40px;
   margin-bottom: 15px;
 }
 
-/* Text */
 .card h2 {
   margin-bottom: 10px;
   color: #4c1d95;
@@ -59,34 +50,40 @@
 }
 
 /* Buttons */
-.btn {
+.btnPurple {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 25px;
   text-decoration: none;
   color: white;
   background: linear-gradient(to right, #7c3aed, #a855f7);
-  transition: 0.3s;
 }
 
 .btnBlue {
-  composes: btn;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: white;
   background: linear-gradient(to right, #3b82f6, #6366f1);
 }
 
-.btn:hover,
+.btnPurple:hover,
 .btnBlue:hover {
   opacity: 0.85;
 }
 
-/* Bottom links */
 .links {
   margin-top: 40px;
-  font-size: 16px;
 }
 
 .links a {
   margin: 0 10px;
   color: #4f46e5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.links a:hover {
   text-decoration: underline;
 }
