@@ -55,6 +55,9 @@
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   transition: 0.3s;
+  justify-content: space-between;
+  display : flex;
+  flex-direction : column;
 }
 
 .productCard:hover {

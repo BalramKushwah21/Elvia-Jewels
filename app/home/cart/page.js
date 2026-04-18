@@ -2,79 +2,131 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
-
-
+import styles from "./cartpage.module.css";
 
 export default async function CartPage() {
-  const session = await getServerSession(authOptions);
+  let session = null;
+
+  // ✅ Prevent crash
+  try {
+    session = await getServerSession(authOptions);
+  } catch (error) {
+    console.error("Session Error:", error);
+  }
 
   let cartItems = [];
 
-  // ✅ If logged in → fetch from DB
-  if (session) {
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
-    });
-
-    if (user) {
-      const cart = await prisma.cart.findFirst({
-        where: { userId: user.id },
-        include: {
-          items: {
-            include: {
-              product: true, // 🔥 important
-            },
-          },
-        },
+  // ✅ Fetch cart safely
+  if (session?.user?.email) {
+    try {
+      const user = await prisma.user.findUnique({
+        where: { email: session.user.email },
       });
 
-      cartItems = cart?.items || [];
+      if (user) {
+        const cart = await prisma.cart.findFirst({
+          where: { userId: user.id },
+          include: {
+            items: {
+              include: {
+                product: true,
+              },
+            },
+          },
+        });
+
+        cartItems = cart?.items || [];
+      }
+    } catch (err) {
+      console.error("DB Error:", err);
     }
   }
 
-  // ✅ calculate total
+  // ✅ Calculate total
   const total = cartItems.reduce((acc, item) => {
-    return acc + item.product.price * item.quantity;
+    return acc + (item?.product?.price || 0) * (item?.quantity || 0);
   }, 0);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Your Cart</h1>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Your Cart</h1>
 
-      {/* 🔓 Guest mode */}
       {!session && (
-        <p style={{ color: "gray" }}>
+        <p className={styles.guestText}>
           You are browsing as guest. Login to save your cart.
         </p>
       )}
 
-      {/* 🛒 Cart items */}
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
-        cartItems.map((item) => (
-          <div key={item.id} style={{ marginBottom: "10px" }}>
-            <img src={item.product.image} alt={item.product.name} width={100} />
-            <p>
-              <b>{item.product.name}</b>
-            </p>
-            <p>₹{item.product.price}</p>
-            <p>Qty: {item.quantity}</p>
-          </div>
-        ))
-      )}
+      {/* 🔥 2 COLUMN GRID */}
+      <div className={styles.cartGrid}>
 
-      {/* 💰 Total */}
-      <h2>Total: ₹{total}</h2>
+        {/* LEFT SIDE */}
+        <div className={styles.itemsSection}>
+          {cartItems.length === 0 ? (
+            <p className={styles.empty}>Your cart is empty</p>
+          ) : (
+            cartItems.map((item) => (
+              <div key={item.id} className={styles.cartItem}>
 
-      {/* 💳 Checkout */}
-      {!session ? (
-        <p>Please login to checkout</p>
-      ) : total > 0 ? (
-        <Link href="/home/checkout">
-          <button>Proceed to Checkout</button>
-        </Link>
-      ) : null}
+                <img
+                  src={item?.product?.image || "/placeholder.png"}
+                  alt={item?.product?.name || "product"}
+                  className={styles.image}
+                />
+
+                <div>
+                  <p className={styles.productName}>
+                    {item?.product?.name}
+                  </p>
+
+                  <p className={styles.price}>
+                    ₹{item?.product?.price}
+                  </p>
+
+                  <p className={styles.qty}>
+                    Qty: {item?.quantity}
+                  </p>
+
+                  {/* 🔥 BUTTONS */}
+                  <div className={styles.actionBtns}>
+
+                    {/* Remove */}
+                    <button className={styles.removeBtn}>
+                      Remove
+                    </button>
+
+                    {/* ❤️ Wishlist Heart */}
+                    <button className={styles.wishlistIcon}>
+                      <span className={styles.heart}>
+                        ❤️
+                      </span>
+                      <span>Add to Wishlist</span>
+                    </button>
+
+                  </div>
+
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className={styles.summary}>
+          <h2 className={styles.total}>Total: ₹{total}</h2>
+
+          {!session ? (
+            <p>Please login to checkout</p>
+          ) : total > 0 ? (
+            <Link href="/home/checkout">
+              <button className={styles.checkoutBtn}>
+                Proceed to Checkout
+              </button>
+            </Link>
+          ) : null}
+        </div>
+
+      </div>
     </div>
   );
 }

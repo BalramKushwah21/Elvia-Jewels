@@ -3,8 +3,6 @@ import Link from "next/link";
 
 
 export default function AdminPage(){
-
-
     return(
         <div className={styles.main_container}>
             <h1 className={styles.heading}>
