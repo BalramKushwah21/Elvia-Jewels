@@ -10,9 +10,9 @@ export default function CollectionHeader({ title }) {
       </div>
 
       <div className={styles.content}>
-        <h1 className={styles.title}>
+        {/* <h1 className={styles.title}>
           {title.charAt(0).toUpperCase() + title.slice(1)}
-        </h1>
+        </h1> */}
 
         <p className={styles.subtitle}>Where elegance meets sparkle</p>
 

@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import styles from "./id.module.css";
+import Image from "next/image";
+import { prisma } from "@/lib/prisma";
 
 export default function EditProduct() {
   const { id } = useParams();
@@ -19,6 +21,8 @@ export default function EditProduct() {
     image: "",
   });
 
+  
+
   // ✅ Fetch product
   useEffect(() => {
     async function fetchProduct() {
@@ -26,6 +30,7 @@ export default function EditProduct() {
       const data = await res.json();
 
       setProduct({
+        image: data.image || "",
         name: data.name || "",
         price: data.price || "",
         description: data.description || "",
@@ -80,7 +85,7 @@ export default function EditProduct() {
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Edit Product</h1>
-
+  
       <form onSubmit={handleUpdate} className={styles.form}>
         <input
           className={styles.input}
