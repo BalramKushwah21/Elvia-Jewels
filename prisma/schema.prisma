@@ -3,22 +3,19 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  balram  String
-
   id           String  @id @default(cuid())
   email        String  @unique
   password     String
   name         String
-  role         String  @default("USER") // USER / ADMIN
-  refreshToken String? // store hashed version ideally
-  cart Cart?
-   orders   Order[]
+  role         String  @default("USER")
+  refreshToken String?
+  cart         Cart?
+  orders       Order[]
 }
 
 model Session {
@@ -37,7 +34,7 @@ model OTP {
 }
 
 model Product {
-  id          String   @id @default(cuid())
+  id          String      @id @default(cuid())
   name        String
   description String
   price       Int
@@ -46,8 +43,8 @@ model Product {
   category    String
   color       String
   gender      String
-  createdAt   DateTime @default(now())
-  CartItem CartItem[]
+  createdAt   DateTime    @default(now())
+  CartItem    CartItem[]
   orderItems  OrderItem[]
 }
 
@@ -59,30 +56,26 @@ model Cart {
 }
 
 model CartItem {
-  id        String @id @default(cuid())
+  id        String  @id @default(cuid())
   cartId    String
   productId String
-  quantity  Int    @default(1)
+  quantity  Int     @default(1)
+  cart      Cart    @relation("CartToItems", fields: [cartId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
 
-  cart    Cart    @relation("CartToItems", fields: [cartId], references: [id])
-  product Product @relation(fields: [productId], references: [id])
-
-  @@unique([cartId, productId]) // ✅ prevents duplicate entries
+  @@unique([cartId, productId])
 }
 
-
-
 model Order {
-  id                String   @id @default(cuid())
+  id                String      @id @default(cuid())
   userId            String
-  amount            Int      // in paise
-  status            String   @default("pending") // pending | paid | failed
+  amount            Int
+  status            String      @default("pending")
   razorpayOrderId   String?
   razorpayPaymentId String?
-  createdAt         DateTime @default(now())
-
-  items OrderItem[]
-  user  User @relation(fields: [userId], references: [id])
+  createdAt         DateTime    @default(now())
+  user              User        @relation(fields: [userId], references: [id])
+  items             OrderItem[]
 }
 
 model OrderItem {
@@ -91,7 +84,6 @@ model OrderItem {
   productId String
   quantity  Int
   price     Int
-
-  order   Order   @relation(fields: [orderId], references: [id])
-  product Product @relation(fields: [productId], references: [id])
+  order     Order   @relation(fields: [orderId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
 }

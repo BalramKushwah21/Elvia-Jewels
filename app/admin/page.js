@@ -43,11 +43,11 @@ export default function Page() {
 
       {/* Bottom Links */}
       <div className={styles.links}>
-        <Link href="/admin/products/add">Add Products</Link>
+        <Link href="/admin/products/add" className={styles.addButton}>Add Products</Link>
         <span> • </span>
-        <Link href="/admin/products">Edit Products</Link>
+        <Link href="/admin/products" className={styles.productButton}>Edit Products</Link>
         <span> • </span>
-        <Link href="/admin/order">View Orders</Link>
+        <Link href="/admin/order" className={styles.orderButton}>View Orders</Link>
       </div>
 
     </div>
