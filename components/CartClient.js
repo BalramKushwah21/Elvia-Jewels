@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import styles from "./cartpage.module.css";
+import styles from "./CartClient.module.css";
 
 export default function CartClient({ cartItems }) {
   const [selectedItems, setSelectedItems] = useState([]);

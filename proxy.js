@@ -3,21 +3,23 @@ import { NextResponse } from "next/server";
 export function proxy(req) {
   const { pathname } = req.nextUrl;
 
+  // ✅ ALWAYS allow NextAuth routes
+  if (pathname.startsWith("/api/auth")) {
+    return NextResponse.next();
+  }
+
   // 🌐 Public routes
   if (
     pathname === "/" ||
     pathname.startsWith("/auth") ||
     pathname.startsWith("/products") ||
-    pathname.startsWith("/home/cart") // ✅ allow cart
+    pathname.startsWith("/home/cart")
   ) {
     return NextResponse.next();
   }
 
-  // 🔒 Protected routes (ONLY checkout + admin)
-  if (
-    pathname.startsWith("/home/checkout")
-   
-  ) {
+  // 🔒 Protected routes
+  if (pathname.startsWith("/home/checkout")) {
     const token = req.cookies.get("next-auth.session-token");
 
     if (!token) {
@@ -29,8 +31,5 @@ export function proxy(req) {
 }
 
 export const config = {
-  matcher: [
-    "/home/checkout/:path*",
-   
-  ],
+  matcher: ["/home/checkout/:path*"],
 };
