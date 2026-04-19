@@ -78,18 +78,27 @@
   display: flex;
   justify-content: space-around;
   list-style: none; 
+ 
 }
 
 
 
-.links a:hover {
-  text-decoration: underline;
+.links :hover {
+  transform: translateY(-5%);
 }
 
 .addButton, .productButton, .orderButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100px;
   background: linear-gradient(to right, #7c3aed, #a855f7);
   color: rgb(245, 245, 245);
   padding: 10px 20px;
   border-radius: 25px;
   text-decoration: none;
+  transition: 0.3s;
+  font-size: 20 ;
 }

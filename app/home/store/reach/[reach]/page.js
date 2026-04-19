@@ -18,7 +18,7 @@ export default async function Category({ params }) {
   return (
     <div className={styles.container}>
 
-      <CollectionHeader title={`Price: ₹${num}`} />  
+      <CollectionHeader title={num} />  
     <div className={styles.productsGrid}>
       {products.map((p) => (
         <div key={p.id} className={styles.productCard}>

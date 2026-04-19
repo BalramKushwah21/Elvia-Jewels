@@ -2,8 +2,20 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/authOptions";
 import { prisma } from "@/lib/prisma";
 import CheckoutButton from "@/components/CheckoutButton";
+import Image from "next/image";
 
-export default async function CheckoutPage() {
+export default async function CheckoutPage({ searchParams }) {
+  const params = await searchParams;
+   let selectedIds = [];
+
+  try {
+    selectedIds = params.items
+      ? JSON.parse(params.items)
+      : [];
+  } catch {
+    selectedIds = [];
+  }
+  console.log("Selected IDs:", selectedIds);
   try {
     // ✅ Get session safely
     const session = await getServerSession(authOptions);
@@ -23,13 +35,18 @@ export default async function CheckoutPage() {
 
     // ✅ Get cart safely
     const cart = await prisma.cart.findFirst({
-      where: { userId: user.id },
-      include: {
-        items: {
-          include: { product: true },
-        },
+  where: { userId: user.id },
+  include: {
+    items: {
+      where: {
+        id: { in: selectedIds }, // ✅ filter here
       },
-    });
+      include: {
+        product: true,
+      },
+    },
+  },
+});
 
     const items = cart?.items ?? [];
 
@@ -48,6 +65,7 @@ export default async function CheckoutPage() {
         ) : (
           items.map((item) => (
             <div key={item.id}>
+              <Image src={item.product?.image} alt={item.product?.name} width={100} height={100} />
               <p>{item.product?.name}</p>
               <p>₹{item.product?.price}</p>
               <p>Qty: {item.quantity}</p>
