@@ -3,8 +3,9 @@ import styles from "@/components/TopRatedProducts.module.css";
 import AddToCart from "@/components/AddToCart";
 import { prisma } from "@/lib/prisma";
 import SendToStore from "@/components/Client";
+import Link from "next/link";
+import Image from "next/image";
 
-export const dynamic = "force-dynamic";
 
 export default async function TopRatedProducts() {
   let products = [];
@@ -25,7 +26,9 @@ export default async function TopRatedProducts() {
         ) : (
           products.map((p) => (
             <div key={p.id} className={styles.card}>
-              <img src={p.image} className={styles.image} alt={p.name} />
+              <Link href={`/home/store/product/${p.id}`}  > 
+              <Image src={p.image} className={styles.image} alt={p.name} width={150} height={200} />
+              </Link>
               <h3 className={styles.name}>{p.name}</h3>
               <h3 className={styles.description}>{p.description}</h3>
               <p className={styles.price}>₹{p.price}</p>
