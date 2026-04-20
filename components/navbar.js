@@ -6,6 +6,8 @@ import styles from "./navbar.module.css";
 import ProfileDropdown from "@/components/ProfileDropdown";
 import { useSession } from "next-auth/react";
 import useCartCount from "@/hooks/useCartCount";
+import { signOut } from "next-auth/react";
+import SearchBar from "./SearchBar";
 
 
 export default function Navbar() {
@@ -60,6 +62,10 @@ export default function Navbar() {
       </button>
 
       {/* Desktop */}
+        <div className={styles.navbarCenter}>
+  <SearchBar />
+</div>
+
       <div className={styles.navbarLinks}>
 {user ? (
   <>
