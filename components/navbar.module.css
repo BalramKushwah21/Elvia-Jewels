@@ -41,6 +41,13 @@
   gap: 20px;
 }
 
+/* 🔍 CENTER SEARCH */
+.navbarCenter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
 
 .navbarLink {
   position: relative;
@@ -107,6 +114,8 @@ display: none;
 
 @media (max-width: 678px) {
 
+  
+
 .mobileNavbar {
   display:flex;
   position:absolute;
@@ -123,7 +132,9 @@ display: none;
   z-index: 10;
 }
 
-
+.navbarCenter {
+    display: none;
+  }
 
 .navbarOpen {
   display: none;
