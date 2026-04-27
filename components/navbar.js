@@ -46,11 +46,12 @@ export default function Navbar() {
         >
           ✖
         </button>
-
-        <Link href="/" onClick={() => setOpen(false)}>Home</Link>
-        <Link href="/home/store" onClick={() => setOpen(false)}>Store</Link>
-        <Link href="/home/contactus" onClick={() => setOpen(false)}>Contact</Link>
-        <Link href="/home/cart" onClick={() => setOpen(false)}>Cart({count})</Link>
+        <h3 style={{ marginBottom: "1rem" }}>Profile Logo</h3>
+        <Link href="#" onClick={() => setOpen(false)} className={styles.navLink}>Profile</Link>
+        <Link href="/" onClick={() => setOpen(false)} className={styles.navLink}>Home</Link>
+        <Link href="/home/store" onClick={() => setOpen(false)} className={styles.navLink}>Store</Link>
+        <Link href="/home/contactus" onClick={() => setOpen(false)} className={styles.navLink}>Contact</Link>
+        <Link href="/home/cart" onClick={() => setOpen(false)}  className={styles.navLink}>Cart({count})</Link>
       </div>
 
       {/* Toggle */}
@@ -61,6 +62,7 @@ export default function Navbar() {
         ☰
       </button>
 
+  
       {/* Desktop */}
         <div className={styles.navbarCenter}>
   <SearchBar />
