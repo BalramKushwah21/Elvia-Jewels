@@ -11,16 +11,22 @@ export default async function ProductPage({ params }) {
   return (
     <div className={styles.container}>
       {product && (
-        <div key={product.id} className={styles.productCard}>
+        <div className={styles.productCard}>
+          <div className={styles.imageWrapper}>
           <Image
             src={product.image}
             alt={product.name}
             width={400}
             height={400}
           />
+          </div>
+
+          <div className={styles.details}>
           <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <p>${product.price.toFixed(2)}</p>
+          <p className={styles.description}>{product.description}</p>
+          <p className={styles.price}>${product.price.toFixed(2)}</p>
+          </div>
+
         </div>
       )}
     </div>
