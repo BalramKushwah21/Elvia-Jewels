@@ -152,7 +152,7 @@ display: none;
 /* Close */
 .navbarClose {  
   position: absolute;
-  top: 20px;
+  top: 50px;
   right: 2px;
   font-size: 24px;
   background: none;

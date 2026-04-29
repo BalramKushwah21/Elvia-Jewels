@@ -4,6 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import styles from "./navbar.module.css";
 import ProfileDropdown from "@/components/ProfileDropdown";
+import Profile from "@/components/Profile";
 import { useSession } from "next-auth/react";
 import useCartCount from "@/hooks/useCartCount";
 import { signOut } from "next-auth/react";
@@ -36,9 +37,8 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`${styles.mobileNavbar} ${
-          open ? styles.showMenu : ""
-        }`}
+        className={`${styles.mobileNavbar} ${open ? styles.showMenu : ""
+          }`}
       >
         <button
           className={styles.navbarClose}
@@ -46,12 +46,35 @@ export default function Navbar() {
         >
           ✖
         </button>
-        <h3 style={{ marginBottom: "1rem" }}>Profile Logo</h3>
-        <Link href="#" onClick={() => setOpen(false)} className={styles.navLink}>Profile</Link>
-        <Link href="/" onClick={() => setOpen(false)} className={styles.navLink}>Home</Link>
-        <Link href="/home/store" onClick={() => setOpen(false)} className={styles.navLink}>Store</Link>
-        <Link href="/home/contactus" onClick={() => setOpen(false)} className={styles.navLink}>Contact</Link>
-        <Link href="/home/cart" onClick={() => setOpen(false)}  className={styles.navLink}>Cart({count})</Link>
+
+
+        {user ? (
+          <>
+            <Profile />
+
+            <Link href="#" onClick={() => setOpen(false)} className={styles.navLink}>Profile</Link>
+            <Link href="/" onClick={() => setOpen(false)} className={styles.navLink}>Home</Link>
+            <Link href="/home/store" onClick={() => setOpen(false)} className={styles.navLink}>Store</Link>
+            <Link href="/home/contactus" onClick={() => setOpen(false)} className={styles.navLink}>Contact</Link>
+            <Link href="/home/cart" onClick={() => setOpen(false)} className={styles.navLink}>Cart({count})</Link>
+            <button
+              className={styles.logoutBtn}
+              onClick={() => signOut({ callbackUrl: "/" })}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link href="/auth/login" className={styles.btn}>Login</Link>
+            <Link href="/" onClick={() => setOpen(false)} className={styles.navLink}>Home</Link>
+            <Link href="/home/store" onClick={() => setOpen(false)} className={styles.navLink}>Store</Link>
+            <Link href="/home/contactus" onClick={() => setOpen(false)} className={styles.navLink}>Contact</Link>
+            <Link href="/home/cart" onClick={() => setOpen(false)} className={styles.navLink}>Cart({count})</Link>
+
+          </>
+        )}
+
       </div>
 
       {/* Toggle */}
@@ -62,32 +85,32 @@ export default function Navbar() {
         ☰
       </button>
 
-  
+
       {/* Desktop */}
-        <div className={styles.navbarCenter}>
-  <SearchBar />
-</div>
+      <div className={styles.navbarCenter}>
+        <SearchBar />
+      </div>
 
       <div className={styles.navbarLinks}>
-{user ? (
-  <>
-    <Link className={styles.navbarLink} href="/">Home</Link>
-    <Link className={styles.navbarLink} href="/home/store">Store</Link>
-    <Link className={styles.navbarLink} href="/home/cart">Cart ({count})</Link>
+        {user ? (
+          <>
+            <Link className={styles.navbarLink} href="/">Home</Link>
+            <Link className={styles.navbarLink} href="/home/store">Store</Link>
+            <Link className={styles.navbarLink} href="/home/cart">Cart ({count})</Link>
 
-    <ProfileDropdown />
-  </>
-) : (
-  <>
-    <Link className={styles.navbarLink} href="/">Home</Link>
-    <Link className={styles.navbarLink} href="/home/store">Store</Link>
-    <Link className={styles.navbarLink} href="/home/contactus">Contact</Link>
-    <Link className={styles.navbarLink} href="/home/cart">Cart</Link>
+            <ProfileDropdown />
+          </>
+        ) : (
+          <>
+            <Link className={styles.navbarLink} href="/">Home</Link>
+            <Link className={styles.navbarLink} href="/home/store">Store</Link>
+            <Link className={styles.navbarLink} href="/home/contactus">Contact</Link>
+            <Link className={styles.navbarLink} href="/home/cart">Cart</Link>
 
-    <Link href="/auth/login" className={styles.btn}>Login</Link>
-    <Link href="/auth/register" className={styles.btn}>Register</Link>
-  </>
-)}
+            <Link href="/auth/login" className={styles.btn}>Login</Link>
+            <Link href="/auth/register" className={styles.btn}>Register</Link>
+          </>
+        )}
       </div>
     </nav>
   );
