@@ -10,7 +10,7 @@ export default function Page() {
       <div className={styles.cardContainer}>
 
         {/* Users Card */}
-        <div className={styles.card}>
+        <div className={styles.card}> 
           <div className={styles.icon}>👥</div>
           <h2>Manage Users</h2>
           <p>Manage and view all users.</p>

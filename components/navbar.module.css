@@ -41,6 +41,13 @@
   gap: 20px;
 }
 
+/* 🔍 CENTER SEARCH */
+.navbarCenter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
 
 .navbarLink {
   position: relative;
@@ -103,27 +110,34 @@ display: none;
 display: none;
 }
 
+
+
 /* Mobile Menu */
 
 @media (max-width: 678px) {
+
+  
 
 .mobileNavbar {
   display:flex;
   position:absolute;
   top: 0;
   right: -100%;
-  height: 100vh;
-  width: 70%;
+  height: 50vh;
+  width: 40%;
   background: white;
   flex-direction: column;
   padding: 2rem;
   gap: 20px;
-  transition: right 0.4s ease;
+  transition: right 0.5s ease;
   box-shadow: -10px 0 30px rgba(0,0,0,0.1);
   z-index: 10;
+  border-radius: 20px 0 0 20px;
 }
 
-
+.navbarCenter {
+    display: none;
+  }
 
 .navbarOpen {
   display: none;
@@ -136,7 +150,10 @@ display: none;
 }
 
 /* Close */
-.navbarClose {
+.navbarClose {  
+  position: absolute;
+  top: 50px;
+  right: 2px;
   font-size: 24px;
   background: none;
   border: none;
@@ -153,8 +170,17 @@ display: none;
   .navbarOpen {
     display: block;
   }
-}
+  .navLink{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    transition: 0.3s;
+    font-size: 18px;
+  }
+ 
+ 
 
-.showMenu {
-  right: 0;
+  .showMenu {
+    right: 0;
+  }
 }

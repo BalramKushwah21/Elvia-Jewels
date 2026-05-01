@@ -108,6 +108,7 @@ export default function EditProduct() {
         />
 
         <textarea
+        
           className={styles.textarea}
           value={product.description}
           onChange={(e) =>
@@ -177,3 +178,12 @@ export default function EditProduct() {
     </div>
   );
 }
+<div className={styles.imageBox}>
+  <Image
+    src={products.image}
+    alt={product.name}
+    width={200}
+    height={200}
+    className={styles.image}
+  />
+</div>

@@ -6,21 +6,20 @@ import { useSession } from "next-auth/react";
 
 export default function AddToCart({ productId }) {
   const [loading, setLoading] = useState(false);
-
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const handleClick = async () => {
+    if (status === "loading") return;
+
     try {
       setLoading(true);
 
-      // 🧠 If NOT logged in → use local cart
-      if (!session) {
+      if (status === "unauthenticated") {
         addToGuestCart(productId, 1);
         alert("Added to cart (guest) 🛒");
         return;
       }
 
-      // 🔐 Logged-in → DB cart
       const res = await fetch("/api/cart/add", {
         method: "POST",
         headers: {
@@ -29,9 +28,9 @@ export default function AddToCart({ productId }) {
         body: JSON.stringify({ productId, quantity: 1 }),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
 
-      if (!res.ok) throw new Error(data.error);
+      if (!res.ok) throw new Error(data.error || "Something went wrong");
 
       alert("Added to cart ✅");
     } catch (err) {
@@ -42,11 +41,7 @@ export default function AddToCart({ productId }) {
   };
 
   return (
-    <button
-      className={styles.AddToCartBtn}
-      onClick={handleClick}
-      disabled={loading}
-    >
+    <button onClick={handleClick} disabled={loading}>
       {loading ? "Adding..." : "Add to Cart"}
     </button>
   );
