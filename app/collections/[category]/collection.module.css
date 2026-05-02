@@ -36,6 +36,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;   /* ✅ perfect square */
   object-fit: cover;
+  height: auto;
 }
 
 .productInfo {
