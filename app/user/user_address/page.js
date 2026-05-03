@@ -33,7 +33,7 @@ export default function AddressPage() {
 
       <form onSubmit={handleSubmit} className={styles.form}>
 
-        <div className={styles.row}>
+          <label>First Name</label>
           <input
             name="firstName"
             placeholder="First name"
@@ -41,6 +41,8 @@ export default function AddressPage() {
             onChange={handleChange}
             required
           />
+
+          <label>Last Name</label>
           <input
             name="lastName"
             placeholder="Last name"
@@ -48,7 +50,8 @@ export default function AddressPage() {
             onChange={handleChange}
             required
           />
-        </div>
+
+          <label>Phone Number</label>
         <input
             name="phone"
             placeholder="Phone Number"
@@ -57,6 +60,7 @@ export default function AddressPage() {
             required
         />
 
+        <label>Country</label>
         <select
           name="country"
           value={form.country}
@@ -67,6 +71,7 @@ export default function AddressPage() {
           <option>UK</option>
         </select>
 
+        <label>Street Address</label>
         <input
           name="address"
           placeholder="Street address"
@@ -75,7 +80,9 @@ export default function AddressPage() {
           required
         />
 
+          <label>Default Address</label>
         <div className={styles.radioGroup}>
+
             <label>
             <input
                 type="radio"
@@ -88,7 +95,7 @@ export default function AddressPage() {
             </label>
 
             <label>
-            <input
+            <input 
                 type="radio"
                 name="type"
                 value="Work"
@@ -97,8 +104,9 @@ export default function AddressPage() {
             />
                 Work
             </label>
-        </div>
+    </div>
 
+        <label>Apt/Suite/Unit</label>
         <input
           name="apt"
           placeholder="Apt, suite, or unit"
@@ -106,6 +114,7 @@ export default function AddressPage() {
           onChange={handleChange}
         />
 
+          <label>Landmark</label>
         <input
             name="landmark"
             placeholder="Landmark (optional)"
@@ -113,6 +122,7 @@ export default function AddressPage() {
             onChange={handleChange}
         />
 
+        <label>City</label>
         <input
           name="city"
           placeholder="City"
@@ -121,20 +131,22 @@ export default function AddressPage() {
           required
         />
 
-        <div className={styles.row}>
+          <label>State</label>
           <input
             name="state"
             placeholder="State"
             value={form.state}
             onChange={handleChange}
           />
+
+          <label>Pin Code</label>
           <input
             name="pin"
             placeholder="Pin code"
             value={form.pin}
             onChange={handleChange}
           />
-        </div>
+        </form>
 
         {/* Google Map */}
         <div className={styles.map}>
@@ -143,11 +155,11 @@ export default function AddressPage() {
             loading="lazy"
           ></iframe>
         </div>
+      
 
         <button type="submit" className={styles.button}>
           Save Address
         </button>
-      </form>
     </div>
   );
 }
