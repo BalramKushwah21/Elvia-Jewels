@@ -1,13 +1,20 @@
 import styles from "./order.module.css";
+import { prisma } from "@/lib/prisma";
 
 async function getOrders() {
-  const res = await fetch("http://localhost:3000/api/orders", {
-    cache: "no-store",
+  return prisma.order.findMany({
+    include: {
+      user: true,
+      items: {
+        include: {
+          product: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
   });
-
-  if (!res.ok) return [];
-
-  return res.json();
 }
 
 export default async function OrdersPage() {
@@ -25,7 +32,7 @@ export default async function OrdersPage() {
             
             <div className={styles.header}>
               <p><strong>Order:</strong> {order.id}</p>
-              <p><strong>User:</strong> {order.user.email}</p>
+              <p><strong>User:</strong> {order.user?.email}</p>
               <p><strong>Status:</strong> {order.status}</p>
             </div>
 
@@ -35,6 +42,7 @@ export default async function OrdersPage() {
                   <img
                     src={item.product.image || "/placeholder.png"}
                     className={styles.image}
+                    alt={item.product.name}
                   />
                   <div>
                     <p>{item.product.name}</p>
@@ -45,7 +53,9 @@ export default async function OrdersPage() {
               ))}
             </div>
 
-            <h3 className={styles.total}>Total: ₹{order.total}</h3>
+            <h3 className={styles.total}>
+              Total: ₹{order.amount / 100}
+            </h3>
 
           </div>
         ))

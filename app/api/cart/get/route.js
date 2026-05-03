@@ -7,13 +7,12 @@ export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
-    // 🔓 allow guest
-    if (!session) {
-      return NextResponse.json([]);
+    if (!session || !session.user?.id) {
+      return NextResponse.json([], { status: 401 });
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
+      where: { id: session.user.id },
     });
 
     if (!user) {
@@ -24,9 +23,7 @@ export async function GET() {
       where: { userId: user.id },
       include: {
         items: {
-          include: {
-            product: true,
-          },
+          include: { product: true },
         },
       },
     });
@@ -35,10 +32,6 @@ export async function GET() {
 
   } catch (err) {
     console.error("CART GET ERROR:", err);
-
-    return NextResponse.json(
-      { error: "Server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

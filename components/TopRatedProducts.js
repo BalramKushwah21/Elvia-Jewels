@@ -6,7 +6,6 @@ import SendToStore from "@/components/Client";
 import Link from "next/link";
 import Image from "next/image";
 
-
 export default async function TopRatedProducts() {
   let products = [];
 
@@ -26,8 +25,15 @@ export default async function TopRatedProducts() {
         ) : (
           products.map((p) => (
             <div key={p.id} className={styles.card}>
-              <Link href={`/home/store/product/${p.id}`}  > 
-              <Image src={p.image} className={styles.image} alt={p.name} width={150} height={200} />
+              <Link href={`/home/store/product/${p.id}`}>
+                <Image
+                  src={p.image}
+                  className={styles.image}
+                  alt={p.name}
+                  width={100}
+                  height={100}
+                  style={{ height: "auto" }} 
+                />
               </Link>
               <h3 className={styles.name}>{p.name}</h3>
               <h3 className={styles.description}>{p.description}</h3>

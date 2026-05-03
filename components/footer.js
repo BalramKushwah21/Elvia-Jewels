@@ -31,9 +31,9 @@ export default function Footer() {
       {/* Collections */}
       <div className={styles.section}>
         <h4 className={styles.heading}>Collections</h4>
-        <p className={styles.link}>Rings</p>
-        <p className={styles.link}>Necklaces</p>
-        <p className={styles.link}>Bracelets</p>
+        <Link href="/collections/ring" className={styles.link}>Ring</Link>
+        <Link href="/collections/bangles" className={styles.link}>Bangles</Link>
+        <Link href="/collections/men-in-silver" className={styles.link}>Men In Silver</Link>
       </div>
 
       {/* Newsletter */}

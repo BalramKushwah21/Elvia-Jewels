@@ -69,7 +69,7 @@ export async function POST() {
       orderId: order.id,
       razorpayOrderId: razorpayOrder.id,
       amount,
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY,
+      key: process.env.RAZORPAY_KEY_ID,
     });
 
   } catch (err) {

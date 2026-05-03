@@ -6,11 +6,9 @@ export default function Page() {
     <div className={styles.wrapper}>
       
       <h1 className={styles.heading}>Admin Panel</h1>
-
       <div className={styles.cardContainer}>
-
         {/* Users Card */}
-        <div className={styles.card}>
+        <div className={styles.card}> 
           <div className={styles.icon}>👥</div>
           <h2>Manage Users</h2>
           <p>Manage and view all users.</p>

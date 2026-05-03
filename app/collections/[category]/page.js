@@ -2,9 +2,10 @@ import { prisma } from "@/lib/prisma";
 import AddToCart from "@/components/AddToCart";
 import styles from "./collection.module.css";
 import CollectionHeader from "@/components/CollectionHeader";
+import Image from "next/image";
 
 export default async function Category({ params }) {
-    const { category } = await params;
+  const { category } = await params;
 
   const products = await prisma.product.findMany({
     where: {
@@ -17,25 +18,25 @@ export default async function Category({ params }) {
 
   return (
     <div className={styles.container}>
+      <CollectionHeader title={category} />
+      <div className={styles.productsGrid}>
+        {products.map((p) => (
+          <div key={p.id} className={styles.productCard}>
+            <Image src={p.image} className={styles.productImage} alt={p.name}
+            width={100}
+            height={300}
+            />
 
-      <CollectionHeader title={category} />  
-    <div className={styles.productsGrid}>
-      {products.map((p) => (
-        <div key={p.id} className={styles.productCard}>
+            <div className={styles.productInfo}>
+              <h3 className={styles.productName}>{p.name}</h3>
+              <p className={styles.productDescription}>{p.description}</p>
+              <p className={styles.productPrice}>₹{p.price}</p>
 
-          <img src={p.image} className={styles.productImage} alt={p.name}/>
-
-          <div className={styles.productInfo}>
-            <h3 className={styles.productName}>{p.name}</h3>
-            <p className={styles.productDescription}>{p.description}</p>
-            <p className={styles.productPrice}>₹{p.price}</p>
-
-            <AddToCart productId={p.id} />
+              <AddToCart productId={p.id} />
+            </div>
           </div>
-
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
     </div>
   );
 }

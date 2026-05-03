@@ -1,8 +1,7 @@
+export const dynamic = "force-dynamic";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import { prisma } from "@/lib/prisma";
-import Link from "next/link";
-import styles from "./cartpage.module.css";
 import CartClient from "@/components/CartClient";
 
 
@@ -46,7 +45,7 @@ export default async function CartPage() {
       <h1>Your Cart</h1>
 
       {/* ✅ now it exists */}
-      <CartClient cartItems={cartItems} />
+      <CartClient cartItems={cartItems}/>
     </div>
   );
 }

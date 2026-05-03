@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./slider.module.css";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Image from "next/image";
 
 export default function Slider() {
   const [visibleSlides, setVisibleSlides] = useState(8);
@@ -143,11 +144,15 @@ useEffect(() => {
             style={{ minWidth: `${85.6 / visibleSlides}%` }}
           >
             <div className={styles.card}>
-              <img
+              <Image
+                className={styles.Image}
                 src={slide.img}
                 alt={slide.title}
+                width={200}
+                height={200}
+                priority
                 onClick={() =>
-                  router.push(`/collections/${slide.title.toLowerCase()}`)
+                router.push(`/collections/${slide.title.toLowerCase()}`)
                 }
               />
 

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import "./imageSlider.css";
+import Image from "next/image";
 
 export default function ImageSlider() {
   const images = [
@@ -12,8 +13,6 @@ export default function ImageSlider() {
     "/slider/image6.jpeg",
     "/slider/image7.jpeg",
     "/slider/image8.jpeg",
-    
- 
   ];
 
   const [touchStartX, setTouchStartX] = useState(0);
@@ -23,16 +22,13 @@ export default function ImageSlider() {
 
   const handleTouchStart = (e) => {
     setTouchStartX(e.targetTouches[0].clientX);
-  
   };
 
   const handleTouchMove = (e) => {
-
     setTouchEndX(e.targetTouches[0].clientX);
   };
 
   const handleTouchEnd = () => {
-
     const distance = touchStartX - touchEndX;
 
     const minSwipeDistance = 50; // threshold
@@ -52,7 +48,7 @@ export default function ImageSlider() {
 
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    },4000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [isPaused, images.length]);
@@ -76,7 +72,6 @@ export default function ImageSlider() {
       onTouchEnd={handleTouchEnd}
       onTouchMoveCapture={() => setIsPaused(true)}
       onTouchEndCapture={() => setIsPaused(false)}
-      
     >
       <div
         className="slider_track"
@@ -86,7 +81,11 @@ export default function ImageSlider() {
       >
         {images.map((img, i) => (
           <div className="slider_item" key={i}>
-            <img src={img} />
+            <Image src={img}
+            alt="Image"
+            width={500}
+            height={500}
+            />
             {/* <p className="slider_caption">Image {i + 1}</p> */}
           </div>
         ))}
