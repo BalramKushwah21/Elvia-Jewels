@@ -68,7 +68,7 @@ export default function CheckoutButton() {
         const verifyData = await verifyRes.json();
 
         if (verifyData.success) {
-          window.location.href = "/success";
+          window.location.href = "/user/success";
         } else {
           alert("Payment verification failed");
         }
