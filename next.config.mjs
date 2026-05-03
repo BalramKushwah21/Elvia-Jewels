@@ -7,7 +7,7 @@ const nextConfig = {
   /* config options here */
   allowedDevOrigins: ["10.85.112.234"],
   images: {
-    domains: ["www.diamondere.com"],
+  
     remotePatterns: [
       {
         protocol: "https",

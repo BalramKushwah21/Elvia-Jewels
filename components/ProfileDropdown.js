@@ -6,13 +6,12 @@ import Link from "next/link";
 import styles from "./ProfileDropdown.module.css";
 
 export default function ProfileDropdown() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const user = session?.user;
 
   const [open, setOpen] = useState(false);
-  const dropdownRef = useRef();
+  const dropdownRef = useRef(null);
 
-  // 🔒 Close on outside click
   useEffect(() => {
     const handler = (e) => {
       if (!dropdownRef.current?.contains(e.target)) {
@@ -24,13 +23,15 @@ export default function ProfileDropdown() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  if (!user) return null;
+  if (status === "loading" || !user) return null;
 
-  const username = user.name || user.email?.split("@")[0];
+  const username =
+    user.name ||
+    user.email?.split("@")[0] ||
+    "User";
 
   return (
     <div className={styles.wrapper} ref={dropdownRef}>
-      {/* Button */}
       <button
         className={styles.userButton}
         onClick={() => setOpen(!open)}
@@ -38,7 +39,6 @@ export default function ProfileDropdown() {
         Hi, {username} 👇
       </button>
 
-      {/* Dropdown */}
       {open && (
         <div className={styles.dropdown}>
           <Link href="/profile" onClick={() => setOpen(false)}>
