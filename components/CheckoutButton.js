@@ -1,7 +1,37 @@
 "use client";
 
+import { useState } from "react";
+
 export default function CheckoutButton() {
+  const [loading, setLoading] = useState(false);
+
+  const loadRazorpay = () => {
+    return new Promise((resolve) => {
+      if (typeof window === "undefined") return resolve(false);
+
+      // Already loaded
+      if (window.Razorpay) return resolve(true);
+
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+
+      document.body.appendChild(script);
+    });
+  };
+
   const handlePayment = async () => {
+    setLoading(true);
+
+    const isLoaded = await loadRazorpay();
+
+    if (!isLoaded) {
+      alert("Razorpay SDK failed to load");
+      setLoading(false);
+      return;
+    }
+
     // 1️⃣ Create order
     const res = await fetch("/api/checkout/create-order", {
       method: "POST",
@@ -11,6 +41,7 @@ export default function CheckoutButton() {
 
     if (!res.ok) {
       alert(data.error);
+      setLoading(false);
       return;
     }
 
@@ -42,11 +73,27 @@ export default function CheckoutButton() {
           alert("Payment verification failed");
         }
       },
+
+      modal: {
+        ondismiss: () => {
+          console.log("Payment popup closed");
+        },
+      },
+
+      theme: {
+        color: "#C89B3C", // luxury vibe for jewels ✨
+      },
     };
 
     const rzp = new window.Razorpay(options);
     rzp.open();
+
+    setLoading(false);
   };
 
-  return <button onClick={handlePayment}>Pay Now</button>;
+  return (
+    <button onClick={handlePayment} disabled={loading}>
+      {loading ? "Processing..." : "Pay Now"}
+    </button>
+  );
 }
