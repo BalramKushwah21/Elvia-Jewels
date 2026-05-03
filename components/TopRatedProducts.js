@@ -31,7 +31,8 @@ export default async function TopRatedProducts() {
                   className={styles.image}
                   alt={p.name}
                   width={100}
-                  height={200}
+                  height={100}
+                  style={{ height: "auto" }} 
                 />
               </Link>
               <h3 className={styles.name}>{p.name}</h3>
