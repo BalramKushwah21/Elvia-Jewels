@@ -150,7 +150,7 @@ useEffect(() => {
                 alt={slide.title}
                 width={200}
                 height={200}
-                loading="eager"
+                priority
                 onClick={() =>
                 router.push(`/collections/${slide.title.toLowerCase()}`)
                 }
