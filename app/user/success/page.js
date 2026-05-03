@@ -1,11 +1,43 @@
 
+import Link from "next/link";
+import styles from "./success.module.css";
+
 export default function SuccessPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-100">
-      <div className="bg-white p-8 rounded shadow text-center">
-        <h1 className="text-3xl font-bold mb-4 text-green-600">Payment Successful!</h1>
-        <p className="text-gray-700 mb-6">Thank you for your purchase. Your order has been placed successfully.</p>
-        <a href="/" className="inline-block bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">Continue Shopping</a>
+    <div className={styles.container}>
+      <div className={styles.box}>
+        
+        <div className={styles.icons}>
+          ✓
+        </div>
+        <h1 className={styles.maintitle}>Payment Successful!</h1>
+        <p className={styles.subtitle}>
+          Thank you for your purchase. Your order has been placed successfully.
+        </p>
+        <div className={styles.logos}>
+          <div className={styles.logo}>
+            <span>📦</span>
+            <p>Order Confirmed</p>
+          </div>
+          <div className={styles.logo}>
+            <span>💳</span>
+            <p>Payment Received</p>
+          </div>
+          <div className={styles.logo}>
+            <span>✉️</span>
+            <p>Confirmation Sent</p>
+          </div>
+        </div>
+
+        <div className={styles.actions}>
+          <Link href="/store" className={styles.firstBtn}>
+            Continue Shopping →
+          </Link>
+
+          <Link href="/orders" className={styles.secondBtn}>
+            View Order
+          </Link>
+        </div>
       </div>
     </div>
   );

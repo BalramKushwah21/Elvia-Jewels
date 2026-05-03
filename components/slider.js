@@ -148,8 +148,8 @@ useEffect(() => {
                 className={styles.Image}
                 src={slide.img}
                 alt={slide.title}
-                width={200}
-                height={200}
+                width={100}
+                height={100}
                 priority
                 onClick={() =>
                 router.push(`/collections/${slide.title.toLowerCase()}`)
