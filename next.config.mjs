@@ -1,24 +1,23 @@
 // @ts-check
 
-import { clear } from 'node:console';
-
+import { clear } from "node:console";
 
 /*n@type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
   allowedDevOrigins: ["10.85.112.234"],
-    images: {
+  images: {
+    domains: ["www.diamondere.com"],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**',
+        protocol: "https",
+        hostname: "**",
       },
       {
-        protocol: 'http',
-        hostname: '**',
+        protocol: "http",
+        hostname: "**",
       },
-    
     ],
   },
 };
-export default  nextConfig;
+export default nextConfig;

@@ -45,7 +45,7 @@ export default async function CartPage() {
       <h1>Your Cart</h1>
 
       {/* ✅ now it exists */}
-      <CartClient cartItems={cartItems} />
+      <CartClient cartItems={cartItems}/>
     </div>
   );
 }
