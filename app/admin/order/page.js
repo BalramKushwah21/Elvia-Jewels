@@ -1,7 +1,7 @@
 import styles from "./order.module.css";
 
 async function getOrders() {
-  const res = await fetch("http://localhost:3000/api/orders", {
+  const res = await fetch("/api/orders", {
     cache: "no-store",
   });
 
