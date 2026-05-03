@@ -6,9 +6,7 @@ export default function Page() {
     <div className={styles.wrapper}>
       
       <h1 className={styles.heading}>Admin Panel</h1>
-
       <div className={styles.cardContainer}>
-
         {/* Users Card */}
         <div className={styles.card}> 
           <div className={styles.icon}>👥</div>
