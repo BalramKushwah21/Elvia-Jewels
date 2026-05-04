@@ -11,6 +11,8 @@ export default function SuccessPage() {
           ✓
         </div>
         <h1 className={styles.maintitle}>Payment Successful!</h1>
+      <div classname={styles.container1}></div>
+
         <p className={styles.subtitle}>
           Thank you for your purchase. Your order has been placed successfully.
         </p>

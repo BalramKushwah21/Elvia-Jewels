@@ -1,27 +1,32 @@
+/* Main Container */
 .container {
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content:center;
-  background:antiquewhite;
+  justify-content: center;
+  background:rgb(130, 6, 103);
   padding: 40px;
+  font-family: "Segoe UI", sans-serif;
 }
 
+/* Card Box */
 .box {
-  background: #efb8b8;
+  width: 100%;
+  max-width: 700px;
+ background: radial-gradient(circle, rgb(234, 145, 211), rgb(247, 135, 224));
   padding: 40px;
-  border-radius:40px;
+  border-radius: 20px;
   text-align: center;
-  width:50%;
-  box-shadow:40px rgb(162, 11, 170);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
+/* Success Icon */
 .icons {
   width: 80px;
   height: 80px;
-  background: #08f033;
+  background: #22c55e;
   color: white;
-  font-size:40px;
+  font-size: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,31 +34,76 @@
   margin: 0 auto 20px;
 }
 
+/* Title */
 .maintitle {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   color: #1e293b;
 }
 
+/* Subtitle */
 .subtitle {
-  color: #1162d3;
-  margin-top: 10px;
-  margin-bottom: 30px;
+  font-size: 15px;
+  color: #64748b;
+  margin: 15px 0 25px;
 }
 
+/* ===== Order Info Box ===== */
+.orderBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e14bc8;
+  padding: 20px;
+  border-radius: 14px;
+  margin: 20px 0;
+  gap: 20px;
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  font-size: 20px;
+  background: #f0e2ed;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Divider between ID & Date */
+.divider {
+  width: 1px;
+  height: 40px;
+  background: #cbd5f5;
+}
+
+/* ===== Steps Section ===== */
 .logos {
   display: flex;
   justify-content: space-between;
-  margin: 30px 0;
-  gap: 20px;
+  gap: 15px;
+  margin-top: 25px;
 }
 
 .logo {
   flex: 1;
-  background: #f1f5f9;
+  background: #f8fafc;
   padding: 15px;
   border-radius: 12px;
-  background-color: #b0cef1;
   font-size: 14px;
 }
 
@@ -63,6 +113,7 @@
   margin-bottom: 5px;
 }
 
+/* ===== Buttons ===== */
 .actions {
   margin-top: 30px;
   display: flex;
@@ -70,6 +121,7 @@
   gap: 15px;
 }
 
+/* Primary Button */
 .firstBtn {
   background: linear-gradient(to right, #6366f1, #7c3aed);
   color: white;
@@ -77,8 +129,14 @@
   border-radius: 10px;
   text-decoration: none;
   font-weight: 500;
+  transition: 0.3s;
 }
 
+.firstBtn:hover {
+  opacity: 0.9;
+}
+
+/* Secondary Button */
 .secondBtn {
   border: 1px solid #6366f1;
   color: #6366f1;
@@ -86,13 +144,34 @@
   border-radius: 10px;
   text-decoration: none;
   font-weight: 500;
+  transition: 0.3s;
 }
 
-.primaryBtn:hover {
-  opacity: 0.9;
-}
-
-.secondaryBtn:hover {
-  background: #7d7fe9;
+.secondBtn:hover {
+  background: #6366f1;
   color: white;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .orderBox {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .logos {
+    flex-direction: column;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}
+.container1 {
+  justify-content: center;
+  display: flex;
 }
