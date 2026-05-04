@@ -1,4 +1,5 @@
 
+
 import Link from "next/link";
 import styles from "./success.module.css";
 
@@ -32,7 +33,7 @@ export default function SuccessPage() {
         </div>
 
         <div className={styles.actions}>
-          <Link href="/store" className={styles.firstBtn}>
+          <Link href="home/store" className={styles.firstBtn}>
             Continue Shopping →
           </Link>
 
@@ -44,3 +45,4 @@ export default function SuccessPage() {
     </div>
   );
 }
+
