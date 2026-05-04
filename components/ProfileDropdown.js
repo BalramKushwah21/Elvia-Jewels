@@ -41,7 +41,7 @@ export default function ProfileDropdown() {
 
       {open && (
         <div className={styles.dropdown}>
-          <Link href="/profile" onClick={() => setOpen(false)}>
+          <Link href="/user/profile" onClick={() => setOpen(false)}>
             Profile
           </Link>
 
