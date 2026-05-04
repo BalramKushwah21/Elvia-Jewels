@@ -1,0 +1,156 @@
+/* ===== Container ===== */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #9f364e, #07686f);
+  padding: 20px;
+}
+
+/* ===== Card ===== */
+.box {
+  width: 100%;
+  max-width: 650px;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Success Icon ===== */
+.icons {
+  width: 70px;
+  height: 70px;
+  background: #22c55e;
+  color: white;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: -60px auto 15px;
+}
+
+/* ===== Text ===== */
+.maintitle {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* ===== Order Box ===== */
+.orderBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  padding: 18px;
+  border-radius: 12px;
+  margin: 20px 0;
+  gap: 15px;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  font-size: 18px;
+}
+
+.label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Copy Row */
+.valueRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.copyBtn {
+  border: none;
+  background: #e2e8f0;
+  padding: 4px 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* Divider */
+.divider {
+  width: 1px;
+  height: 35px;
+  background: #cbd5e1;
+}
+
+/* ===== Delivery ===== */
+.delivery {
+  margin-top: 10px;
+  font-size: 14px;
+  background: #f1f5f9;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* ===== Status ===== */
+.logos {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.logo {
+  flex: 1;
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  border: 1px solid #e2e8f0;
+}
+
+/* ===== Buttons ===== */
+.actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.firstBtn {
+  background: #7c3aed;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.secondBtn {
+  border: 1px solid #7c3aed;
+  color: #7c3aed;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
