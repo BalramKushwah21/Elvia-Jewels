@@ -1,4 +1,5 @@
 
+
 import Link from "next/link";
 import styles from "./success.module.css";
 
@@ -42,3 +43,4 @@ export default function SuccessPage() {
     </div>
   );
 }
+
