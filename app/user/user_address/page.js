@@ -27,139 +27,127 @@ export default function AddressPage() {
     alert("Address Saved!");
   };
 
+  
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Address Information</h2>
+      <div className={styles.pageBg}></div>
+      <h2>Address Information</h2>
+    <div className={styles.formgrid}>
+      <div className={styles.inputBox}>
+        <label> 👤First Name</label>
+      <input
+        placeholder="First Name"
+        onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+        required
+      />
+      </div>
+        <div className={styles.inputBox}>
+        <label> 💰Last Name</label>
+      <input
+        placeholder="Last Name"
+        onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+        required
+      />
+      </div>
+      <div className={styles.inputBox}>
+        <label> 📦Phone</label>                              
+      <input
+        placeholder="Phone Number"
+        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+        required
+      />
+      </div>
+      <div className={styles.inputBox}>
+        <label> 🖼️Street Address</label>
 
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <input
+        placeholder="Street Address"
+        onChange={(e) => setForm({ ...form, address: e.target.value })}
+        required
+      />
+      <div className={styles.inputBox}>
+        <label> 🧍Default Address</label>
+    <div className={styles.genderBox}>
+      <label> 
+         HOME
+        <input type="radio" name="default" value="home" onChange={(e) => setForm({ ...form, default: e.target.value })}
+        required/>
+       
+      </label>
 
-          <label>First Name</label>
-          <input
-            name="firstName"
-            placeholder="First name"
-            value={form.firstName}
-            onChange={handleChange}
-            required
-          />
+      <label>
+        WORK
+        <input type="radio" name="default" value="work" onChange={(e) => setForm({ ...form, default: e.target.value })} 
+        required/>
+      </label>
+    </div>
+      </div>
 
-          <label>Last Name</label>
-          <input
-            name="lastName"
-            placeholder="Last name"
-            value={form.lastName}
-            onChange={handleChange}
-            required
-          />
+      </div>    
+        <div className={styles.inputBox}>
+        <label> 🏷️Apt/Suite/Unit</label>
 
-          <label>Phone Number</label>
-        <input
-            name="phone"
-            placeholder="Phone Number"
-            value={form.phone}
-            onChange={handleChange}
-            required
-        />
+      <input
+        placeholder="Apt/Suite/Unit"
+        onChange={(e) => setForm({ ...form, apt: e.target.value })}
+        required
+      />
+      </div>
 
-        <label>Country</label>
-        <select
-          name="country"
-          value={form.country}
-          onChange={handleChange}
-        >
-          <option>India</option>
-          <option>United States</option>
-          <option>UK</option>
-        </select>
+      <div className={styles.inputBox}>
+        <label> 🎨Landmark</label>
+      <input
+        placeholder="Landmark"
+        onChange={(e) => setForm({ ...form, landmark: e.target.value })}
+      />
+      </div>
+      <div className={styles.inputBox}>
+        <label> 📦City</label>                              
+      <input
+        placeholder="City"
+        onChange={(e) => setForm({ ...form, city: e.target.value })}
+        required
+      />
+      </div>
+      <div className={styles.inputBox}>
+        <label> 📦State</label>                              
+      <input
+        placeholder="State"
+        onChange={(e) => setForm({ ...form, state: e.target.value })}
+        required
+      />
+      </div>
+      <div className={styles.inputBox}>
+        <label> 📦Country</label>                              
+      <input
+        placeholder="Country"
+        onChange={(e) => setForm({ ...form, country: e.target.value })}
+        required
+      />
+      </div>
+      <div className={styles.inputBox}>
+        <label> 📦Pin Code</label>                              
+      <input
+        placeholder="Pin Code"
+        onChange={(e) => setForm({ ...form, pin: e.target.value })}
+        required
+      />
+      </div>
 
-        <label>Street Address</label>
-        <input
-          name="address"
-          placeholder="Street address"
-          value={form.address}
-          onChange={handleChange}
-          required
-        />
-
-          <label>Default Address</label>
-        <div className={styles.radioGroup}>
-
-            <label>
-            <input
-                type="radio"
-                name="type"
-                value="Home"
-                checked={form.type === "Home"}
-                onChange={handleChange}
-            />
-                Home
-            </label>
-
-            <label>
-            <input 
-                type="radio"
-                name="type"
-                value="Work"
-                checked={form.type === "Work"}
-                onChange={handleChange}
-            />
-                Work
-            </label>
     </div>
 
-        <label>Apt/Suite/Unit</label>
-        <input
-          name="apt"
-          placeholder="Apt, suite, or unit"
-          value={form.apt}
-          onChange={handleChange}
-        />
-
-          <label>Landmark</label>
-        <input
-            name="landmark"
-            placeholder="Landmark (optional)"
-            value={form.landmark}
-            onChange={handleChange}
-        />
-
-        <label>City</label>
-        <input
-          name="city"
-          placeholder="City"
-          value={form.city}
-          onChange={handleChange}
-          required
-        />
-
-          <label>State</label>
-          <input
-            name="state"
-            placeholder="State"
-            value={form.state}
-            onChange={handleChange}
-          />
-
-          <label>Pin Code</label>
-          <input
-            name="pin"
-            placeholder="Pin code"
-            value={form.pin}
-            onChange={handleChange}
-          />
-        </form>
-
-        {/* Google Map */}
-        <div className={styles.map}>
+       {/* Google Map */}
+        {/* <div className={styles.map}> */}
           <iframe
             src="https://maps.google.com/maps?q=23.2595068,77.495494&z=17&output=embed"
             loading="lazy"
           ></iframe>
-        </div>
-      
+        {/* </div> */}
 
-        <button type="submit" className={styles.button}>
+      <button type="submit" className={styles.button}>
           Save Address
         </button>
+    
     </div>
   );
 }
