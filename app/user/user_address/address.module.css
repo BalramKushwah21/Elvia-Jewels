@@ -3,8 +3,8 @@
   max-width: 900px;
   margin: 40px auto;
   padding: 30px;
-  background: #eec9c9;
-  border: 1px solid #f6aaaa;
+  background: #9cc3f1;
+  border: 1px solid #f79191;
   border-radius: 12px;
   font-family: Arial, sans-serif;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -15,7 +15,7 @@
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 25px;
-  color: #562525;
+  color: #521818;
   display: flex;
   justify-content: center;
 }
@@ -85,6 +85,7 @@
   height: 100%;
   border: none;
 }
+
 .button {
   width: 100%;
   height: 46px;
