@@ -65,12 +65,11 @@ export default function SuccessPage() {
             </div>
           </div>
 
+
         </div>
 
        
-        <p className={styles.delivery}>
-          
-        </p>
+        
 
         
         <div className={styles.logos}>
