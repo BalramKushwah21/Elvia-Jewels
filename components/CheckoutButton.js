@@ -70,7 +70,8 @@ export default function CheckoutButton() {
         if (verifyData.success) {
           window.location.href = "/user/success";
         } else {
-          alert("Payment verification failed");
+          window.location.href = "/user/failure";
+          
         }
       },
 
