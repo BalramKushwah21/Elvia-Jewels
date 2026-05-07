@@ -83,7 +83,7 @@ export default function ImageSlider() {
           <div className="slider_item" key={i}>
             <Image src={img}
             alt="Image"
-            width={500}
+            width={1500}
             height={500}
             />
             {/* <p className="slider_caption">Image {i + 1}</p> */}
