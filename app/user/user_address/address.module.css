@@ -1,37 +1,4 @@
 .container {
-<<<<<<< HEAD
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 30px;
-  background: #9cc3f1;
-  border: 1px solid #f79191;
-  border-radius: 12px;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-
-.title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 25px;
-  color: #521818;
-  display: flex;
-  justify-content: center;
-}
-
-.form {
-  display: grid;
-  grid-template-columns: 150px 1fr 150px 1fr;
-  gap: 18px 20px;
-  align-items: center;
-}
-
-
-.form input,
-.form select {
-=======
->>>>>>> 492d31869e6986f9128b36c41a313839aedc38b7
   width: 100%;
   max-width: 700px;
   margin: 50px auto;
