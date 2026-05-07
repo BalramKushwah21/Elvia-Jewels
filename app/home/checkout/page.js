@@ -3,6 +3,7 @@ import { authOptions } from "@/lib/authOptions";
 import { prisma } from "@/lib/prisma";
 import CheckoutButton from "@/components/CheckoutButton";
 import Image from "next/image";
+import styles from "./checkout.module.css";
 
 export default async function CheckoutPage({ searchParams }) {
   const params = await searchParams;
@@ -15,7 +16,7 @@ export default async function CheckoutPage({ searchParams }) {
   } catch {
     selectedIds = [];
   }
-  console.log("Selected IDs:", selectedIds);
+  // console.log("Selected IDs:", selectedIds);
   try {
     // ✅ Get session safely
     const session = await getServerSession(authOptions);
@@ -57,25 +58,33 @@ export default async function CheckoutPage({ searchParams }) {
     }, 0);
 
     return (
-      <div style={{ padding: "20px" }}>
-        <h1>Checkout</h1>
+        
+      <div className={styles.main_container}>
+        <div className={styles.container}>
 
         {items.length === 0 ? (
           <p>Your cart is empty</p>
         ) : (
           items.map((item) => (
-            <div key={item.id}>
-              <Image src={item.product?.image} alt={item.product?.name} width={100} height={100} />
-              <p>{item.product?.name}</p>
-              <p>₹{item.product?.price}</p>
-              <p>Qty: {item.quantity}</p>
+            <div key={item.id} className={styles.card}>
+              <Image src={item.product?.image} alt={item.product?.name} width={100} height={100} 
+              className={styles.img}
+              />
+              <div className={styles.content}>
+                <p>{item.product?.name}</p>
+                <p>₹{item.product?.price}</p>
+                <p>Qty: {item.quantity}</p>
+              </div>
             </div>
           ))
         )}
+        </div>
+        <div className={styles.CheckoutButton}>
 
         <h2>Total: ₹{total}</h2>
 
-        <CheckoutButton />
+        <CheckoutButton selectedIds={selectedIds} />
+        </div>
       </div>
     );
   } catch (error) {

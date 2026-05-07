@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function CheckoutButton() {
+export default function CheckoutButton({ selectedIds }) {
   const [loading, setLoading] = useState(false);
 
   const loadRazorpay = () => {
@@ -35,6 +35,12 @@ export default function CheckoutButton() {
     // 1️⃣ Create order
     const res = await fetch("/api/checkout/create-order", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        selectedIds,
+      }),
     });
 
     const data = await res.json();
@@ -71,7 +77,6 @@ export default function CheckoutButton() {
           window.location.href = "/user/success";
         } else {
           window.location.href = "/user/failure";
-          
         }
       },
 
@@ -82,7 +87,7 @@ export default function CheckoutButton() {
       },
 
       theme: {
-        color: "#C89B3C", // luxury vibe for jewels ✨
+        color: "#5fe322", // luxury vibe for jewels ✨
       },
     };
 

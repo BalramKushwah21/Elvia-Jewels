@@ -9,7 +9,9 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
-export async function POST() {
+export async function POST(req) {
+  const body = await req.json();
+  const selectedIds = body.selectedIds || [];
   try {
     const session = await getServerSession(authOptions);
 
@@ -27,20 +29,31 @@ export async function POST() {
       where: { userId: user.id },
       include: {
         items: {
-          include: { product: true },
+          where: {
+            id: { in: selectedIds }, // ✅ filter here
+          },
+          include: {
+            product: true,
+          },
         },
       },
     });
+    console.log("Cart items in API:", cart?.items);
 
     if (!cart || cart.items.length === 0) {
       return NextResponse.json({ error: "Cart empty" }, { status: 400 });
+    }
+    //check if items are selected
+    if (selectedIds.length === 0) {
+      return NextResponse.json({ error: "No items selected" }, { status: 400 });
     }
 
     // 🔐 Calculate amount (SERVER ONLY)
     const amount = cart.items.reduce(
       (acc, item) => acc + item.product.price * item.quantity * 100,
-      0
+      0,
     );
+    console.log("Calculated amount in API:", amount);
 
     // 💳 Create Razorpay order
     const razorpayOrder = await razorpay.orders.create({
@@ -71,7 +84,6 @@ export async function POST() {
       amount,
       key: process.env.RAZORPAY_KEY_ID,
     });
-
   } catch (err) {
     console.error("CREATE ORDER ERROR:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
