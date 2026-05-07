@@ -105,7 +105,6 @@ body{
   background: linear-gradient(135deg, #FBEEEE, #F6DCDD); 
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
   gap: 6px;
   cursor: pointer;
 }
@@ -165,7 +164,4 @@ body{
   }
 
 
-=======
-  gap: 20px;
->>>>>>> 492d31869e6986f9128b36c41a313839aedc38b7
 }
